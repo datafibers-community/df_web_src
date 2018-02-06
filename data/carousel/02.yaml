@@ -1,0 +1,10 @@
+weight: 2
+title: "Simple, but Powerful"
+description: >
+  <ul class="list-style-none">
+     <li>Various data connects and sinks</li>
+     <li>Stream and Batch trasnforms</li>
+     <li>Topics, Schema and Meta-data</li>
+     <li>Data enginering and science together</li>
+   </ul>
+image: "img/carousel/02.jpg"

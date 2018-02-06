@@ -1,0 +1,10 @@
+weight: 4
+title: "Complete Guideline"
+description: >
+  <ul class="list-style-none">
+    <li>The Insignt of Big data processing</li>
+    <li>The value of Kappa architecture</li>
+    <li>Considerations of design</li>
+    <li>Best practice with DataFibers</li>
+  </ul>
+image: "img/carousel/04.jpg"
