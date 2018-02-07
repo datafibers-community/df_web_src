@@ -1,11 +1,11 @@
 weight: 4
-title: "Complete Guideline"
+title: "Services"
 description: >
   <ul class="list-style-none">
-    <li>The Insignt of Big data processing</li>
-    <li>The value of Kappa architecture</li>
-    <li>Considerations of design</li>
-    <li>Best practice with DataFibers</li>
-    <li>Rest API Document</li>
+    <li>Community Support</li>
+    <li>Professional Support</li>
+    <li>Consulting Service</li>	
+    <li>Technical trainings</li>
+    <li>Meetup and Conference</li>
   </ul>
-image: "img/carousel/05.jpg"
+image: "img/carousel/04.png"

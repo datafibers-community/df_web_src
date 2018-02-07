@@ -1,10 +1,11 @@
 weight: 3
-title: "Design"
+title: "Complete Guideline"
 description: >
   <ul class="list-style-none">
-    <li>Clean and elegant design</li>
-    <li>Full width and boxed mode</li>
-    <li>Easily readable Roboto font and awesome icons</li>
-    <li>7 preprepared colour variations</li>
+    <li>The Insignt of Big data processing</li>
+    <li>The value of Kappa architecture</li>
+    <li>Considerations of design</li>
+    <li>Best practice with DataFibers</li>
+    <li>Rest API Document</li>
   </ul>
-image: "img/carousel/template-easy-customize.png"
+image: "img/carousel/03.jpg"
