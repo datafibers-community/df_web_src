@@ -3,7 +3,7 @@ hugo
 cd ../datafibers-community.github.io
 git pull
 cd ../df_web_src
-cp -r public/* ../datafibers-community.github.io/
+cp -r ../df_web_src/public/* ../datafibers-community.github.io/
 git add .
 # Commit changes.
 msg="rebuilding site `date`"
