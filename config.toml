@@ -29,8 +29,8 @@ paginate = 10
 
 [[menu.main]]
     name = "Community"
-    identifier = "faq"
-    url  = "/faq/"
+    identifier = "community"
+    url  = "/community/"
     weight = 3
 	
 [[menu.main]]
@@ -138,7 +138,7 @@ paginate = 10
     # For more informtion take a look at the README.
 
 [params.testimonials]
-    enable = true
+    enable = false
     # All testimonials are defined in their own files. You can find example items
     # at 'exampleSite/data/testimonials'.
     # For more informtion take a look at the README.

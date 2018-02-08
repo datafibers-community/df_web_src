@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hadoop on DataFibers</title>
+    <link>https://datafibers.org/tags/hadoop/</link>
+    <description>Recent content in Hadoop on DataFibers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Jan 2018 13:50:46 +0200</lastBuildDate>
+    
+	<atom:link href="https://datafibers.org/tags/hadoop/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Big Data Books Reviews</title>
+      <link>https://datafibers.org/blog/2018/01/10/2018-01-10-reviews-big-data/</link>
+      <pubDate>Wed, 10 Jan 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2018/01/10/2018-01-10-reviews-big-data/</guid>
+      <description>Learning Spark SQL  Level Ent.
+ Level Mid.
+ Level Adv.  Published in Sep. 2017. Start reading it.
+
+Learning Apache Flink  Level Ent. Level Mid.  There are very few books about Apache Flink. Besides offical document, this is a good one for people who wants to know Flink quicker. This book, published in the earlier of 2017, covers most of core topics for Flink with examples.</description>
+    </item>
+    
+    <item>
+      <title>Apache Hive Essentials Published</title>
+      <link>https://datafibers.org/blog/1/01/01/2015-03-15-apache-hive-essentials-published/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-03-15-apache-hive-essentials-published/</guid>
+      <description>Finally, I made it. I got it published after working for 6 monthes.
+Apache Hive Essentials  My very first book Also the first book on Apache Hive 1.0.0 in the world  Check it out here</description>
+    </item>
+    
+    <item>
+      <title>Data Lake Stages</title>
+      <link>https://datafibers.org/blog/1/01/01/2015-02-02-data-lake-stages/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-02-02-data-lake-stages/</guid>
+      <description>Edd has post a very impressive blog about how Hadoop ecosystem influence the data lake in enterprise recently. It discussed about the four following stages when enterprise&amp;rsquo;s data evolution to the dream of data lake. I also share some of mine as addition.
+Stage 1 - Life Before Hadoop In this stage, the enterprise data architecture has following characteristics.
+ Applications stand alone with their databases Some applications contribute data to a data warehouse Analysts run reporting and analytics in data warehouse  What&amp;rsquo;s more:</description>
+    </item>
+    
+    <item>
+      <title>Hadoop Counter</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-06-03-hadoop-counter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-06-03-hadoop-counter/</guid>
+      <description>hadoop counter is to help developers and users to have overall status of running jobs. There are three type of counters, MapReduce related, File systems related, and job related. The details can be seen from http://master:50030/jobdetails.jsp
+Except internal counters, hadoop also offers customize counters. There are two ways to do that.
+1. Static Definition You can use enumiate classs to create counters
+Context context... //Enum class refers to groupName，Enum class type refers to counterName context.</description>
+    </item>
+    
+    <item>
+      <title>Hadoop Customize Data Type</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-05-07-hadoop-customize-data-type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-05-07-hadoop-customize-data-type/</guid>
+      <description>Customize Data Type - As Value To create a customized data type used as a value, the data type must implement the org.apache.hadoop.io.Writable interface which consists of the two methods, readFields() and write()
+ void readFields(DataInput in) : Deserialize the fields of this object from in. [void write(DataOutput out)](http://hadoop.apache.org/docs/current/api/org/apache/hadoop/io/Writable.html#write(java.io.DataOutput) : Serialize the fields of this object to out.  Note:
+ In case you are adding a custom constructor to your custom Writable class, make sure to retain the default empty constructor.</description>
+    </item>
+    
+    <item>
+      <title>Hadoop Streaming</title>
+      <link>https://datafibers.org/blog/1/01/01/2015-06-21-hadoop-streaming/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-06-21-hadoop-streaming/</guid>
+      <description>1. Streaming Overview Hadoop Streaming is a generic API which allows writing Mappers and Reduces in any language.
+ Develop MapReduce jobs in practically any language Uses Unix Streams as communication mechanism between Hadoop and your code Any language that can read standard input and write are supported  Few good use-cases:
+ Text processing - scripting languages do well in text analysis Utilities and/or expertise in languages other than Java  2.</description>
+    </item>
+    
+    <item>
+      <title>Hive and Hadoop Exceptions</title>
+      <link>https://datafibers.org/blog/1/01/01/2014-06-01-hive-and-hadoop-exceptions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2014-06-01-hive-and-hadoop-exceptions/</guid>
+      <description>I installed Hive 1.0.0 on Hadoop 1.2.1. When I try to enter the Hive CLI, it reports following exceptions
+org.apache.hadoop.hive.ql.metadata.HiveException:java.io.IOException:Filesystem closed  According to the search here, the mainly reason for this is that when multiple nodes read HFDS files if one node is offline, it will throw such exception when the other nodes are still reading the data cached. There are two ways to resolve this.
+ Turn off JVM reuse  &amp;lt;property&amp;gt; &amp;lt;name&amp;gt;mapred.</description>
+    </item>
+    
+    <item>
+      <title>Hive and Hadoop Exceptions</title>
+      <link>https://datafibers.org/blog/1/01/01/2015-02-12-hive-and-hadoop-exceptions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-02-12-hive-and-hadoop-exceptions/</guid>
+      <description>I installed Hive 1.0.0 on Hadoop 1.2.1. When I try to enter the Hive CLI, it reports following exceptions
+org.apache.hadoop.hive.ql.metadata.HiveException:java.io.IOException:Filesystem closed  According to the search here, the mainly reason for this is that when multiple nodes read HFDS files if one node is offline, it will throw such exception when the other nodes are still reading the data cached. There are two ways to resolve this.
+ Turn off JVM reuse  &amp;lt;property&amp;gt; &amp;lt;name&amp;gt;mapred.</description>
+    </item>
+    
+    <item>
+      <title>Moving to the Spark</title>
+      <link>https://datafibers.org/blog/1/01/01/2014-11-23-move-to-the-spark/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2014-11-23-move-to-the-spark/</guid>
+      <description>It has been a while that the blog is now updated since 2014 is a ready busy year. After I almost completed my first book recently, I think it is the right time to start new journey in big data for real time processing.
+Big data ecosystem has great changes over the past two years. The speed of big data processing becomes the hot topic over the past year. When Hadoop enter the area of Yarn, it becomes more like a distribute computing infrastructure.</description>
+    </item>
+    
+    <item>
+      <title>Rsync for HBase/Hadoop Cluster Deployment</title>
+      <link>https://datafibers.org/blog/1/01/01/2012-07-02-rsync-deployment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2012-07-02-rsync-deployment/</guid>
+      <description>Create a simple rsync script to do HBase/Hadoop deployment
+ Create a cluster-deploy.sh script, shown as follows: $ vi cluster-deploy.sh
+#!/bin/bash # Sync HBASE_HOME across the cluster. Must run on master using HBase owner user. HBASE_HOME=/usr/local/hbase/current for rs in `cat $HBASE_HOME/conf/regionservers` do echo &amp;quot;Deploying HBase to $rs:&amp;quot; rsync -avz --delete --exclude=logs $HBASE_HOME/ $rs:$HBASE_HOME/ echo sleep 1 done echo &amp;quot;Done&amp;quot;  Run the script as the user who starts Hadoop/HBase on the master node:</description>
+    </item>
+    
+    <item>
+      <title>Steps to setup EC2 cluster for Hadoop</title>
+      <link>https://datafibers.org/blog/1/01/01/2014-04-05-install-cdh-in-aws/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2014-04-05-install-cdh-in-aws/</guid>
+      <description>Get the Access Key ID and Secret Access Key and store it in a notepad. The keys will be used when creating EC2 instances. If not there, then generate a new set of keys.
+ Go to the PVC Management console to create VPC with proper subnet since Hadoop nodes need to be in one LAN
+ Go to the EC2 Management console and create a new Key Pair. While creating the keys, the user will be prompted to store a pem key file.</description>
+    </item>
+    
+  </channel>
+</rss>

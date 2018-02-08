@@ -112,7 +112,7 @@ This is a tiny book about pig, around 200 pages. It covers everything. The exten
 ___
 <a href="http://www.amazon.cn/Hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95-%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90MapReduce%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E8%91%A3%E8%A5%BF%E6%88%90/dp/B00CJ367IU/ref=sr_1_1?ie=UTF8&qid=1369267204&sr=8-1&keywords=hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95+%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90mapreduce%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86" target="_blank"><img src="/img/banners/hadoopmapreduceinternals.jpg" width="150" height="200" align ="right"  /></a>
 ### Hadoop Mapreduce Internals 
-<img src="/img/banners/5star.png" width="250" height="50"/></p>
+<p align="left"><img src="/img/banners/5star.png" width="250" height="50"/></p>
 
 * Level Adv.   
 
@@ -158,3 +158,11 @@ ___
 
 The book creates fast way to query data using hive in few hours. This is great than searching the apache confluence to see the breaked help documents especially for new hive users. The book has few pages to read and easier to understand. The author also gives level of complex for each chapters so that different level of users could quickly pick up what he/she needs.
 ___
+<a href="http://www.amazon.ca/Tableau-Your-Data-Analysis-Software/dp/1118612043" target="_blank"><img src="/img/banners/tableau_your_data.jpg" width="150" height="200" align ="right"  /></a>
+### Tableau Your Data 
+<p align="left"><img src="/img/banners/5star.png" width="250" height="50" /></p>
+ 
+* Level Ent. 
+* Level Mid.   
+
+This is a good Tableau guide for data visualization based on the latest version of the software. It is detail oritented. It covers lots of details especially on the server deployment and security. The case study charpter is also good reference.

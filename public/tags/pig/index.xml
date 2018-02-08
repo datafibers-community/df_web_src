@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pig on DataFibers</title>
+    <link>https://datafibers.org/tags/pig/</link>
+    <description>Recent content in Pig on DataFibers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://datafibers.org/tags/pig/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hive vs. Pig</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-04-24-hive-vs-pig/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-04-24-hive-vs-pig/</guid>
+      <description>Both projects are top Apache projects to process data in Hadoop. Here, I try to compare the difference.
+Below is picture I found (I cannot find the original link, but there is mirror here)
+In addition, I am here to share some more difference. To be honest, I prefer pig more. Mapred, Hive, and pig are like Java, ruby, and python.
+Pig
+ It is more easy to install pig than hive.</description>
+    </item>
+    
+    <item>
+      <title>SQL in MySQL and Pig Comparision</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-08-21-sql-in-mysql-and-pig/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-08-21-sql-in-mysql-and-pig/</guid>
+      <description>Here, it is using Mysql 5.1.x and Pig 0.8 as sample. Two sample files are used as follows.
+00.Prepared Files cat /tmp/data_file_1
+zhangsan 23 1 lisi 24 1 wangmazi 30 1 meinv 18 0 dama 55 0  cat /tmp/data_file_2
+1 a 23 bb 50 ccc 30 dddd 66 eeeee  01.Load Files 1)Mysql (Need to create the table first). CREATE TABLE TMP_TABLE(USER VARCHAR(32),AGE INT,IS_MALE BOOLEAN); CREATE TABLE TMP_TABLE_2(AGE INT,OPTIONS VARCHAR(50)); -- 用于Join LOAD DATA LOCAL INFILE &#39;/tmp/data_file_1&#39; INTO TABLE TMP_TABLE ; LOAD DATA LOCAL INFILE &#39;/tmp/data_file_2&#39; INTO TABLE TMP_TABLE_2; 2)Pig tmp_table = LOAD &#39;/tmp/data_file_1&#39; USING PigStorage(&#39;\t&#39;) AS (user:chararray, age:int,is_male:int); tmp_table_2= LOAD &#39;/tmp/data_file_2&#39; USING PigStorage(&#39;\t&#39;) AS (age:int,options:chararray);  02.</description>
+    </item>
+    
+  </channel>
+</rss>

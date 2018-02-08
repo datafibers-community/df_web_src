@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bigdata on DataFibers</title>
+    <link>https://datafibers.org/tags/bigdata/</link>
+    <description>Recent content in Bigdata on DataFibers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://datafibers.org/tags/bigdata/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Big Data Platform</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-06-18-big-data-platform/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-06-18-big-data-platform/</guid>
+      <description>Here I am comparing the most famous vendors who offer hadoop platform for enterprise Below is a typical vision of big data analytics architecture </description>
+    </item>
+    
+    <item>
+      <title>Data Analysis</title>
+      <link>https://datafibers.org/blog/1/01/01/2015-02-06-data-analysis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-02-06-data-analysis/</guid>
+      <description>A friend of mine asked me what is data analysis. This is a simple but difficult question. It is simple because we talk about data analysis all the time and everywhere. It is difficult because there are so many ways of explaining it at different time. In the ear of big data, I think data analysis have three following areas.
+ Flatten Analysis: Analysis is performed on the static data set from single dimentional view.</description>
+    </item>
+    
+    <item>
+      <title>Data Lake Stages</title>
+      <link>https://datafibers.org/blog/1/01/01/2015-02-02-data-lake-stages/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-02-02-data-lake-stages/</guid>
+      <description>Edd has post a very impressive blog about how Hadoop ecosystem influence the data lake in enterprise recently. It discussed about the four following stages when enterprise&amp;rsquo;s data evolution to the dream of data lake. I also share some of mine as addition.
+Stage 1 - Life Before Hadoop In this stage, the enterprise data architecture has following characteristics.
+ Applications stand alone with their databases Some applications contribute data to a data warehouse Analysts run reporting and analytics in data warehouse  What&amp;rsquo;s more:</description>
+    </item>
+    
+    <item>
+      <title>Moving to the Spark</title>
+      <link>https://datafibers.org/blog/1/01/01/2014-11-23-move-to-the-spark/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2014-11-23-move-to-the-spark/</guid>
+      <description>It has been a while that the blog is now updated since 2014 is a ready busy year. After I almost completed my first book recently, I think it is the right time to start new journey in big data for real time processing.
+Big data ecosystem has great changes over the past two years. The speed of big data processing becomes the hot topic over the past year. When Hadoop enter the area of Yarn, it becomes more like a distribute computing infrastructure.</description>
+    </item>
+    
+  </channel>
+</rss>

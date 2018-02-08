@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tutorial on DataFibers</title>
+    <link>https://datafibers.org/categories/tutorial/</link>
+    <description>Recent content in Tutorial on DataFibers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 01 Jul 2017 13:50:46 +0200</lastBuildDate>
+    
+	<atom:link href="https://datafibers.org/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spark Word Count Tutorial</title>
+      <link>https://datafibers.org/blog/2017/07/01/2017-07-01-spark-word-count/</link>
+      <pubDate>Sat, 01 Jul 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2017/07/01/2017-07-01-spark-word-count/</guid>
+      <description>It is quite often to setup Apache Spark development environment through IDE. Since I do not cover much setup IDE details in my Spark course, I am here to give detail steps for developing the well known Spark word count example using scala API in Eclipse.
+Environment  Apache Spark v1.6 Scala 2.10.4 Eclipse Scala IDE  Download Software Needed  Download the proper scala version and install it Download the Eclipse scala IDE from above link  Create A Scala Project  Open Scala Eclipse IDE.</description>
+    </item>
+    
+  </channel>
+</rss>

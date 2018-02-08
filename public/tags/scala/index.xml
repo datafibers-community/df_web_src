@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scala on DataFibers</title>
+    <link>https://datafibers.org/tags/scala/</link>
+    <description>Recent content in Scala on DataFibers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Sep 2017 13:50:46 +0200</lastBuildDate>
+    
+	<atom:link href="https://datafibers.org/tags/scala/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Scala Apply Method</title>
+      <link>https://datafibers.org/blog/2017/09/15/2017-09-15-scala-apply-method/</link>
+      <pubDate>Fri, 15 Sep 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2017/09/15/2017-09-15-scala-apply-method/</guid>
+      <description>The apply methods in scala has a nice syntactic sugar. It allows us to define semantics like java array access for an arbitrary class.
+For example, we create a class of RiceCooker and its method cook to cook rice. Whenever we need to cook rice, we could call this method.
+class RiceCooker { def cook(cup_of_rice: Rice) = { cup_of_rice.isDone = true cup_of_rice } } val my_rice_cooker: RiceCooker = new RiceCooker() my_rice_cooker.</description>
+    </item>
+    
+    <item>
+      <title>Scala Constructor vs. Java Constructor</title>
+      <link>https://datafibers.org/blog/1/01/01/2015-04-20-scala-and-java-constructors/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-04-20-scala-and-java-constructors/</guid>
+      <description>1. Constructor With Parameters Java Code
+public class Foo() { public Bar bar; public Foo(Bar bar) { this.bar = bar; } }  Scala Code
+class Foo(val bar:Bar)  2. Constructor With Private Attribute Java Code
+public class Foo() { private final Bar bar; public Foo(Bar bar) { this.bar = bar; } }  Scala Code
+class Foo(private val bar:Bar)  3. Call Super Constructor Java Code
+public class Foo() extends SuperFoo { public Foo(Bar bar) { super(bar); } }  Scala Code</description>
+    </item>
+    
+  </channel>
+</rss>

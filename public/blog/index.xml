@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on DataFibers</title>
+    <link>https://datafibers.org/blog/</link>
+    <description>Recent content in Blogs on DataFibers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 02 Feb 2018 13:50:46 +0200</lastBuildDate>
+    
+	<atom:link href="https://datafibers.org/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hive Get the Max/Min</title>
+      <link>https://datafibers.org/blog/2018/02/02/2018-02-02-hive-get-max-min-value-rows/</link>
+      <pubDate>Fri, 02 Feb 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2018/02/02/2018-02-02-hive-get-max-min-value-rows/</guid>
+      <description>Most of time, we need to find the max or min value of particular columns as well as other columns. For example, we have following employee table.
+&amp;gt; SELECT name,sex_age.sex AS sex,sex_age.age AS age FROM employee; +----------+---------+------+ | name | sex | age | +----------+---------+------+ | Michael | Male | 30 | | Will | Male | 35 | | Shelley | Female | 27 | | Lucy | Female | 57 | | Steven | Male | 30 | +----------+---------+------+ 5 rows selected (75.</description>
+    </item>
+    
+    <item>
+      <title>Big Data Books Reviews</title>
+      <link>https://datafibers.org/blog/2018/01/10/2018-01-10-reviews-big-data/</link>
+      <pubDate>Wed, 10 Jan 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2018/01/10/2018-01-10-reviews-big-data/</guid>
+      <description>Learning Spark SQL  Level Ent.
+ Level Mid.
+ Level Adv.  Published in Sep. 2017. Start reading it.
+
+Learning Apache Flink  Level Ent. Level Mid.  There are very few books about Apache Flink. Besides offical document, this is a good one for people who wants to know Flink quicker. This book, published in the earlier of 2017, covers most of core topics for Flink with examples.</description>
+    </item>
+    
+    <item>
+      <title>2017 Winter Release</title>
+      <link>https://datafibers.org/blog/2017/12/22/2017-12-22-df-winter-release/</link>
+      <pubDate>Fri, 22 Dec 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2017/12/22/2017-12-22-df-winter-release/</guid>
+      <description>Summary Before christmas, DataFibers has completed the winter release, which has more than 40+ changes requests applied. In this release, DataFibers is featured with first demo combined both data landing and transforming in real time with new web interface. In addition, the preview version of batch processing (by spark) is ready.
+Details Below is the list of key changes in this release.
+ New Web admin UI released using ReactJs based AOR.</description>
+    </item>
+    
+    <item>
+      <title>Hive RowID Generation</title>
+      <link>https://datafibers.org/blog/2017/11/01/2017-11-02-hive-rowid-generation/</link>
+      <pubDate>Wed, 01 Nov 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2017/11/01/2017-11-02-hive-rowid-generation/</guid>
+      <description>Introduction It is quite often that we need a unique identifier for each single rows in the Apache Hive tables. This is quite useful when you need such columns as surrogate keys in data warehouse, as the primary key for data or use as system nature keys. There are following ways of doing that in Hive.
+ROW_NUMBER() Hive have a couple of internal functions to achieve this. ROW_NUMBER function, which can generate row number for each partition of data.</description>
+    </item>
+    
+    <item>
+      <title>Apache Kafka Overview</title>
+      <link>https://datafibers.org/blog/2017/10/05/2017-10-05-apache-kafka-overview/</link>
+      <pubDate>Thu, 05 Oct 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2017/10/05/2017-10-05-apache-kafka-overview/</guid>
+      <description>The big data processing started by focusing on the batch processing. Distributed data storage and querying tools like MapReduce, Hive, and Pig were all designed to process data in batches rather than continuously. Recently enterprises have discovered the power of analyzing and processing data and events as they happen instead of batches. Most traditional messaging systems, such as RabbitMq, neither scale up to handle big data in realtime nor use friendly with big data ecosystem.</description>
+    </item>
+    
+    <item>
+      <title>Scala Apply Method</title>
+      <link>https://datafibers.org/blog/2017/09/15/2017-09-15-scala-apply-method/</link>
+      <pubDate>Fri, 15 Sep 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2017/09/15/2017-09-15-scala-apply-method/</guid>
+      <description>The apply methods in scala has a nice syntactic sugar. It allows us to define semantics like java array access for an arbitrary class.
+For example, we create a class of RiceCooker and its method cook to cook rice. Whenever we need to cook rice, we could call this method.
+class RiceCooker { def cook(cup_of_rice: Rice) = { cup_of_rice.isDone = true cup_of_rice } } val my_rice_cooker: RiceCooker = new RiceCooker() my_rice_cooker.</description>
+    </item>
+    
+    <item>
+      <title>2017 Summer Release</title>
+      <link>https://datafibers.org/blog/2017/08/31/2017-08-31-df-summer-release/</link>
+      <pubDate>Thu, 31 Aug 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2017/08/31/2017-08-31-df-summer-release/</guid>
+      <description>Summary A little bit data, but DataFibers has completed the summer release of 2017 about right time. In this release, we have applied 30+ changes requests. In this release, DataFibers is featured with a preview of new web interface. In addition, couple of connectors are added/updated to preparing the demo later.
+Details Below is the list of key changes in this release.
+ Support Flink Table API and SQL API support Flink upgrade to v1.</description>
+    </item>
+    
+    <item>
+      <title>Spark Word Count Tutorial</title>
+      <link>https://datafibers.org/blog/2017/07/01/2017-07-01-spark-word-count/</link>
+      <pubDate>Sat, 01 Jul 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2017/07/01/2017-07-01-spark-word-count/</guid>
+      <description>It is quite often to setup Apache Spark development environment through IDE. Since I do not cover much setup IDE details in my Spark course, I am here to give detail steps for developing the well known Spark word count example using scala API in Eclipse.
+Environment  Apache Spark v1.6 Scala 2.10.4 Eclipse Scala IDE  Download Software Needed  Download the proper scala version and install it Download the Eclipse scala IDE from above link  Create A Scala Project  Open Scala Eclipse IDE.</description>
+    </item>
+    
+    <item>
+      <title>One Platform Initatives for Spark</title>
+      <link>https://datafibers.org/blog/2017/06/24/2015-09-23-cloudera-launches-one-platform-initatives-to-advance-spark---copy/</link>
+      <pubDate>Sat, 24 Jun 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2017/06/24/2015-09-23-cloudera-launches-one-platform-initatives-to-advance-spark---copy/</guid>
+      <description>In the early of this September, the Chief Strategy Offer of Cloudera Mike Olson has announced that the next important initiatives for Couldera - One Platform to advance their investment on Apache Spark.
+The Spark is originally invented by few guys who started up the Databrick. Later, Spark catches most attention from big data communities and companies by its high-performance in-memory computing framework, which can run on top of Hadoop Yarn.</description>
+    </item>
+    
+    <item>
+      <title>2016 Winter Release</title>
+      <link>https://datafibers.org/blog/2016/12/29/2016-12-29-df-winter-release/</link>
+      <pubDate>Thu, 29 Dec 2016 13:50:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2016/12/29/2016-12-29-df-winter-release/</guid>
+      <description>Summary Before new year, DataFibers has completed the winter release of 2016, which has more than 20+ changes requests applied. In this release, DataFibers is featured with new api document and landing pages. In addition, the preview version of stream processing (by flink) is ready.
+Details Below is the list of key changes in this release.
+ Integrated REST API Document to the DF Application
+ Added landing welcome page</description>
+    </item>
+    
+    <item>
+      <title>Migrate from Jekyll</title>
+      <link>https://datafibers.org/blog/2015/10/10/migrate-from-jekyll/</link>
+      <pubDate>Sat, 10 Oct 2015 13:07:31 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2015/10/10/migrate-from-jekyll/</guid>
+      <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
+▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
+▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
+    </item>
+    
+    <item>
+      <title>Linked post</title>
+      <link>https://datafibers.org/blog/2015/10/02/linked-post/</link>
+      <pubDate>Fri, 02 Oct 2015 21:49:20 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2015/10/02/linked-post/</guid>
+      <description>I&amp;rsquo;m a linked post in the menu. You can add other posts by adding the following line to the frontmatter:
+menu = &amp;quot;main&amp;quot;  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mauris nulla, vestibulum vel auctor sed, posuere eu lorem. Aliquam consequat augue ut accumsan mollis. Suspendisse malesuada sodales tincidunt. Vivamus sed erat ac augue bibendum porta sed id ipsum. Ut mollis mauris eget ligula sagittis cursus. Aliquam id pharetra tellus.</description>
+    </item>
+    
+    <item>
+      <title>Go is for lovers</title>
+      <link>https://datafibers.org/blog/2015/09/17/go-is-for-lovers/</link>
+      <pubDate>Thu, 17 Sep 2015 13:47:08 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2015/09/17/go-is-for-lovers/</guid>
+      <description>Hugo uses the excellent go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
+This document is a brief primer on using go templates.</description>
+    </item>
+    
+    <item>
+      <title>Hugo is for lovers</title>
+      <link>https://datafibers.org/blog/2015/08/03/hugo-is-for-lovers/</link>
+      <pubDate>Mon, 03 Aug 2015 13:39:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2015/08/03/hugo-is-for-lovers/</guid>
+      <description>Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
+Save it somewhere specific as we will be using it in the next step.
+More complete instructions are available at installing hugo
+Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
+Follow the following steps:
+ Clone the hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://datafibers.org/blog/1/01/01/2015-01-01-reviews-build-and-shell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-01-01-reviews-build-and-shell/</guid>
+      <description>title: Build Tools and Shell Program Books Reviews date: 2015-01-01 08:00:11 category: - Reviews - Coding tags: - books - git
+- linux 
+Geting Good with GIT 
+ Level Ent.  This is a tiny book for Git. It is good because it is short and simple. It covers basic usage of Git and a little about GitHub. It is particular good for people who want to learn Git from Zero.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://datafibers.org/blog/1/01/01/2015-01-01-reviews-data-science/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-01-01-reviews-data-science/</guid>
+      <description>title: Data Science and Data Mining Books Reviews date: 2015-01-01 08:00:11 category: - Reviews - Big Data tags: - books
+- data science 
+Agile Data Science - Building Data Analytics Applications with Hadoop 
+ Level Mid.
+ Level Adv.  The book looks like a case study from beginning to the end. It has lots of code covering implementation of one big data project. It requires coding skills of Python.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://datafibers.org/blog/1/01/01/2015-01-01-reviews-dw-bi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-01-01-reviews-dw-bi/</guid>
+      <description>title: Data Warehouse and Business Intelligence Books Reviews date: 2015-01-01 08:00:11 category: - Reviews - DBDWBI
+tags: books 
+Oracle PL/SQL Receipts 
+ Level Ent. Level Mid.
+ Level Adv.  This is a good PL/SQL book for all level of reading. It uses different small tables with solutions to cover every corner of PL/SQL in Oracle 11g. This is a good cook book. It is easy to learn and to read.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://datafibers.org/blog/1/01/01/2015-01-01-reviews-scala-programming/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-01-01-reviews-scala-programming/</guid>
+      <description>title: Scala Programming Books Reviews date: 2015-01-01 08:00:11 category: - Reviews - Coding tags: - books
+- scala 
+Begining Scala 2nd ed 
+ Level Ent. Level Mid.
+  This book has very quick style of explaining scala with many detail examples. Even some examples has code defect and typo, it is easy to find out. The last part about scala best practice is really a valueable chapter.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://datafibers.org/blog/1/01/01/2015-01-01-reviews-spark/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-01-01-reviews-spark/</guid>
+      <description>title: Apache Spark Books Reviews date: 2015-01-01 08:00:11 category: - Reviews - Big Data tags: - books
+- spark 
+Learning Spark - Lightning-Fast Big Data Analysis 
+ Level Ent.
+ Level Mid.
+ Level Adv.  Start reading it.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://datafibers.org/blog/1/01/01/2015-08-21-get-git-modified-but-untracked-content-checked-in/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-08-21-get-git-modified-but-untracked-content-checked-in/</guid>
+      <description>title: Get Git Modified But Untracked Content Checked In date: 2015-08-21 11:27:57 tags: git category:
+- Blog Recently, I migrate this site to Hexo. I download the theme from github to the Hexo project folder. I also keep the source code in the github in case I lost the source code. However, when I run the git add . and git status. It shows below error messages saying the theme folder is not tracked content.</description>
+    </item>
+    
+    <item>
+      <title>A Tiny Scrum Overview</title>
+      <link>https://datafibers.org/blog/1/01/01/2012-10-13-a-tiny-scrum-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2012-10-13-a-tiny-scrum-overview/</guid>
+      <description>Three Roles: Product Owner, Scrum master, Team
+The Product owner: Own and prioritizes the Product Backlog
+ defines and prioritizes features&amp;ndash;owns the gathering of requirements agrees to iteration ground rules&amp;ndash;set length of calendar time for sprint (2,3,4 weeks typical) does not interfere with sprint(no scope creep) can pull the plug at any time(has the power) honors rules and the scrum process during sprints  Scrum Master: A Boundary Manager, Facilitates the Scrum process, Not a traditional Project manager</description>
+    </item>
+    
+    <item>
+      <title>Add Backup Master Node in HBase Cluster</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-07-02-hbase-add-backup-master-node/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-07-02-hbase-add-backup-master-node/</guid>
+      <description>How to add a backup master node to the cluster? There are two ways of doing that.
+In One Way  Start the HBase master daemon on the backup master node:
+hadoop@master2$ $HBASE_HOME/bin/hbase-daemon.sh start master  From the master log, you will find that the newly started master is waiting to become the next active master:
+&amp;gt;org.apache.hadoop.hbase.master.ActiveMasterManager: Another master is the active &amp;gt;master, ip-10-176-201-128.us-west-1.compute.internal, &amp;gt;60000,1328878644330; waiting to become the next active master</description>
+    </item>
+    
+    <item>
+      <title>Adding or Removing Hadoop Nodes</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-05-02-adding-or-removing-hadoop-nodes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-05-02-adding-or-removing-hadoop-nodes/</guid>
+      <description>I am here to give step completely. I saw some version of step before, but many of them either are not complete or confused or wrong, e.g. someone even stop the cluster to do that!
+Adding Nodes  In the candidate nodes to add, update the host name in &amp;quot;/etc/hostname&amp;quot; to following the name standard in the cluster and also set proper DNS mapping in &amp;quot;/etc/hosts&amp;quot; for assigned IP address in network.</description>
+    </item>
+    
+    <item>
+      <title>Apache Hive Essentials Published</title>
+      <link>https://datafibers.org/blog/1/01/01/2015-03-15-apache-hive-essentials-published/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-03-15-apache-hive-essentials-published/</guid>
+      <description>Finally, I made it. I got it published after working for 6 monthes.
+Apache Hive Essentials  My very first book Also the first book on Apache Hive 1.0.0 in the world  Check it out here</description>
+    </item>
+    
+    <item>
+      <title>Big Data Platform</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-06-18-big-data-platform/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-06-18-big-data-platform/</guid>
+      <description>Here I am comparing the most famous vendors who offer hadoop platform for enterprise Below is a typical vision of big data analytics architecture </description>
+    </item>
+    
+    <item>
+      <title>Commonly Used Hive Setting</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-01-25-commonly-used-hive-setting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-01-25-commonly-used-hive-setting/</guid>
+      <description>I just list very commonly used ones.
+Set dynamic partition (a column name)
+SET hive.exec.dynamic.partition=true;  Affect insert rows to save in sampled format
+SET hive.enforce.bucketing = true;  Reduce output compression
+SET hive.exec.compress.output=true;  Map output compression
+SET hive.exec.compress.intermediate = true;  Set codec which need to be installed
+SET mapred.output.compression.codec = org.apache.hadoop.io.compress.SnappyCodec;  Enable Hive’s automatic join optimization to convert repartition joins to replicated joins (map side join only) if one of the tables is small enough.</description>
+    </item>
+    
+    <item>
+      <title>Commonly Used Maven Plugins</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-06-12-commonly-used-maven-plugins/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-06-12-commonly-used-maven-plugins/</guid>
+      <description>Backgrounds 我们都知道Maven本质上是一个插件框架，它的核心并不执行任何具体的构建任务，所有这些任务都交给插件来完成，例如编译源代码是由maven-compiler-plugin完成的。进一步说，每个任务对应了一个插件目标（goal），每个插件会有一个或者多个目标，例如maven-compiler-plugin的compile目标用来编译位于src/main/java/目录下的主源码，testCompile目标用来编译位于src/test/java/目录下的测试源码。
+用户可以通过两种方式调用Maven插件目标。
+ 第一种方式是将插件目标与生命周期阶段（lifecycle phase）绑定，这样用户在命令行只是输入生命周期阶段而已，例如Maven默认将maven-compiler-plugin的compile目标与 compile生命周期阶段绑定，因此命令mvn compile实际上是先定位到compile这一生命周期阶段，然后再根据绑定关系调用maven-compiler-plugin的compile目标。 第二种方式是直接在命令行指定要执行的插件目标，例如mvn archetype:generate 就表示调用maven-archetype-plugin的generate目标，这种带冒号的调用方式与生命周期无关。  认识上述Maven插件的基本概念能帮助你理解Maven的工作机制，不过要想更高效率地使用Maven，了解一些常用的插件还是很有必要的，这可以帮助你避免一不小心重新发明轮子。多年来Maven社区积累了大量的经验，并随之形成了一个成熟的插件生态圈。Maven官方有两个插件列表，
+ 第一个列表的GroupId为org.apache.maven.plugins，这里的插件最为成熟，具体地址为：http://maven.apache.org/plugins/index.html。 第二个列表的GroupId为org.codehaus.mojo，这里的插件没有那么核心，但也有不少十分有用，其地址为：http://mojo.codehaus.org/plugins.html。  接下来介绍一些最常用的Maven插件，在不同的环境下它们各自都有其出色的表现，熟练地使用它们能让你的日常构建工作事半功倍。
+Plugin List maven-antrun-plugin maven-antrun-plugin能让用户在Maven项目中运行Ant任务。用户可以直接在该插件的配置以Ant的方式编写Target， 然后交给该插件的run目标去执行。在一些由Ant往Maven迁移的项目中，该插件尤其有用。此外当你发现需要编写一些自定义程度很高的任务，同时又觉 得Maven不够灵活时，也可以以Ant的方式实现之。maven-antrun-plugin的run目标通常与生命周期绑定运行。It also support echo, delete, copy etc to OS underline.
+maven-archetype-plugin Archtype指项目的骨架，Maven初学者最开始执行的Maven命令可能就是mvn archetype:generate，这实际上就是让maven-archetype-plugin生成一个很简单的项目骨架，帮助开发者快速上手。可能也有人看到一些文档写了mvn archetype:create， 但实际上create目标已经被弃用了，取而代之的是generate目标，该目标使用交互式的方式提示用户输入必要的信息以创建项目，体验更好。 maven-archetype-plugin还有一些其他目标帮助用户自己定义项目原型，例如你由一个产品需要交付给很多客户进行二次开发，你就可以为 他们提供一个Archtype，帮助他们快速上手。
+maven-assembly-plugin maven-assembly-plugin的用途是制作项目分发包，该分发包可能包含了项目的可执行文件、源代码、readme、平台脚本等等。 maven-assembly-plugin支持各种主流的格式如zip、tar.gz、jar和war等，具体打包哪些文件是高度可控的，例如用户可以 按文件级别的粒度、文件集级别的粒度、模块级别的粒度、以及依赖级别的粒度控制打包，此外，包含和排除配置也是支持的。maven-assembly- plugin要求用户使用一个名为assembly.xml的元数据文件来表述打包，它的single目标可以直接在命令行调用，也可以被绑定至生命周期。
+maven-dependency-plugin maven-dependency-plugin最大的用途是帮助分析项目依赖，dependency:list能够列出项目最终解析到的依赖列表，dependency:tree能进一步的描绘项目依赖树，dependency:analyze可以告诉你项目依赖潜在的问题，如果你有直接使用到的却未声明的依赖，该目标就会发出警告。maven-dependency-plugin还有很多目标帮助你操作依赖文件，例如dependency:copy-dependencies能将项目依赖从本地Maven仓库复制到某个特定的文件夹下面。
+maven-enforcer-plugin 在一个稍大一点的组织或团队中，你无法保证所有成员都熟悉Maven，那他们做一些比较愚蠢的事情就会变得很正常，例如给项目引入了外部的 SNAPSHOT依赖而导致构建不稳定，使用了一个与大家不一致的Maven版本而经常抱怨构建出现诡异问题。maven-enforcer-plugin能够帮助你避免之类问题，它允许你创建一系列规则强制大家遵守，包括设定Java版本、设定Maven版本、禁止某些依赖、禁止SNAPSHOT依赖。只要在一个父POM配置规则，然后让大家继承，当规则遭到破坏的时候，Maven就会报错。除了标准的规则之外，你还可以扩展该插件，编写自己的规则。maven-enforcer-plugin的enforce目标负责检查规则，它默认绑定到生命周期的validate阶段。
+maven-help-plugin maven-help-plugin是一个小巧的辅助工具，最简单的help:system可以打印所有可用的环境变量和Java系统属性。help:effective-pom和help:effective-settings最为有用，它们分别打印项目的有效POM和有效settings，有效POM是指合并了所有父POM（包括Super POM）后的XML，当你不确定POM的某些信息从何而来时，就可以查看有效POM。有效settings同理，特别是当你发现自己配置的 settings.xml没有生效时，就可以用help:effective-settings来验证。此外，maven-help-plugin的describe目标可以帮助你描述任何一个Maven插件的信息，还有all-profiles目标和active-profiles目标帮助查看项目的Profile。
+maven-release-plugin maven-release-plugin的用途是帮助自动化项目版本发布，它依赖于POM中的SCM信息。release:prepare用来准备版本发布，具体的工作包括检查是否有未提交代码、检查是否有SNAPSHOT依赖、升级项目的SNAPSHOT版本至RELEASE版本、为项目打标签等等。release:perform则是签出标签中的RELEASE源码，构建并发布。版本发布是非常琐碎的工作，它涉及了各种检查，而且由于该工作仅仅是偶尔需要，因此手动操作很容易遗漏一些细节，maven-release-plugin让该工作变得非常快速简便，不易出错。maven-release-plugin的各种目标通常直接在 命令行调用，因为版本发布显然不是日常构建生命周期的一部分。
+maven-resources-plugin 为了使项目结构更为清晰，Maven区别对待Java代码文件和资源文件，maven-compiler-plugin用来编译Java代码，maven-resources-plugin则用来处理资源文件。默认的主资源文件目录是src/main/resources，很多用户会需要添加额外的资源文件目录，这个时候就可以通过配置maven-resources-plugin来实现。此外，资源文件过滤也是Maven的一大特性，你可以在资源文件中使用${propertyName}形式的Maven属性，然后配置maven-resources-plugin开启对资源文件的过滤，之后就可以针对不同环境通过命令行或者Profile传入属性的值，以实现更为灵活的构建。
+maven-surefire-plugin 可能是由于历史的原因，Maven 2/3中用于执行测试的插件不是maven-test-plugin，而是maven-surefire-plugin。其实大部分时间内，只要你的测试类遵循通用的命令约定（以Test结尾、以TestCase结尾、或者以Test开头），就几乎不用知晓该插件的存在。然而在当你想要跳过测试、排除某些 测试类、或者使用一些TestNG特性的时候，了解maven-surefire-plugin的一些配置选项就很有用了。例如 mvn test -Dtest=FooTest 这样一条命令的效果是仅运行FooTest测试类，这是通过控制maven-surefire-plugin的test参数实现的。
+build-helper-maven-plugin Maven默认只允许指定一个主Java代码目录和一个测试Java代码目录，虽然这其实是个应当尽量遵守的约定，但偶尔你还是会希望能够指定多个源码目录（例如为了应对遗留项目），build-helper-maven-plugin的add-source目标就是服务于这个目的，通常它被绑定到默认生命周期的generate-sources阶段以添加额外的源码目录。需要强调的是，这种做法还是不推荐的，因为它破坏了Maven的约定，而且可能会遇到其他严格遵守约定的插件工具无法正确识别额外的源码目录。build-helper-maven-plugin的另一个非常有用的目标是attach-artifact，使用该目标你可以以classifier的形式选取部分项目文件生成附属构件，并同时install到本地仓库，也可以deploy到远程仓库。</description>
+    </item>
+    
+    <item>
+      <title>Data Analysis</title>
+      <link>https://datafibers.org/blog/1/01/01/2015-02-06-data-analysis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-02-06-data-analysis/</guid>
+      <description>A friend of mine asked me what is data analysis. This is a simple but difficult question. It is simple because we talk about data analysis all the time and everywhere. It is difficult because there are so many ways of explaining it at different time. In the ear of big data, I think data analysis have three following areas.
+ Flatten Analysis: Analysis is performed on the static data set from single dimentional view.</description>
+    </item>
+    
+    <item>
+      <title>Data Lake Stages</title>
+      <link>https://datafibers.org/blog/1/01/01/2015-02-02-data-lake-stages/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-02-02-data-lake-stages/</guid>
+      <description>Edd has post a very impressive blog about how Hadoop ecosystem influence the data lake in enterprise recently. It discussed about the four following stages when enterprise&amp;rsquo;s data evolution to the dream of data lake. I also share some of mine as addition.
+Stage 1 - Life Before Hadoop In this stage, the enterprise data architecture has following characteristics.
+ Applications stand alone with their databases Some applications contribute data to a data warehouse Analysts run reporting and analytics in data warehouse  What&amp;rsquo;s more:</description>
+    </item>
+    
+    <item>
+      <title>Disable Major Compaction in HBase Cluster</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-07-06-hbase-disable-major-compaction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-07-06-hbase-disable-major-compaction/</guid>
+      <description>HBase consists of multiple regions. While a region may have several Stores, each holds a single column family. An edit first writes to the hosting region store&amp;rsquo;s in-memory space, which is called MemStore. When the size of MemStore reaches a threshold, it is flushed to StoreFiles on HDFS.
+As data increases, there may be many StoreFiles on HDFS, which is not good for its performance. Thus, HBase will automatically pick up a couple of the smaller StoreFiles and rewrite them into a bigger one.</description>
+    </item>
+    
+    <item>
+      <title>GIT Cheat Sheet</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-01-18-git-cheat-sheet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-01-18-git-cheat-sheet/</guid>
+      <description>Here I am sharing two good git sheet as follows.
+
+http://ndpsoftware.com/git-cheatsheet.html</description>
+    </item>
+    
+    <item>
+      <title>GIT Tips At Weekend - Friday</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-05-17-git-tips-weekend-friday/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-05-17-git-tips-weekend-friday/</guid>
+      <description>Git Setup Git Clone git clone [repo]  clone the repository specified by [repo]. It defaully run git init and git remote add origin [repo]
+Add colors by setting ~/.gitconfig file: [color] ui = auto [color &amp;quot;branch&amp;quot;] current = yellow reverse local = yellow remote = green [color &amp;quot;diff&amp;quot;] meta = yellow bold frag = magenta bold old = red bold new = green bold [color &amp;quot;status&amp;quot;] added = yellow changed = green untracked = cyan  Highlight whitespace in diffs by setting ~/.</description>
+    </item>
+    
+    <item>
+      <title>GIT Tips At Weekend - Saturday</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-05-18-git-tips-weekend-saturday/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-05-18-git-tips-weekend-saturday/</guid>
+      <description>Info git reflog  Use this to recover from major fuck ups! It&amp;rsquo;s basically a log of the last few actions and you might have luck and find old commits that have been lost by doing a complex merge.
+git diff  Show a diff of the changes made since your last commit to diff one file: git diff -- \&amp;lt;filename&amp;gt; to show a diff between staging area and HEAD: git diff --cached</description>
+    </item>
+    
+    <item>
+      <title>GIT Tips At Weekend - Sunday</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-05-19-git-tips-weekend-sunday/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-05-19-git-tips-weekend-sunday/</guid>
+      <description>Cherry-Picking git cherry-pick [--edit] [-n] [-m parent-number] [-s] [-x] &amp;lt;commit&amp;gt;  Selectively merge a single commit from another local branch
+Example: git cherry-pick 7300a6130d9447e18a931e898b64eefedea19544 Squashing WARNING: &amp;ldquo;git rebase&amp;rdquo; changes history. Be careful. Google it.
+git rebase --interactive HEAD~10  (then change all but the first &amp;ldquo;pick&amp;rdquo; to &amp;ldquo;squash&amp;rdquo;) squash the last 10 commits into one big commit
+
+Conflicts git mergetool  Work through conflicted files by opening them in your mergetool (opendiff, kdiff3, etc.</description>
+    </item>
+    
+    <item>
+      <title>Git Catchup Changes</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-05-21-git-catchup-changes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-05-21-git-catchup-changes/</guid>
+      <description>There are following ways to catch up/revert changes in GIT
+Catchup changes from remote  Pull out from remote again and you lost all of your local changes as well as hisory
+rm -Rf working_folders git clone remote_git_address  Merge from remote and this keeps all your local changes
+git pull  or
+git fetch git merge   
+Catchup changes from local commit  Roll back all files to the latest commit and you lost all of your local changes not submitted</description>
+    </item>
+    
+    <item>
+      <title>Hadoop Balancer</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-05-03-hadoop-balancer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-05-03-hadoop-balancer/</guid>
+      <description>Whenever the nodes are added to the cluster or lots of data are delete, we need to run Hadoop balancer to balance the data in the datenodes. Or else, the over utilized data nodes will become the bottleneck of the cluster in terms of performance.
+hadoop balancer -threshold &amp;lt;threshold&amp;gt;  Note:
+ The optional –threshold parameter specifies the percentage of disk capacity leeway to average cluster datanodes utilization. An under-utilized data node is a node whose utilization is less than average utilization – threshold.</description>
+    </item>
+    
+    <item>
+      <title>Hadoop Counter</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-06-03-hadoop-counter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-06-03-hadoop-counter/</guid>
+      <description>hadoop counter is to help developers and users to have overall status of running jobs. There are three type of counters, MapReduce related, File systems related, and job related. The details can be seen from http://master:50030/jobdetails.jsp
+Except internal counters, hadoop also offers customize counters. There are two ways to do that.
+1. Static Definition You can use enumiate classs to create counters
+Context context... //Enum class refers to groupName，Enum class type refers to counterName context.</description>
+    </item>
+    
+    <item>
+      <title>Hadoop Customize Data Type</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-05-07-hadoop-customize-data-type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-05-07-hadoop-customize-data-type/</guid>
+      <description>Customize Data Type - As Value To create a customized data type used as a value, the data type must implement the org.apache.hadoop.io.Writable interface which consists of the two methods, readFields() and write()
+ void readFields(DataInput in) : Deserialize the fields of this object from in. [void write(DataOutput out)](http://hadoop.apache.org/docs/current/api/org/apache/hadoop/io/Writable.html#write(java.io.DataOutput) : Serialize the fields of this object to out.  Note:
+ In case you are adding a custom constructor to your custom Writable class, make sure to retain the default empty constructor.</description>
+    </item>
+    
+    <item>
+      <title>Hadoop Customize Input Output Format</title>
+      <link>https://datafibers.org/blog/1/01/01/2012-09-08-hadoop-customize-input-output-format/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2012-09-08-hadoop-customize-input-output-format/</guid>
+      <description>To customize inputformat, we need to do following
+ Create customized *InputFormat class by extending Hadoop inputformat with your own type of class, such as public class LogFileInputFormat extends FileInputFormat&amp;lt;LongWritable, LogWritable&amp;gt;{&amp;hellip;} In above class, override &amp;ldquo;public RecordReader&amp;lt;T, T&amp;gt; createRecordReader(InputSplit arg0, TaskAttemptContext arg1) throws IOException, InterruptedException {&amp;hellip;}&amp;rdquo;, which returns customized RecordReader class. In above class, override following one or all if you want to deal with splitable recordsList&amp;lt;InputSplit&amp;gt; getSplits(JobContext job) which generate the list of files and make them into FileSplits.</description>
+    </item>
+    
+    <item>
+      <title>Hadoop DistributedCache</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-05-28-hadoop-distributedcache/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-05-28-hadoop-distributedcache/</guid>
+      <description>DistributedCache Usage The usage of DistributedCache is as follows
+ Share data files/meta data/binary files among map and reduce tasks Add 3rd party packages to the classpath  
+DistributedCache API Basic Files DistributedCache is actually to add property mapred.cache.{files|archives}to the Hadoop Configuraton. In Hadoop 2.0, it changes to mapreduce.job.cache.{files|archives}.
+There are two ways to use the DistributedCache though API
+conf.set(&amp;quot;mapred.cache.files&amp;quot;, &amp;quot;/data/data&amp;quot;); conf.set(&amp;quot;mapred.cache. archives&amp;quot;, &amp;quot;/data/data.zip&amp;quot;);  Or better (compatible for late version)</description>
+    </item>
+    
+    <item>
+      <title>Hadoop Job Patterns</title>
+      <link>https://datafibers.org/blog/1/01/01/2012-11-10-hadoop-job-patterns/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2012-11-10-hadoop-job-patterns/</guid>
+      <description>In order to handle complex hadoop jobs, such as DAG, you can use oozie. Here, I am talking about the native support of job handlers in the Hadoop MapReduce framework. The limitation is that it only support no cycle type of job flows
+ With Job Config: You can also fire off multiple jobs in parallel by using Job.submit() instead of Job.wait ForCompletion(). The submit method returns immediately to the current thread and runs the job in the background.</description>
+    </item>
+    
+    <item>
+      <title>Hadoop Multiple Input and Output</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-05-09-hadoop-multiple-input-and-output/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-05-09-hadoop-multiple-input-and-output/</guid>
+      <description>The following is an example of using multiple inputs (org.apache.hadoop.mapreduce.lib.input.MultipleInputs) with different input formats and different mapper implementations.
+ MultipleInputs.addInputPath(job, accessLogPath, TextInputFormat.class, AccessLogMapper.class); MultipleInputs.addInputPath(job, userDataPath, TextInputFormat.class, UserDataMapper.class);  Note: static void addInputPath(Job job, Path path, Class&amp;lt;? extends InputFormat&amp;gt; inputFormatClass, Class&amp;lt;? extends Mapper&amp;gt; mapperClass): Add a Path with a custom InputFormat and Mapper to the list of inputs for the map-reduce job.
+Similarly, there is MultipleOutputs to write multiple destinations
+ MultipleOutputs.</description>
+    </item>
+    
+    <item>
+      <title>Hadoop Serialization Framework</title>
+      <link>https://datafibers.org/blog/1/01/01/2012-07-06-hadoop-serialization-framework/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2012-07-06-hadoop-serialization-framework/</guid>
+      <description>Below are some mentioned in Hadoop In Practice and MapReduce Cookbooks
+####Where to use serialization
+ In order to be used as a value data type of a MapReduce computation, a data type must implement the org.apache.hadoop.io.Writable interface. The Writable interface which defines how Hadoop should serialize and de-serialize the values when transmitting and storing the data.
+ In order to be used as a key data type of a MapReduce computation, a data type must implement the org.</description>
+    </item>
+    
+    <item>
+      <title>Hadoop Split and Block</title>
+      <link>https://datafibers.org/blog/1/01/01/2012-08-25-hadoop-split-and-block/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2012-08-25-hadoop-split-and-block/</guid>
+      <description>There are two confusing concepts in Hadoop, block and split ####Block - A Physical Division HDFS was designed to hold and manage large amounts of data; a default block size is 64 MB. That means if a 128-MB text file was put in to HDFS, HDFS would divide the file into two blocks (128 MB/64 MB) and distribute the two chunks to the data nodes in the cluster. The main reason to setting proper block size is to balance the load of each map and reduce throughput so that the overall job takes better time to finish.</description>
+    </item>
+    
+    <item>
+      <title>Hadoop Streaming</title>
+      <link>https://datafibers.org/blog/1/01/01/2015-06-21-hadoop-streaming/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-06-21-hadoop-streaming/</guid>
+      <description>1. Streaming Overview Hadoop Streaming is a generic API which allows writing Mappers and Reduces in any language.
+ Develop MapReduce jobs in practically any language Uses Unix Streams as communication mechanism between Hadoop and your code Any language that can read standard input and write are supported  Few good use-cases:
+ Text processing - scripting languages do well in text analysis Utilities and/or expertise in languages other than Java  2.</description>
+    </item>
+    
+    <item>
+      <title>Hadoop distcp Utility</title>
+      <link>https://datafibers.org/blog/1/01/01/2012-12-23-hadoop-distcp-utility/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2012-12-23-hadoop-distcp-utility/</guid>
+      <description>Hadoop distcp create a map only job to copy data across clusters Copy the weblogs folder from cluster A to cluster B:
+hadoop distcp hdfs://namenodeA/data/weblogs hdfs://namenodeB/data/weblogs  Copy the weblogs folder from cluster A to cluster B, overwriting any existing files:
+hadoop distcp –overwrite hdfs://namenodeA/data/weblogs \ hdfs://namenodeB/data/weblogs  Synchronize the weblogs folder between cluster A and cluster B:
+hadoop distcp –update hdfs://namenodeA/data/weblogs \ hdfs://namenodeB/data/weblogs  Spefify number of mapper used</description>
+    </item>
+    
+    <item>
+      <title>Hive Composite Data Type</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-09-29-hive-composite-data-type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-09-29-hive-composite-data-type/</guid>
+      <description>For now, hive supports following composite data type：
+ map: (key1, value1, key2, value2, …). Creates a map with the given key/value pairs struct: (val1, val2, val3, …). Creates a struct with the given field values. Struct field names will be col1, col2, &amp;hellip; named_struct: (name1, val1, name2, val2, …). Creates a struct with the given field names and values. (as of Hive 0.8.0) array: (val1, val2, …). Creates an array with the given elements create_union:(tag, val1, val2, …).</description>
+    </item>
+    
+    <item>
+      <title>Hive Performance Tuning - No. of MapReduce</title>
+      <link>https://datafibers.org/blog/1/01/01/2012-06-20-hive-performance-tuning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2012-06-20-hive-performance-tuning/</guid>
+      <description>###1. Set proper number of map
+ 通常情况下，作业会通过input的目录产生一个或者多个map任务。 主要的决定因素有： input的文件总个数，input的文件大小，集群设置的文件块大小(目前为128M, 可在hive中通过set dfs.block.size;命令查看到，该参数不能自定义修改)；
+ 举例： a) 假设input目录下有1个文件a,大小为780M,那么hadoop会将该文件a分隔成7个块（6个128m的块和1个12m的块），从而产生7个map数
+b) 假设input目录下有3个文件a,b,c,大小分别为10m，20m，130m，那么hadoop会分隔成4个块（10m,20m,128m,2m）,从而产生4个map数 即，如果文件大于块大小(128m),那么会拆分，如果小于块大小，则把该文件当成一个块。
+ 是不是map数越多越好？
+答案是否定的。如果一个任务有很多小文件（远远小于块大小128m）,则每个小文件也会被当做一个块，用一个map任务来完成， 而一个map任务启动和初始化的时间远远大于逻辑处理的时间，就会造成很大的资源浪费。 而且，同时可执行的map数是受限的。
+ 是不是保证每个map处理接近128m的文件块，就高枕无忧了？ 答案也是不一定。比如有一个127m的文件，正常会用一个map去完成，但这个文件只有一个或者两个小字段，却有几千万的记录， 如果map处理的逻辑比较复杂，用一个map任务去做，肯定也比较耗时。
+  针对上面的问题3和4，我们需要采取两种方式来解决：即减少map数和增加map数；
+如何合并小文件，减少map数？
+假设一个SQL任务：
+Select count(1) from popt_tbaccountcopy_mes where pt = ‘2012-07-04’;  该任务的inputdir /group/p_sdo_data/p_sdo_data_etl/pt/popt_tbaccountcopy_mes/pt=2012-07-04 共有194个文件，其中很多是远远小于128m的小文件，总大小9G，正常执行会用194个map任务。Map总共消耗的计算资源： SLOTS_MILLIS_MAPS= 623,020
+我通过以下方法来在map执行前合并小文件，减少map数：
+set mapred.max.split.size=100000000; set mapred.min.split.size.per.node=100000000; set mapred.min.split.size.per.rack=100000000; set hive.input.format=org.apache.hadoop.hive.ql.io.CombineHiveInputFormat;  再执行上面的语句，用了74个map任务，map消耗的计算资源：SLOTS_MILLIS_MAPS= 333,500 对于这个简单SQL任务，执行时间上可能差不多，但节省了一半的计算资源。
+大概解释一下，100000000表示100M,
+set hive.input.format=org.apache.hadoop.hive.ql.io.CombineHiveInputFormat;  这个参数表示执行前进行小文件合并，前面三个参数确定合并文件块的大小，大于文件块大小128m的，按照128m来分隔，小于128m,大于100m的，按照100m来分隔，把那些小于100m的（包括小文件和分隔大文件剩下的），进行合并,最终生成了74个块。
+如何适当的增加map数？
+当input的文件都很大，任务逻辑复杂，map执行非常慢的时候，可以考虑增加Map数，来使得每个map处理的数据量减少，从而提高任务的执行效率。假设有这样一个任务：
+select data_desc,count(1),count(distinct id),sum(case when …), sum(case when .</description>
+    </item>
+    
+    <item>
+      <title>Hive SerDe</title>
+      <link>https://datafibers.org/blog/1/01/01/2012-06-18-hive-serde/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2012-06-18-hive-serde/</guid>
+      <description>Unless there are no way to user internal parser, I do not recommend write user defined SerDe. Do not forget that Hive comes with a contrib RegexSerDeclass, which can tokenize your logs/files to resolve most problems:
+CREATE EXTERNAL TABLE logs_20120101 ( host STRING, identity STRING, user STRING, time STRING, request STRING, status STRING, size STRING) ROW FORMAT SERDE &#39;org.apache.hadoop.hive.contrib.serde2.RegexSerDe&#39; WITH SERDEPROPERTIES ( &amp;quot;input.regex&amp;quot; = &amp;quot;([^ ]*) ([^ ]*) ([^ ]*) (-|\\[[^\\]]*\\])([^ \&amp;quot;]*|\&amp;quot;[^\&amp;quot;]*\&amp;quot;) (-|[0-9]*) (-|[0-9]*)&amp;quot;, &amp;quot;output.</description>
+    </item>
+    
+    <item>
+      <title>Hive Sorting and Ordering</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-03-01-hive-sorting-and-ordering/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-03-01-hive-sorting-and-ordering/</guid>
+      <description>There are following key words used in Hive to sort data with following difference:
+ ORDER BY (ASC|DESC) : This is similar to the traditional SQL operator. Sorted order is maintained across all of the output from every reducer. It performs the global sort using only one reducer, so it takes long time to return result. The Usage with LIMIT is strongly recommended for order by. When hive.mapred.mode = strict and you do not specify “limit”, there are error out.</description>
+    </item>
+    
+    <item>
+      <title>Hive and Hadoop Exceptions</title>
+      <link>https://datafibers.org/blog/1/01/01/2014-06-01-hive-and-hadoop-exceptions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2014-06-01-hive-and-hadoop-exceptions/</guid>
+      <description>I installed Hive 1.0.0 on Hadoop 1.2.1. When I try to enter the Hive CLI, it reports following exceptions
+org.apache.hadoop.hive.ql.metadata.HiveException:java.io.IOException:Filesystem closed  According to the search here, the mainly reason for this is that when multiple nodes read HFDS files if one node is offline, it will throw such exception when the other nodes are still reading the data cached. There are two ways to resolve this.
+ Turn off JVM reuse  &amp;lt;property&amp;gt; &amp;lt;name&amp;gt;mapred.</description>
+    </item>
+    
+    <item>
+      <title>Hive and Hadoop Exceptions</title>
+      <link>https://datafibers.org/blog/1/01/01/2015-02-12-hive-and-hadoop-exceptions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-02-12-hive-and-hadoop-exceptions/</guid>
+      <description>I installed Hive 1.0.0 on Hadoop 1.2.1. When I try to enter the Hive CLI, it reports following exceptions
+org.apache.hadoop.hive.ql.metadata.HiveException:java.io.IOException:Filesystem closed  According to the search here, the mainly reason for this is that when multiple nodes read HFDS files if one node is offline, it will throw such exception when the other nodes are still reading the data cached. There are two ways to resolve this.
+ Turn off JVM reuse  &amp;lt;property&amp;gt; &amp;lt;name&amp;gt;mapred.</description>
+    </item>
+    
+    <item>
+      <title>Hive vs. Pig</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-04-24-hive-vs-pig/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-04-24-hive-vs-pig/</guid>
+      <description>Both projects are top Apache projects to process data in Hadoop. Here, I try to compare the difference.
+Below is picture I found (I cannot find the original link, but there is mirror here)
+In addition, I am here to share some more difference. To be honest, I prefer pig more. Mapred, Hive, and pig are like Java, ruby, and python.
+Pig
+ It is more easy to install pig than hive.</description>
+    </item>
+    
+    <item>
+      <title>Install Jekyll in MacOS</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-05-27-install-jekyll-in-macos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-05-27-install-jekyll-in-macos/</guid>
+      <description>In this year, I have changed blog engines I used from blog.com to GitHub. The main reason is avaliability. The blog.com has so frequent downsite time particularlly when I start using it. For the other blog, it is almost blocked by the country firewall. After trying agai and again, I found and started to use blog on GitHub by Jekyll. You have to install Jekyll when setting up the blog since the GitHub renders the blog around 2 - 10 minutes late.</description>
+    </item>
+    
+    <item>
+      <title>Little About MapReduce Combiner</title>
+      <link>https://datafibers.org/blog/1/01/01/2012-05-30-little-about-mapreduce-combiner/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2012-05-30-little-about-mapreduce-combiner/</guid>
+      <description>Combiner is used to reduce the number of split shuffling to reducer. It will improve the overall performance obviously. There are following two points to be attention of using it.
+ Your map and reduce can work well without combiner Combiner is only for performance improvement, so it does not impact the transformation logic which are coded in mapper and reducer.
+ Combiner does not have to be same to the reducer</description>
+    </item>
+    
+    <item>
+      <title>MRUnit for Now</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-04-19-mrunit-for-now/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-04-19-mrunit-for-now/</guid>
+      <description>Cloudera MRUnit will help with unit testing of mapreduce programming. Below is its support so far.
+ The MapDriver and ReduceDriver support only a single key as input, which can make it more cumbersome to test map and reduce logic that requires multiple keys, such as those that cache the input data. MRUnit isn’t integrated with unit test frameworks that provide rich error-reporting capabilities for quicker determination of errors. The pipeline tests (testing multiple map and reduce jobs) only work with the old MapReduce API, so MapReduce code that uses the new MapReduce API can’t be tested with the pipeline tests.</description>
+    </item>
+    
+    <item>
+      <title>Moving to the Spark</title>
+      <link>https://datafibers.org/blog/1/01/01/2014-11-23-move-to-the-spark/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2014-11-23-move-to-the-spark/</guid>
+      <description>It has been a while that the blog is now updated since 2014 is a ready busy year. After I almost completed my first book recently, I think it is the right time to start new journey in big data for real time processing.
+Big data ecosystem has great changes over the past two years. The speed of big data processing becomes the hot topic over the past year. When Hadoop enter the area of Yarn, it becomes more like a distribute computing infrastructure.</description>
+    </item>
+    
+    <item>
+      <title>Rsync for HBase/Hadoop Cluster Deployment</title>
+      <link>https://datafibers.org/blog/1/01/01/2012-07-02-rsync-deployment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2012-07-02-rsync-deployment/</guid>
+      <description>Create a simple rsync script to do HBase/Hadoop deployment
+ Create a cluster-deploy.sh script, shown as follows: $ vi cluster-deploy.sh
+#!/bin/bash # Sync HBASE_HOME across the cluster. Must run on master using HBase owner user. HBASE_HOME=/usr/local/hbase/current for rs in `cat $HBASE_HOME/conf/regionservers` do echo &amp;quot;Deploying HBase to $rs:&amp;quot; rsync -avz --delete --exclude=logs $HBASE_HOME/ $rs:$HBASE_HOME/ echo sleep 1 done echo &amp;quot;Done&amp;quot;  Run the script as the user who starts Hadoop/HBase on the master node:</description>
+    </item>
+    
+    <item>
+      <title>SQL in MySQL and Pig Comparision</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-08-21-sql-in-mysql-and-pig/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-08-21-sql-in-mysql-and-pig/</guid>
+      <description>Here, it is using Mysql 5.1.x and Pig 0.8 as sample. Two sample files are used as follows.
+00.Prepared Files cat /tmp/data_file_1
+zhangsan 23 1 lisi 24 1 wangmazi 30 1 meinv 18 0 dama 55 0  cat /tmp/data_file_2
+1 a 23 bb 50 ccc 30 dddd 66 eeeee  01.Load Files 1)Mysql (Need to create the table first). CREATE TABLE TMP_TABLE(USER VARCHAR(32),AGE INT,IS_MALE BOOLEAN); CREATE TABLE TMP_TABLE_2(AGE INT,OPTIONS VARCHAR(50)); -- 用于Join LOAD DATA LOCAL INFILE &#39;/tmp/data_file_1&#39; INTO TABLE TMP_TABLE ; LOAD DATA LOCAL INFILE &#39;/tmp/data_file_2&#39; INTO TABLE TMP_TABLE_2; 2)Pig tmp_table = LOAD &#39;/tmp/data_file_1&#39; USING PigStorage(&#39;\t&#39;) AS (user:chararray, age:int,is_male:int); tmp_table_2= LOAD &#39;/tmp/data_file_2&#39; USING PigStorage(&#39;\t&#39;) AS (age:int,options:chararray);  02.</description>
+    </item>
+    
+    <item>
+      <title>Scala Constructor vs. Java Constructor</title>
+      <link>https://datafibers.org/blog/1/01/01/2015-04-20-scala-and-java-constructors/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-04-20-scala-and-java-constructors/</guid>
+      <description>1. Constructor With Parameters Java Code
+public class Foo() { public Bar bar; public Foo(Bar bar) { this.bar = bar; } }  Scala Code
+class Foo(val bar:Bar)  2. Constructor With Private Attribute Java Code
+public class Foo() { private final Bar bar; public Foo(Bar bar) { this.bar = bar; } }  Scala Code
+class Foo(private val bar:Bar)  3. Call Super Constructor Java Code
+public class Foo() extends SuperFoo { public Foo(Bar bar) { super(bar); } }  Scala Code</description>
+    </item>
+    
+    <item>
+      <title>Setup Spark in MAC</title>
+      <link>https://datafibers.org/blog/1/01/01/2015-01-23-setup-spark-in-mac/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-01-23-setup-spark-in-mac/</guid>
+      <description>It is great to see that Brew supports install Spark. It makes installation of Spark quite easier in Mac. I just follow few steps to get my spark instance installed locally.
+1. Install brew utility. mymac:$ ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; ==&amp;gt; This script will install: /usr/local/bin/brew /usr/local/Library/... /usr/local/share/man/man1/brew.1 ==&amp;gt; The following directories will be made group writable: /usr/local/. /usr/local/bin ==&amp;gt; The following directories will have their group set to admin: /usr/local/.</description>
+    </item>
+    
+    <item>
+      <title>Sorting of Big Data</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-02-08-sorting-of-big-data/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-02-08-sorting-of-big-data/</guid>
+      <description>If you want to sort big data set by keys, there are following ways to do that global sort (sorting on single keys)
+ by mapreduce scripts: get sample of data to find out data ranges by keys; sort data by each map; send them to different reduce according to data ranges. The code in P162@Hadoop In Practice gives a sample of this.
+ by Pig: pig&amp;rsquo;s &amp;ldquo;order by&amp;rdquo; support this perfectly</description>
+    </item>
+    
+    <item>
+      <title>Steps to setup EC2 cluster for Hadoop</title>
+      <link>https://datafibers.org/blog/1/01/01/2014-04-05-install-cdh-in-aws/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2014-04-05-install-cdh-in-aws/</guid>
+      <description>Get the Access Key ID and Secret Access Key and store it in a notepad. The keys will be used when creating EC2 instances. If not there, then generate a new set of keys.
+ Go to the PVC Management console to create VPC with proper subnet since Hadoop nodes need to be in one LAN
+ Go to the EC2 Management console and create a new Key Pair. While creating the keys, the user will be prompted to store a pem key file.</description>
+    </item>
+    
+    <item>
+      <title>Useful Hadoop ToolRunner</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-04-29-useful-hadoop-toolrunner/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-04-29-useful-hadoop-toolrunner/</guid>
+      <description>Developers are pissed off with following things quite often:
+ When you write job configuration in the code of map and reduce, you need to repack everything if there changes on paramenters You need to write java code to add files in DistributedCache When you depend on 3rd party jar or files, you hold code them in java code  All of these can be resolved using ToolRunner (it runs tools) by implements Tool so that you code could take input of configuration from args.</description>
+    </item>
+    
+    <item>
+      <title>What is Predictive Analytics</title>
+      <link>https://datafibers.org/blog/1/01/01/2012-05-11-what-is-predictive-analytics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2012-05-11-what-is-predictive-analytics/</guid>
+      <description>Predictive analytics can be broken down into three broad categories: Recommender, Classification, Clustering   Recommender—Recommender systems suggest items based on past behavior or interest. These items can be other users in a social network, or products and services in retail websites. There are some algorithm like Pearson correlation and euclidean distance.
+Classification—Classification (otherwise known as supervised learning) infers or assigns a category to previously unseen data, based on discoveries made from some prior observations about similar data.</description>
+    </item>
+    
+    <item>
+      <title>When to Disable Speculative Execution</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-04-22-when-to-disable-speculative-execution/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-04-22-when-to-disable-speculative-execution/</guid>
+      <description>##Backgrounds
+This is the link from WikiMedia about what’s Speculative Execution. In Hadoop, the following parameters string are for this settings. And, they are true by default.
+mapred.map.tasks.speculative.execution mapred.reduce.tasks.speculative.execution  ##When to Disable Most time, it helps. However, I am here to collect some scenario when we do not need it.
+ Of course, when ever your cluster really in shortage of resource or for the purpose of experiment, we can disable them by setting them to false since “SE” really a big resource consumer It is generally advisable to turn off ”SE” for mapred jobs that use HBase as a source.</description>
+    </item>
+    
+  </channel>
+</rss>

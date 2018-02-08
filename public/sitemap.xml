@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://datafibers.org/blog/2018/02/02/2018-02-02-hive-get-max-min-value-rows/</loc>
+    <lastmod>2018-02-02T13:50:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/2018/01/10/2018-01-10-reviews-big-data/</loc>
+    <lastmod>2018-01-10T13:50:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/2017/12/22/2017-12-22-df-winter-release/</loc>
+    <lastmod>2017-12-22T13:50:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/2017/11/01/2017-11-02-hive-rowid-generation/</loc>
+    <lastmod>2017-11-01T13:50:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/2017/10/05/2017-10-05-apache-kafka-overview/</loc>
+    <lastmod>2017-10-05T13:50:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/2017/09/15/2017-09-15-scala-apply-method/</loc>
+    <lastmod>2017-09-15T13:50:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/2017/08/31/2017-08-31-df-summer-release/</loc>
+    <lastmod>2017-08-31T13:50:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/2017/07/01/2017-07-01-spark-word-count/</loc>
+    <lastmod>2017-07-01T13:50:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/2017/06/24/2015-09-23-cloudera-launches-one-platform-initatives-to-advance-spark---copy/</loc>
+    <lastmod>2017-06-24T13:50:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/2016/12/29/2016-12-29-df-winter-release/</loc>
+    <lastmod>2016-12-29T13:50:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/2015/10/10/migrate-from-jekyll/</loc>
+    <lastmod>2015-10-10T13:07:31+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/2015/10/02/linked-post/</loc>
+    <lastmod>2015-10-02T21:49:20+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/2015/09/17/go-is-for-lovers/</loc>
+    <lastmod>2015-09-17T13:47:08+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/2015/08/03/hugo-is-for-lovers/</loc>
+    <lastmod>2015-08-03T13:39:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2015-01-01-reviews-build-and-shell/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2015-01-01-reviews-data-science/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2015-01-01-reviews-dw-bi/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2015-01-01-reviews-scala-programming/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2015-01-01-reviews-spark/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2015-08-21-get-git-modified-but-untracked-content-checked-in/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2012-10-13-a-tiny-scrum-overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-07-02-hbase-add-backup-master-node/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-05-02-adding-or-removing-hadoop-nodes/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2015-03-15-apache-hive-essentials-published/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/categories/article/</loc>
+    <lastmod>2018-02-02T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-06-18-big-data-platform/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/tags/bigdata/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/</loc>
+    <lastmod>2018-02-02T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/categories/</loc>
+    <lastmod>2018-02-02T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-01-25-commonly-used-hive-setting/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-06-12-commonly-used-maven-plugins/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/community/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/contact/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2015-02-06-data-analysis/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2015-02-02-data-lake-stages/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/</loc>
+    <lastmod>2018-02-02T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/tags/datafibers/</loc>
+    <lastmod>2017-12-22T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/tags/datamining/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-07-06-hbase-disable-major-compaction/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-01-18-git-cheat-sheet/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-05-17-git-tips-weekend-friday/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-05-18-git-tips-weekend-saturday/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-05-19-git-tips-weekend-sunday/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/tags/git/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-05-21-git-catchup-changes/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/tags/go/</loc>
+    <lastmod>2015-10-02T21:49:20+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/tags/hadoop/</loc>
+    <lastmod>2018-01-10T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-05-03-hadoop-balancer/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-06-03-hadoop-counter/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-05-07-hadoop-customize-data-type/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2012-09-08-hadoop-customize-input-output-format/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-05-28-hadoop-distributedcache/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2012-11-10-hadoop-job-patterns/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-05-09-hadoop-multiple-input-and-output/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2012-07-06-hadoop-serialization-framework/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2012-08-25-hadoop-split-and-block/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2015-06-21-hadoop-streaming/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2012-12-23-hadoop-distcp-utility/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/tags/hbase/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/tags/hive/</loc>
+    <lastmod>2018-02-02T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-09-29-hive-composite-data-type/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2012-06-20-hive-performance-tuning/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2012-06-18-hive-serde/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-03-01-hive-sorting-and-ordering/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2014-06-01-hive-and-hadoop-exceptions/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2015-02-12-hive-and-hadoop-exceptions/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-04-24-hive-vs-pig/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/tags/hugo/</loc>
+    <lastmod>2015-10-10T13:07:31+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-05-27-install-jekyll-in-macos/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/tags/kafka/</loc>
+    <lastmod>2017-10-05T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2012-05-30-little-about-mapreduce-combiner/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-04-19-mrunit-for-now/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/tags/maven/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2014-11-23-move-to-the-spark/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/tags/pig/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/tags/programming/</loc>
+    <lastmod>2015-10-02T21:49:20+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/categories/programming/</loc>
+    <lastmod>2015-10-02T21:49:20+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/categories/pseudo/</loc>
+    <lastmod>2015-08-03T13:39:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/categories/release/</loc>
+    <lastmod>2017-12-22T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/categories/review/</loc>
+    <lastmod>2018-01-10T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2012-07-02-rsync-deployment/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-08-21-sql-in-mysql-and-pig/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/tags/scala/</loc>
+    <lastmod>2017-09-15T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2015-04-20-scala-and-java-constructors/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2015-01-23-setup-spark-in-mac/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-02-08-sorting-of-big-data/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/tags/spark/</loc>
+    <lastmod>2018-02-02T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2014-04-05-install-cdh-in-aws/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/tags/</loc>
+    <lastmod>2017-12-22T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/training/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/categories/tutorial/</loc>
+    <lastmod>2017-07-01T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-04-29-useful-hadoop-toolrunner/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2012-05-11-what-is-predictive-analytics/</loc>
+  </url>
+  
+  <url>
+    <loc>https://datafibers.org/blog/1/01/01/2013-04-22-when-to-disable-speculative-execution/</loc>
+  </url>
+  
+</urlset>

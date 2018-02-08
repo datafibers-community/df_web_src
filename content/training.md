@@ -1,43 +1,50 @@
 +++
-title = "FAQ"
-description = "Frequently asked questions"
-keywords = ["FAQ","How do I","questions","what if"]
+title = "Training"
+description = "Professional Big Data Training"
+keywords = ["training","big data","questions"]
 +++
+## Why to Take Our Trainings
+<p align="left"><img src="/img/banners/training01.jpg" width="600" /></p>
+With the help of community efforts, DataFibers is able to offer the best quality of big data training with low cost. Currently, we have trained many professionals in Canada and China. We are also closely partnerd with top of leading training provides to polish and systematize our training practice. We are proud of delivering following values to our students as welll as customers as follows.
 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+* Keep close to the latest technology
+* Partner with open source community
+* Invitw industry expert to class room
+* Learing with practice in the smart way
 
-## 1. WHAT TO DO IF I HAVE STILL NOT RECEIVED THE ORDER?
+## What Do We Offer
+Right now, we offer two part-time training courses as preliminary requests for **DataFibers Certified Big Data Expert** as follows.
 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+### Trainings ###
+#### 1. Big Data Engineering Camp
+This is total **80** hours of engineering course focus on the latest big data technology in practice. It covers topics as follows.
 
-* Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-* Aliquam tincidunt mauris eu risus.
-* Vestibulum auctor dapibus neque.
+* Big data ecosystem overview
+* Big data engineering architecture overview (Lambda, Kappa, etc.)
+* Big data batch processing (Pig/Hive/Spark SQL)
+* Big data stream processing (Kafka/Spark Stream/Flink)
+* Hands on project
 
-## 2. WHAT ARE THE POSTAL RATES?
+#### 2. Big Data Analytics and Science Camp
+This is total **100** hours of engineering course focus on the latest big data technology in practice. It covers topics as follows.
 
-Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+* Big data science and machine learning overview
+* Core machine learning algorithm in theory
+* Python based machine learning in practice
+* Spark based machine learning in practice
 
-## 3. DO YOU SEND OVERSEAS?
+### Certifications ###
+#### Certified Big Data Expert
+<p align="left"><img src="/img/banners/training02.png" width="600" /></p>
+Our certified program will bundle the training cources, practice, and examinations together. The value of our certificate is highlighted as follows.
 
-Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+* Covering the skills in the most recent
+* Architecture driven on big data
+* Full-stack and hands on
+* Enterprise use case and career path focus
 
-## 4. WHY ARE YOU MORE EXPENSIVE THAN OTHERS?
-
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
-
-* Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-* Aliquam tincidunt mauris eu risus.
-* Vestibulum auctor dapibus neque.
-
-## 5. ANOTHER IMPORTANT QUESTION
-
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
-
-* Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-* Aliquam tincidunt mauris eu risus.
-* Vestibulum auctor dapibus neque.
+### Free Sharing ###
+In addition, we also offer free training back to the community through meetup or online seminar sessions. The list of resource is avaliable in the **[BLOG](http://localhost:1313/categories/training)**.
 
 ---
-
-> In case you haven't found the answer for your question please feel free to contact us, our customer support will be happy to help you.
+> In case you haven't found the answer for your question please feel free to contact us, we are happy to help you.

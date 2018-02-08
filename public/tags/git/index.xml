@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on DataFibers</title>
+    <link>https://datafibers.org/tags/git/</link>
+    <description>Recent content in Git on DataFibers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://datafibers.org/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GIT Cheat Sheet</title>
+      <link>https://datafibers.org/blog/1/01/01/2013-01-18-git-cheat-sheet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2013-01-18-git-cheat-sheet/</guid>
+      <description>Here I am sharing two good git sheet as follows.
+
+http://ndpsoftware.com/git-cheatsheet.html</description>
+    </item>
+    
+  </channel>
+</rss>

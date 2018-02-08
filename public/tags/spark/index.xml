@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spark on DataFibers</title>
+    <link>https://datafibers.org/tags/spark/</link>
+    <description>Recent content in Spark on DataFibers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 02 Feb 2018 13:50:46 +0200</lastBuildDate>
+    
+	<atom:link href="https://datafibers.org/tags/spark/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hive Get the Max/Min</title>
+      <link>https://datafibers.org/blog/2018/02/02/2018-02-02-hive-get-max-min-value-rows/</link>
+      <pubDate>Fri, 02 Feb 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2018/02/02/2018-02-02-hive-get-max-min-value-rows/</guid>
+      <description>Most of time, we need to find the max or min value of particular columns as well as other columns. For example, we have following employee table.
+&amp;gt; SELECT name,sex_age.sex AS sex,sex_age.age AS age FROM employee; +----------+---------+------+ | name | sex | age | +----------+---------+------+ | Michael | Male | 30 | | Will | Male | 35 | | Shelley | Female | 27 | | Lucy | Female | 57 | | Steven | Male | 30 | +----------+---------+------+ 5 rows selected (75.</description>
+    </item>
+    
+    <item>
+      <title>Big Data Books Reviews</title>
+      <link>https://datafibers.org/blog/2018/01/10/2018-01-10-reviews-big-data/</link>
+      <pubDate>Wed, 10 Jan 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2018/01/10/2018-01-10-reviews-big-data/</guid>
+      <description>Learning Spark SQL  Level Ent.
+ Level Mid.
+ Level Adv.  Published in Sep. 2017. Start reading it.
+
+Learning Apache Flink  Level Ent. Level Mid.  There are very few books about Apache Flink. Besides offical document, this is a good one for people who wants to know Flink quicker. This book, published in the earlier of 2017, covers most of core topics for Flink with examples.</description>
+    </item>
+    
+    <item>
+      <title>Spark Word Count Tutorial</title>
+      <link>https://datafibers.org/blog/2017/07/01/2017-07-01-spark-word-count/</link>
+      <pubDate>Sat, 01 Jul 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2017/07/01/2017-07-01-spark-word-count/</guid>
+      <description>It is quite often to setup Apache Spark development environment through IDE. Since I do not cover much setup IDE details in my Spark course, I am here to give detail steps for developing the well known Spark word count example using scala API in Eclipse.
+Environment  Apache Spark v1.6 Scala 2.10.4 Eclipse Scala IDE  Download Software Needed  Download the proper scala version and install it Download the Eclipse scala IDE from above link  Create A Scala Project  Open Scala Eclipse IDE.</description>
+    </item>
+    
+    <item>
+      <title>One Platform Initatives for Spark</title>
+      <link>https://datafibers.org/blog/2017/06/24/2015-09-23-cloudera-launches-one-platform-initatives-to-advance-spark---copy/</link>
+      <pubDate>Sat, 24 Jun 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://datafibers.org/blog/2017/06/24/2015-09-23-cloudera-launches-one-platform-initatives-to-advance-spark---copy/</guid>
+      <description>In the early of this September, the Chief Strategy Offer of Cloudera Mike Olson has announced that the next important initiatives for Couldera - One Platform to advance their investment on Apache Spark.
+The Spark is originally invented by few guys who started up the Databrick. Later, Spark catches most attention from big data communities and companies by its high-performance in-memory computing framework, which can run on top of Hadoop Yarn.</description>
+    </item>
+    
+    <item>
+      <title>Moving to the Spark</title>
+      <link>https://datafibers.org/blog/1/01/01/2014-11-23-move-to-the-spark/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2014-11-23-move-to-the-spark/</guid>
+      <description>It has been a while that the blog is now updated since 2014 is a ready busy year. After I almost completed my first book recently, I think it is the right time to start new journey in big data for real time processing.
+Big data ecosystem has great changes over the past two years. The speed of big data processing becomes the hot topic over the past year. When Hadoop enter the area of Yarn, it becomes more like a distribute computing infrastructure.</description>
+    </item>
+    
+    <item>
+      <title>Setup Spark in MAC</title>
+      <link>https://datafibers.org/blog/1/01/01/2015-01-23-setup-spark-in-mac/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://datafibers.org/blog/1/01/01/2015-01-23-setup-spark-in-mac/</guid>
+      <description>It is great to see that Brew supports install Spark. It makes installation of Spark quite easier in Mac. I just follow few steps to get my spark instance installed locally.
+1. Install brew utility. mymac:$ ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; ==&amp;gt; This script will install: /usr/local/bin/brew /usr/local/Library/... /usr/local/share/man/man1/brew.1 ==&amp;gt; The following directories will be made group writable: /usr/local/. /usr/local/bin ==&amp;gt; The following directories will have their group set to admin: /usr/local/.</description>
+    </item>
+    
+  </channel>
+</rss>
