@@ -1,4 +1,4 @@
-baseurl = "https://datafibers.org"
+baseurl = "https://datafibers-community.github.io/"
 title = "DataFibers"
 theme = "hugo-universal-theme"
 themesDir = "./themes"
@@ -100,9 +100,11 @@ paginate = 10
         <br>7030 Woodbine Avenue,
         <br>L3R 6G2
         <br>Ontario, Markham
+        <br>Canadar
         <br>
-        <strong>Canada</strong>
-      </p>
+        <br>
+        <strong>Tel: +1 (647) 960-8578</strong>
+        <br>
       """
     latitude = "43.814335"
     longitude = "-79.350649"
@@ -112,7 +114,7 @@ paginate = 10
 
 # Enable or disable top bar with social icons
 [params.topbar]
-    enable = true
+    enable = false
     text = """<p class="hidden-sm hidden-xs">Contact us at datafibers@gmail.com</p>
       <p class="hidden-md hidden-lg"><a href="#" data-animate-hover="pulse"><i class="fa fa-phone"></i></a>
       <a href="#" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
