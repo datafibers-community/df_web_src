@@ -44,7 +44,7 @@ Our certified program will bundle the training cources, practice, and examinatio
 * Enterprise use case and career path focus
 
 ### Free Sharing ###
-In addition, we also offer free training back to the community through meetup or online seminar sessions. The list of resource is avaliable in the **[BLOG](http://localhost:1313/categories/training)**.
+In addition, we also offer free training back to the community through meetup or online seminar sessions. The list of resource is avaliable in the **[BLOG](/categories/training)**.
 
 ---
 > In case you haven't found the answer for your question please feel free to contact us, we are happy to help you.
