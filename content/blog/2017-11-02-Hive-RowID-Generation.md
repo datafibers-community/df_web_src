@@ -1,6 +1,6 @@
 +++
 title = "Hive RowID Generation"
-date = "2017-11-01T13:50:46+02:00"
+date = "2017-11-02T13:50:46+02:00"
 tags = ["hive"]
 categories = ["article"]
 banner = "/img/banners/big-data-hive.jpg"
