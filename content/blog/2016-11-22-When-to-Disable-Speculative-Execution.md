@@ -1,22 +1,18 @@
----
-layout: post
-uri: /posts/115
-permalink: /posts/115/index.html
-title: When to Disable Speculative Execution
-category: Blog
-tag: mapred
-description: 
-disqus: true 
-lang: en
----
-##Backgrounds
++++
+title = "When to Disable Speculative Execution"
+date = "2016-11-22T13:50:46+02:00"
+tags = ["hadoop"]
+categories = ["article"]
+banner = "/img/banners/banner-1.jpg"
++++
+## Backgrounds
 
 This is the link from WikiMedia about what’s __[Speculative Execution](http://en.wikipedia.org/wiki/Speculative_execution)__. In Hadoop, the following parameters string are for this settings. And, they are true by default.
 
     mapred.map.tasks.speculative.execution
     mapred.reduce.tasks.speculative.execution
 
-##When to Disable
+## When to Disable
 Most time, it helps. However, I am here to collect some scenario when we do not need it.
 
 * Of course, when ever your cluster really in shortage of resource or for the purpose of experiment, we can disable them by setting them to false since “SE” really a big resource consumer
