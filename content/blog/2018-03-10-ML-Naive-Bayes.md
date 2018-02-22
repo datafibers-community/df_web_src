@@ -11,9 +11,9 @@ It would be difficult and practically impossible to classify a web page, a docum
 Naïve Bayes Classifier is amongst the most popular learning method grouped by similarities, that works on the popular Bayes Theorem of Probability to build machine learning models particularly for disease prediction and document classification. It is a simple classification of words based on Bayes Probability Theorem for subjective analysis of content.
 
 ## What is Naive Bayes?
-It is a classification technique based on [Bayes’ Theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem) with an assumption of independence among predictors/features and requires your features to take on non-negative values.. In simple terms, a Naive Bayes classifier assumes that the presence of a particular feature in a class is unrelated to the presence of any other feature. For example, a fruit may be considered to be an apple if it is red, round, and about 3 inches in diameter. Even if these features depend on each other or upon the existence of the other features, all of these properties independently contribute to the probability that this fruit is an apple and that is why it is known as ‘Naive’.
+It is a classification technique based on [Bayes’ Theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem) with an assumption of independence among predictors/features and requires your features to take on non-negative values.. In simple terms, a Naive Bayes classifier assumes that the presence of a particular feature in a class is unrelated to the presence of any other feature. For example, a fruit may be considered to be an apple if it is red, round, and about 3 inches in diameter. Even if these features depend on each other or upon the existence of the other features, all of these properties independently contribute to the probability that this fruit is an apple and that is why it is known as _**Naive**_.
 
-Naive Bayes model is easy to build and particularly useful for very large data sets. Along with simplicity, Naive Bayes is known to outperform even highly sophisticated classification methods. Bayes theorem provides a way of calculating posterior probability P(c|x) from P(c), P(x) and P(x|c) as follows.
+Naive Bayes model is easy to build and particularly useful for very large data sets. Along with simplicity, Naive Bayes is known to outperform even highly sophisticated classification methods. Bayes theorem provides a way of calculating posterior probability P(c|x) from P\(c), P(x) and P(x|c) as follows.
 
 <p align="center"><img src="https://s3.ap-south-1.amazonaws.com/techleer/204.png" width="400"></p>
 
@@ -21,6 +21,12 @@ Naive Bayes model is easy to build and particularly useful for very large data s
 * **P\(c) is the prior probability of class.**
 * **P(x|c) is the likelihood which is the probability of predictor given class.**
 * **P(x) is the prior probability of predictor.**
+
+There are three types of Naive Bayes model:
+
+* **[Gaussian](http://scikit-learn.org/stable/modules/naive_bayes.html)**: It is used in classification and it assumes that features follow a normal distribution. This is only supported by scikit learn library.
+* **[Multinomial](http://scikit-learn.org/stable/modules/naive_bayes.html)**: It is used for discrete counts. For example, let’s say,  we have a text classification problem. Here we can consider bernoulli trials which is one step further and instead of “word occurring in the document”, we have “count how often word occurs in the document”, you can think of it as “number of times outcome number x_i is observed over the n trials”. This is **default** mode in spark MLLib.
+* **[Bernoulli](http://scikit-learn.org/stable/modules/naive_bayes.html)**: The binomial model is useful if your feature vectors are binary (i.e. zeros and ones). One application would be text classification with ‘bag of words’ model where the 1s & 0s are “word occurs in the document” and “word does not occur in the document” respectively. This is also supported by Spark MLLib.
 
 ## How it Works for Example
 Let’s understand the algorithm from an easiler example. Below is a training data set of weather and corresponding target variable **Play** (suggesting possibilities of playing). Now, we need to classify whether players will play or not based on weather condition.
