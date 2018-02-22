@@ -104,6 +104,46 @@ Therefore, **P (Yes|Sunny) = 0.33 * 0.64 / 0.36 = 0.60**, which has higher proba
 * Email Spam Filtering: Google Mail uses Naïve Bayes algorithm to classify your emails as Spam or Not Spam
 
 ## Example in Spark
+```
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.feature import StringIndexer
+from pyspark.ml.classification import NaiveBayes
+from pyspark.ml import Pipeline
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+from pyspark.ml.tuning import ParamGridBuilder, CrossValidator
+
+# Get raw data into dataframe
+rawData = sqlContext.sql("SELECT SepalLength, SepalWidth, PetalLength, PetalWidth, Species FROM rawDataTable")
+
+# Convert target into numerical categories
+labelIndexer = StringIndexer(inputCol="Species", outputCol="label")
+vecAssembler = VectorAssembler(inputCols=["SepalLength", "SepalWidth", "PetalLength", "PetalWidth"], outputCol="features")
+
+# Split dataset randomly into Training and Test sets. Set seed for reproducibility
+(trainingData, testData) = rawData.randomSplit([0.7, 0.3], seed = 100)
+
+# Train a NaiveBayes model
+nb = NaiveBayes(smoothing=1.0, modelType="multinomial")
+
+# Chain labelIndexer, vecAssembler and NBmodel in a 
+pipeline = Pipeline(stages=[labelIndexer, vecAssembler, nb])
+
+# Create ParamGrid and Evaluator for Cross Validation
+paramGrid = ParamGridBuilder().addGrid(nb.smoothing, [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]).build()
+cvEvaluator = MulticlassClassificationEvaluator(metricName="precision")
+
+# Run Cross-validation
+cv = CrossValidator(estimator=pipeline, estimatorParamMaps=paramGrid, evaluator=cvEvaluator)
+model = cv.fit(trainingData)
+
+# Make predictions on testData. model uses the best model.
+prediction = model.transform(testData)
+
+# Model evaluation
+evaluator = MulticlassClassificationEvaluator(labelCol="label", predictionCol="prediction", metricName="precision")
+accuracy = evaluator.evaluate(prediction)
+print "Model Accuracy: ", accuracy
+```
 
 
 ### Reference
