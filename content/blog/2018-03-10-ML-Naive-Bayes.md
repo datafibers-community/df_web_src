@@ -2,7 +2,7 @@
 title = "Naive Bayes Algorithm"
 date = "2018-02-10T13:50:46+02:00"
 tags = ["spark","machine learning"]
-categories = ["article"]
+categories = ["digest"]
 banner = "/img/banners/Thomas_Bayes.png"
 +++
 ## Background
@@ -25,7 +25,7 @@ Bayes theorem provides a way of calculating posterior probability P(c|x) from P(
 * **P(x) is the prior probability of predictor.**
 
 ## How it Works for Example
-Let’s understand the algorithm from an easiler example. Below is a training data set of weather and corresponding target variable **Play** (suggesting possibilities of playing). Now, we need to classify whether players will play or not based on weather condition. Let’s follow the below **steps** to perform it.
+Let’s understand the algorithm from an easiler example. Below is a training data set of weather and corresponding target variable **Play** (suggesting possibilities of playing). Now, we need to classify whether players will play or not based on weather condition.
 ```
 +-----------+--------+
 | weather   | play ? |
@@ -46,86 +46,64 @@ Let’s understand the algorithm from an easiler example. Below is a training da
 | rainy     | no     |
 +-----------+--------+
 ```
-**Step 1.** Convert the data set into a frequency table
-```
-+-----------+----+
-| weather   | no |
-+-----------+----+
-| overcast  | 0  |
-+-----------+----+
-| rainy     | 3  |
-+-----------+----+
-| sunny     | 2  |
-+-----------+----+
-| total     | 5  |
-+-----------+----+
-```
-
-1. Create Likelihood table by finding the probabilities like Overcast probability = 0.29 and probability of playing is 0.64.
-
-1. Now, use Naive Bayesian equation to calculate the posterior probability for each class. The class with the highest posterior probability is the outcome of prediction.
-
 > **Problem: Players will play if weather is sunny. Is this statement is correct?**
 
-We can solve it using above discussed method of posterior probability.
-
-P(Yes | Sunny) = P( Sunny | Yes) * P(Yes) / P (Sunny)
-
-Here we have P (Sunny |Yes) = 3/9 = 0.33, P(Sunny) = 5/14 = 0.36, P( Yes)= 9/14 = 0.64
-
-Now, P (Yes | Sunny) = 0.33 * 0.64 / 0.36 = 0.60, which has higher probability.
-
-Naive Bayes uses a similar method to predict the probability of different class based on various attributes. This algorithm is mostly used in text classification and with problems having multiple classes.
+Now, use Naive Bayesian equation to calculate the posterior probability for each class. The class with the highest posterior probability is the outcome of prediction. First, convert the data set into a frequency table.
 ```
-> SELECT employee.sex_age.sex, employee.sex_age.age, name 
-> FROM
-> employee JOIN 
-> (
-> SELECT 
-> max(sex_age.age) as max_age, sex_age.sex as sex  
-> FROM employee
-> GROUP BY sex_age.sex
-> ) maxage
-> ON employee.sex_age.age = maxage.max_age
-> AND employee.sex_age.sex = maxage.sex;
-+--------------+------+-------+
-| sex_age.sex  | age  | name  |
-+--------------+------+-------+
-| Female       | 57   | Lucy  |
-| Male         | 35   | Will  |
-+--------------+------+-------+
-2 rows selected (94.043 seconds)
++-----------+----+-----+
+| weather   | no | yes | 
++-----------+----+-----+
+| overcast  | 0  |  4  |
++-----------+----+-----+
+| rainy     | 3  |  2  |
++-----------+----+-----+
+| sunny     | 2  |  3  |
++-----------+----+-----+
+| total     | 5  |  9  |
++-----------+----+-----+
 ```
 
-Option 1 => Using MontotonicallyIncreasingID or ZipWithUniqueId methods
+We can solve it using above discussed method by calculating the posterior probability.
 
-Create a Dataframe from a parallel collection
-Apply a spark dataframe method to generate Unique Ids Monotonically Increasing
-import org.apache.spark.sql.functions._ 
-val df = sc.parallelize(Seq(("Databricks", 20000), ("Spark", 100000), ("Hadoop", 3000))).toDF("word", "count") 
-df.withColumn("uniqueID",monotonicallyIncreasingId).show()
-Screen Shot 2016-05-23 at 4.13.37 PM
+**P(Yes|Sunny) = P(Sunny|Yes) * P(Yes)/P (Sunny)**
 
-import org.apache.spark.sql.types.{StructType, StructField, LongType}
-val df = sc.parallelize(Seq(("Databricks", 20000), ("Spark", 100000), ("Hadoop", 3000))).toDF("word", "count")
-val wcschema = df.schema
-val inputRows = df.rdd.zipWithUniqueId.map{
-   case (r: Row, id: Long) => Row.fromSeq(id +: r.toSeq)}
-val wcID = sqlContext.createDataFrame(inputRows, StructType(StructField("id", LongType, false) +: wcschema.fields))
-Screen Shot 2016-05-23 at 4.13.46 PM
+Here, we are able to calculate 
 
-Option 2 => Use Row_Number Function
+* **P(Sunny|Yes) = 3/9 = 0.33**
+* **P(Sunny) = 5/14 = 0.36**
+* **P(Yes)= 9/14 = 0.64**
 
-With PartitionBy Column:
+Therefore, **P (Yes|Sunny) = 0.33 * 0.64 / 0.36 = 0.60**, which has higher probability.
 
-val df = sc.parallelize(Seq(("Databricks", 20000), ("Spark", 100000), ("Hadoop", 3000))).toDF("word", "count")
-df.createOrReplaceTempView("wordcount")
-val tmpTable = sqlContext.sql("select row_number() over (partition by word order by count) as rnk,word,count from wordcount")
-tmpTable.show()
-Screen Shot 2016-05-23 at 8.12.15 PM
+## Pros and Cons?
+### Pros
+* It is easy and fast to predict class of test data set and also performs well in multi class prediction
+* When assumption of independence holds, a Naive Bayes classifier performs better compare to other models like logistic regression and you need less training data.
+* It perform well in case of categorical input variables compared to numerical variable(s). For numerical variable, normal distribution is assumed (bell curve, which is a strong assumption).
+* Naïve Bayes Classifier algorithm performs well when the input variables are categorical.
+* A Naïve Bayes classifier converges faster, requiring relatively little training data than other discriminative models like logistic regression, when the Naïve Bayes conditional independence assumption holds.
+* With Naïve Bayes Classifier algorithm, it is easier to predict class of the test data set. A good bet for multi class predictions as well.
+* Though it requires conditional independence assumption, Naïve Bayes Classifier has presented good performance in various application domains.
 
-Without PartitionBy Column:
+### Cons
+* If categorical variable has a category (in test data set), which was not observed in training data set, then model will assign a 0 (zero) probability and will be unable to make a prediction. This is often known as “Zero Frequency”. To solve this, we can use the smoothing technique. One of the simplest smoothing techniques is called Laplace estimation.
+* On the other side, Naive Bayes is also known as a bad estimator, so the probability outputs from predict_proba are not to be taken too seriously.
+* Another limitation of Naive Bayes is the assumption of independent predictors. In real life, it is almost impossible that we get a set of predictors which are completely independent.
+ 
 
-val tmpTable1 = sqlContext.sql("select row_number() over (order by count) as rnk,word,count from wordcount")
-tmpTable1.show()
-Screen Shot 2016-05-23 at 8.13.09 PM
+## Typical Use Cases
+* Real time Prediction: Naive Bayes is an eager learning classifier and it is sure fast. Thus, it could be used for making predictions in real time.
+* Multi class Prediction: This algorithm is also well known for multi class prediction feature. Here we can predict the probability of multiple classes of target variable.
+* Recommendation System: Naive Bayes Classifier and Collaborative Filtering together builds a Recommendation System that uses machine learning and data mining techniques to filter unseen information and predict whether a user would like a given resource or not
+* Sentiment Analysis: It is used at Facebook to analyse status updates expressing positive or negative emotions.
+* Document Categorization: Google uses document classification to index documents and find relevancy scores i.e. the PageRank. PageRank mechanism considers the pages marked as important in the databases that were parsed and classified using a document classification technique. Naïve Bayes Algorithm is also used for classifying news articles about Technology, Entertainment, Sports, Politics, etc.
+* Email Spam Filtering: Google Mail uses Naïve Bayes algorithm to classify your emails as Spam or Not Spam
+
+## Example in Spark
+
+
+### Reference
+1. https://www.analyticsvidhya.com/blog/2017/09/naive-bayes-explained/
+1. https://www.dezyre.com/article/top-10-machine-learning-algorithms/202
+1. https://www.kdnuggets.com/2017/10/top-10-machine-learning-algorithms-beginners.html
+1. https://www.kdnuggets.com/2016/08/10-algorithms-machine-learning-engineers.html
