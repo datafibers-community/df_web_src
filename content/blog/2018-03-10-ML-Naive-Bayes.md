@@ -1,6 +1,6 @@
 +++
 title = "Naive Bayes Algorithm"
-date = "2018-02-10T13:50:46+02:00"
+date = "2018-03-10T13:50:46+02:00"
 tags = ["spark","machine learning"]
 categories = ["digest"]
 banner = "/img/banners/Thomas_Bayes.png"
