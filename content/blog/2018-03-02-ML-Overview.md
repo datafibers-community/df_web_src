@@ -3,7 +3,7 @@ title = "ML Overview"
 date = "2018-03-02T13:50:46+02:00"
 tags = ["machine learning"]
 categories = ["article"]
-banner = "https://www.cloudirec.com/blog/wp-content/uploads/2017/03/Machine-Learning.jpg"
+banner = "/img/banners/machine-learning.jpg"
 +++
 ## Background
 Machine learning is a field of computer science that gives computer systems the ability to "learn" with data, without being explicitly programmed. Machine learning can be broken down into three broad categories: Recommender, Classification, Clustering.
@@ -26,4 +26,4 @@ Using this algorithm, the machine is trained to make specific decisions. It work
 ## More Details
 Below is series of blog covering most populat machine learning algorithm with apache spark.
 
-* [Naive Bayes Algorithm](http://)
+* [Naive Bayes Algorithm](https://datafibers-community.github.io/blog/2018/02/10/2018-03-10-ml-naive-bayes/)
