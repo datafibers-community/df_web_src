@@ -5,6 +5,7 @@ tags = ["spark","machine learning"]
 categories = ["digest"]
 banner = "/img/banners/Thomas_Bayes.png"
 +++
+
 ## Background
 It would be difficult and practically impossible to classify a web page, a document, an email or any other lengthy text notes manually. This is where Naïve Bayes Classifier machine learning algorithm comes to the rescue. A classifier is a function that allocates a population’s element value from one of the available categories. For instance, Spam Filtering is a popular application of Naïve Bayes algorithm. Spam filter here, is a classifier that assigns a label **Spam** or **Not Spam** to all the emails.
 
