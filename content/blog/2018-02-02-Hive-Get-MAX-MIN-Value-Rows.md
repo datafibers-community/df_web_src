@@ -109,4 +109,4 @@ Actually, there is a better way of doing it as follows through ***MAX/MIN STRUCT
 The above job only trigger one MapReduce job. We still need to use the *Group By* clause. However, we can use ***MAX/MIN STRUCT*** function to show all other columns in the same line of *MAX/MIN* value. By default, *Group By* clause does not allow columns shown in the *SELECT* list if it is not *Group By* column.
 
 ## Summary
-The solution 3 is better in terms of performance, query complexity, and version supports at older Hive. The solution 2 is better and powerful since it does not requires GROUP BY keywords. In addition, the solutions above are also working in Spark SQL.
+The solution 3 is better in terms of performance, query complexity, and version supports at older Hive. The solution 2 is better and powerful since it does not require GROUP BY keywords. In addition, the solutions above are all working in Spark SQL.
