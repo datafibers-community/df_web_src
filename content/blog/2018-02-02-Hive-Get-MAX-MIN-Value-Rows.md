@@ -10,9 +10,21 @@ banner = "/img/banners/maxmin.jpg"
 Most of time, we need to find the max or min value of particular columns as well as other columns. For example, we have following _employee_ table.
 
 ```
-> SELECT name,sex_age.sex AS sex,sex_age.age AS age FROM employee;
+DESC employee;
++---------------+------------------------------+----------+--+
+|   col_name    |          data_type           | comment  |
++---------------+------------------------------+----------+--+
+| name          | string                       |          |
+| work_place    | array<string>                |          |
+| gender_age    | struct<gender:string,age:int>|          |
+| skills_score  | map<string,int>              |          |
+| depart_title  | map<string,array<string>>    |          |
++---------------+------------------------------+----------+--+
+5 rows selected (0.186 seconds)
+
+> SELECT name,gender_age.gender AS gender,gender_age.age AS age FROM employee;
 +----------+---------+------+
-|   name   |   sex   | age  |
+|   name   |  gender | age  |
 +----------+---------+------+
 | Michael  | Male    | 30   |
 | Will     | Male    | 35   |
@@ -22,26 +34,30 @@ Most of time, we need to find the max or min value of particular columns as well
 +----------+---------+------+
 5 rows selected (75.887 seconds)
 ```
-We want to know **Who is oldest of males or females?** There are three solutions available.
+## Questions
+
+> **Who is oldest of males or females?** 
+
+There are three solutions available.  **Note**, gender_age is a struct.
 
 ## Solution 1
 
-The most frequent way of doing it is to to firstly find the MAX of age in each SEX group and do SELF JOIN by matching SEX and the MAX age as follows. This will create two stages of jobs and **NOT** efficient.
+The most frequent way of doing it is to to firstly find the MAX of age in each gender group and do SELF JOIN by matching gender and the MAX age as follows. This will create two stages of jobs and **NOT** efficient.
 
 ```
-> SELECT employee.sex_age.sex, employee.sex_age.age, name 
+> SELECT employee.gender_age.gender, employee.gender_age.age, name 
 > FROM
 > employee JOIN 
 > (
 > SELECT 
-> max(sex_age.age) as max_age, sex_age.sex as sex  
+> max(gender_age.age) as max_age, gender_age.gender as gender  
 > FROM employee
-> GROUP BY sex_age.sex
+> GROUP BY gender_age.gender
 > ) maxage
-> ON employee.sex_age.age = maxage.max_age
-> AND employee.sex_age.sex = maxage.sex;
+> ON employee.gender_age.age = maxage.max_age
+> AND employee.gender_age.gender = maxage.gender;
 +--------------+------+-------+
-| sex_age.sex  | age  | name  |
+| gender       | age  | name  |
 +--------------+------+-------+
 | Female       | 57   | Lucy  |
 | Male         | 35   | Will  |
@@ -54,16 +70,16 @@ The most frequent way of doing it is to to firstly find the MAX of age in each S
 Once Hive 0.11.0 introduced analytics functions, we can use ROW_NUMBER to solve the problem as well, but only trigger one MapReduce job.
 
 ```
-> SELECT sex, age, name
+> SELECT gender, age, name
 > FROM
 > (
-> SELECT sex_age.sex AS sex,
-> ROW_NUMBER() OVER (PARTITION BY sex_age.sex ORDER BY sex_age.age DESC) AS row_num, 
-> sex_age.age as age,name
+> SELECT gender_age.gender AS gender,
+> ROW_NUMBER() OVER (PARTITION BY gender_age.gender ORDER BY gender_age.age DESC) AS row_num, 
+> gender_age.age as age,name
 > FROM employee
 > ) t WHERE row_num = 1;
 +---------+------+-------+
-|   sex   | age  | name  |
+| gender  | age  | name  |
 +---------+------+-------+
 | Female  | 57   | Lucy  |
 | Male    | 35   | Will  |
@@ -76,13 +92,13 @@ Once Hive 0.11.0 introduced analytics functions, we can use ROW_NUMBER to solve 
 Actually, there is a better way of doing it as follows through ***MAX/MIN STRUCT*** function added by **[Hive-1128](https://issues.apache.org/jira/browse/HIVE-1128)** since Hive 0.6.0, although it is not documented anywhere in the Hive Wiki.
 
 ```
-> SELECT sex_age.sex, 
-> max(struct(sex_age.age, name)).col1 as age,
-> max(struct(sex_age.age, name)).col2 as name
+> SELECT gender_age.gender, 
+> max(struct(gender_age.age, name)).col1 as age,
+> max(struct(gender_age.age, name)).col2 as name
 > FROM employee
-> GROUP BY sex_age.sex;
+> GROUP BY gender_age.gender;
 +--------------+------+-------+
-| sex_age.sex  | age  | name  |
+| gender       | age  | name  |
 +--------------+------+-------+
 | Female       | 57   | Lucy  |
 | Male         | 35   | Will  |
@@ -93,4 +109,4 @@ Actually, there is a better way of doing it as follows through ***MAX/MIN STRUCT
 The above job only trigger one MapReduce job. We still need to use the *Group By* clause. However, we can use ***MAX/MIN STRUCT*** function to show all other columns in the same line of *MAX/MIN* value. By default, *Group By* clause does not allow columns shown in the *SELECT* list if it is not *Group By* column.
 
 ## Summary
-The solution 3 is better in terms of performance, query complexity, and version supports. In addition, the solutions above are also working in Spark SQL.
+The solution 3 is better in terms of performance, query complexity, and version supports at older Hive. The solution 2 is better and powerful since it does not requires GROUP BY keywords. In addition, the solutions above are also working in Spark SQL.
