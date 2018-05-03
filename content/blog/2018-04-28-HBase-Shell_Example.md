@@ -198,7 +198,7 @@ hbase> alter 't1', {NAME => 'f1'}, {NAME => 'f2', METHOD => 'delete'}
 ```
 To check if all the regions have been updated, use alter_status <table_name>.
 
-## 3. Data Manipulation commands  
+## 3. Data Manipulation  
 
 #### count	
 Count the number of rows in a table. Return value is the number of rows.
@@ -402,7 +402,7 @@ Examples:
 hbase>truncate 't1'
 ```
 
-## 4. HBase surgery tools
+## 4. Surgery Tools
 
 #### assign	
 Assign a region. Use with caution. If region already assigned, this command will do a force reassign. For experts only.
@@ -548,7 +548,7 @@ Dump status of HBase cluster as seen by ZooKeeper. Example:
 ```
 hbase>zk_dump
 ```
-## 5. Cluster replication tools
+## 5. Cluster Replication Tools
 
 #### add_peer	
 Add a peer cluster to replicate to, the id must be a short and
@@ -598,7 +598,7 @@ Examples:
 ```
 hbase> stop_replication
 ```
-## 6. Security tools
+## 6. Security Tools
 
 #### grant	
 Grant users specific rights.
