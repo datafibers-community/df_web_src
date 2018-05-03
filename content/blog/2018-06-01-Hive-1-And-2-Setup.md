@@ -1,6 +1,6 @@
 +++
 title = "Run Hive 1 and 2 Together"
-date = "2018-05-01T13:50:46+02:00"
+date = "2018-06-01T13:50:46+02:00"
 tags = ["hive"]
 categories = ["article"]
 banner = "/img/banners/spark.jpg"
