@@ -269,7 +269,9 @@ hbase> get 't1', 'r1', ['c1', 'c2']
 
 Besides the default 'toStringBinary' format, 'get' also supports custom formatting by
 column. A user can define a FORMATTER by adding it to the column name in the get
-specification. The FORMATTER can be stipulated:1. either as a org.apache.hadoop.hbase.util.Bytes method name (e.g, toInt, toString)
+specification. The FORMATTER can be stipulated:
+
+1. either as a org.apache.hadoop.hbase.util.Bytes method name (e.g, toInt, toString)
 2. or as a custom class followed by method name: e.g. 'c(MyFormatterClass).format'.Example formatting cf:qualifier1 and cf:qualifier2 both as Integers:
 ```
 hbase> get 't1', 'r1' {COLUMN => ['cf:qualifier1:toInt','cf:qualifier2:c(org.apache.hadoop.hbase.util.Bytes).toInt'] }
@@ -345,9 +347,12 @@ TIMERANGE, FILTER, LIMIT, STARTROW, STOPROW, TIMESTAMP, MAXLENGTH,
 or COLUMNS, CACHEIf no columns are specified, all columns will be scanned.
 To scan all members of a column family, leave the qualifier empty as in
 'col_family:'.The filter can be specified in two ways:
+
 1. Using a filterString – more information on this is available in the
 Filter Language document attached to the HBASE-4176 JIRA
-2. Using the entire package name of the filter.Some examples:
+2. Using the entire package name of the filter. 
+
+Some examples:
 ```
 hbase> scan '.META.'
 hbase> scan '.META.', {COLUMNS => 'info:regioninfo'}
@@ -386,7 +391,6 @@ hbase> scan 't1', {COLUMNS => ['cf:qualifier1:toInt','cf:qualifier2:c(org.apache
 Note that you can specify a FORMATTER by column only (cf:qualifer). You cannot
 specify a FORMATTER for all columns of a column family.
 
-#### Scan 
 Scan can also be used directly from a table, by first getting a reference to a
 table, like such:
 ```
@@ -451,7 +455,9 @@ hbase> close_region 'REGIONNAME', 'SERVER_NAME'
 Compact all regions in passed table or pass a region row
 to compact an individual region. You can also compact a single column
 family within a region.
+
 Examples:
+
 Compact all regions in a table:
 ```
 hbase> compact 't1'
@@ -481,7 +487,9 @@ Run major compaction on passed table or pass a region row
 to major compact an individual region. To compact a single
 column family within a region specify the region name
 followed by the column family name.
+
 Examples:
+
 Compact all regions in a table:
 ```
 hbase> major_compact 't1'
@@ -508,6 +516,7 @@ TestTable,0094429456,1289497600452.527db22f95c8a9e0116f0cc13c680396. then
 the encoded region name portion is 527db22f95c8a9e0116f0cc13c680396
 A server name is its host, port plus startcode. For example:
 host187.example.com,60020,1289493121758
+
 Examples:
 ```
 hbase> move 'ENCODED_REGIONNAME'
@@ -516,6 +525,7 @@ hbase> move 'ENCODED_REGIONNAME', 'SERVER_NAME'
 #### split	
 Split entire table or pass a region to split individual region. With the
 second parameter, you can specify an explicit split key for the region.
+
 Examples:
 ```
 split 'tableName'
@@ -528,7 +538,9 @@ Unassign a region. Unassign will close region in current location and then
 reopen it again. Pass 'true' to force the unassignment ('force' will clear
 all in-memory state in master before the reassign. If results in
 double assignment use hbck -fix to resolve. To be used by experts).
-Use with caution. For expert use only. Examples:
+Use with caution. For expert use only. 
+
+Examples:
 ```
 hbase> unassign 'REGIONNAME'
 hbase> unassign 'REGIONNAME', true
@@ -544,7 +556,9 @@ master ui or when you do detailed status in shell)
 hbase>hlog_roll
 ```
 #### zk_dump	
-Dump status of HBase cluster as seen by ZooKeeper. Example:
+Dump status of HBase cluster as seen by ZooKeeper. 
+
+Example:
 ```
 hbase>zk_dump
 ```
@@ -555,6 +569,7 @@ Add a peer cluster to replicate to, the id must be a short and
 the cluster key is composed like this:
 hbase.zookeeper.quorum:hbase.zookeeper.property.clientPort:zookeeper.znode.parent
 This gives a full path for HBase to connect to another cluster.
+
 Examples:
 ```
 hbase> add_peer '1', “server1.cie.com:2181:/hbase”
@@ -562,7 +577,9 @@ hbase> add_peer '2', “zk1,zk2,zk3:2182:/hbase-prod”
 ```
 #### remove_peer	
 Stops the specified replication stream and deletes all the meta
-information kept about it. Examples:
+information kept about it. 
+
+Examples:
 ```
 hbase> remove_peer '1'
 ```
@@ -571,29 +588,33 @@ hbase> remove_peer '1'
 List all replication peer clusters.
 hbase> list_peers
 enable_peer	Restarts the replication to the specified peer cluster,
-continuing from where it was disabled.Examples:
+continuing from where it was disabled.
+
+Examples:
 hbase> enable_peer '1'
 
 #### disable_peer	
 Stops the replication stream to the specified cluster, but still
-keeps track of new edits to replicate.Examples:
+keeps track of new edits to replicate.
+
+Examples:
 ```
 hbase> disable_peer '1'
 ```
 #### start_replication	
-Restarts all the replication features. The state in which each
-stream starts in is undetermined.
+Restarts all the replication features. The state in which each stream starts in is undetermined.
 WARNING:
 start/stop replication is only meant to be used in critical load situations.
+
 Examples:
 ```
 hbase> start_replication
 ```
 #### stop_replication	
-Stops all the replication features. The state in which each
-stream stops in is undetermined.
+Stops all the replication features. The state in which each stream stops in is undetermined.
 WARNING:
 start/stop replication is only meant to be used in critical load situations.
+
 Examples:
 ```
 hbase> stop_replication
@@ -603,7 +624,7 @@ hbase> stop_replication
 #### grant	
 Grant users specific rights.
 Syntax : grantpermissions is either zero or more letters from the set “RWXCA”.
-READ('R'), WRITE('W'), EXEC('X'), CREATE('C'), ADMIN('A')For example:
+READ('R'), WRITE('W'), EXEC('X'), CREATE('C'), ADMIN('A'). For example:
 ```
 hbase> grant 'bobsmith', 'RWXCA'
 hbase> grant 'bobsmith', 'RW', 't1', 'f1', 'col1'
@@ -617,6 +638,7 @@ hbase> revoke 'bobsmith', 't1', 'f1', 'col1'
 #### user_permission	
 Show all permissions for the particular user.
 Syntax : user_permission
+
 For example:
 ```
 hbase> user_permission
