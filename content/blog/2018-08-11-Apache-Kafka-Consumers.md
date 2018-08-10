@@ -2,50 +2,47 @@
 title = "Apache Kafka Consumers"
 date = "2018-08-11T13:50:46+02:00"
 tags = ["kafka"]
-categories = ["article"]
+categories = ["digest"]
 banner = "/img/banners/kafka.jpg"
 +++
 
-The big data processing started by focusing on the batch processing. Distributed data storage and querying tools like MapReduce, Hive, and Pig were all designed to process data in batches rather than continuously. Recently enterprises have discovered the power of analyzing and processing data and events as they happen instead of batches. Most traditional messaging systems, such as RabbitMq, neither scale up to handle big data in realtime nor use friendly with big data ecosystem. But, it is lucky that we have group of engineers at LinkedIn built and open-sourced distributed messaging framework that meets the demands of big data by scaling on commodity hardware, called [Kafka](http://kafka.apache.org/).
+Kafka consumer is what we use quite often to read data from Kafka. Here, we use this article to explain some key concepts and topics regarding to consumer architecture in Kafka.
 
-## What is Kafka?
+## Consumer Groups
 
-Apache Kafka is messaging system built to scale for big data. Similar to Apache ActiveMQ or RabbitMq, Kafka enables applications built on different platforms to communicate via asynchronous message passing. But Kafka differs from these more traditional messaging systems in key ways:
+We can always group consumers into a consumer group by use case or function of the group. One consumer group might be responsible for delivering records to high-speed, in-memory microservices while another consumer group is streaming those same records to Hadoop. Consumer groups have names to identify them from other consumer groups.
 
-* It’s designed to scale horizontally, by adding more commodity servers.
-* It provides much higher throughput for both producer and consumer processes.
-* It can be used to support both batch and real-time use cases.
-* It doesn’t support JMS, Java’s message-oriented middleware API.
+A consumer group has a unique id. Each consumer group is a subscriber to one or more Kafka topics. Each consumer group maintains its offset per topic partition. If you need multiple subscribers, then you have multiple consumer groups. A record gets delivered to only one consumer in a consumer group.
 
-## Kafka’s Architecture
+Each consumer in a consumer group processes records and only one consumer in that group will get the same record. Consumers in a consumer group load balance record processing.
 
-There are some basic terminology used in Kafka architecture:
+## Load Balance
+Kafka consumer consumption divides partitions over consumer instances within a consumer group. Each consumer in the consumer group is an exclusive consumer of a “fair share” of partitions. This is how Kafka does load balancing of consumers in a consumer group. Consumer membership within a consumer group is handled by the Kafka protocol dynamically. If new consumers join a consumer group, it gets a share of partitions. If a consumer dies, its partitions are split among the remaining live consumers in the consumer group. This is how Kafka does fail over of consumers in a consumer group. There are some pictures from [Kafka definitive guide](https://www.safaribooksonline.com/library/view/kafka-the-definitive/9781491936153/ch04.html) makes this more clearly.
+One Consumer group with four partitions
+<img src="/img/banners/kafka_consumer_group_1.png">
+Four partitions split to two consumers in a group
+<img src="/img/banners/kafka_consumer_group_2.png">
+Four consumers in a group with one partition each
+<img src="/img/banners/kafka_consumer_group_3.png">
+More consumers in a group than partitions means idle consumers. Only a single consumer from the same consumer group can access a single partition. If consumer group count exceeds the partition count, then the extra consumers remain idle. Kafka can use the idle consumers for failover. If there are more partitions than consumer group, then some consumers will read from more than one partition.
+<img src="/img/banners/kafka_consumer_group_4.png"> 
 
-* A producer is process that can publish a message to a topic.
-* A consumer is a process that can subscribe to one or more topics and consume messages published to topics.
-* A topic category is the name of the feed to which messages are published.
-* A broker is a process running on single machine.
-* A cluster is a group of brokers working together.
+## Failover
+Consumers notify the Kafka broker when they have successfully processed a record, which advances the offset.
+* If a consumer fails before sending commit offset to Kafka broker, then a different consumer can continue from the last committed offset.
+* If a consumer fails after processing the record but before sending the commit to the broker, then some Kafka records could be reprocessed. In this scenario, Kafka implements the at least once behavior, and you should make sure the messages (record deliveries ) are idempotent.
 
-<p align="center"><img src="/img/banners/kafka-brokers.png"></p>
+## Offset Management
+Kafka stores offset data in a topic called "__consumer_offset". These topics use log compaction, which means they only save the most recent value per key.
+When a consumer has processed data, it should commit offsets. If consumer process dies, it will be able to start up and start reading where it left off based on offset stored in "__consumer_offset" or as discussed another consumer in the consumer group can take over.
 
-From above Kafka’s architecture, we can see it has a very simple design, which can result in better performance and throughput. Every topic in Kafka is like a simple log file. When a producer publishes a message, the Kafka server appends it to the end of the log file for its given topic. The server also assigns an offset, which is a number used to permanently identify each message. As the number of messages grows, the value of each offset increases; for example if the producer publishes three messages the first one might get an offset of 1, the second an offset of 2, and the third an offset of 3.
+## Consume Scope
+What is the scope of records can be consumed by a Kafka consumer? Consumers can’t read un-replicated data. Kafka consumers can only consume messages beyond the “High Watermark” offset of the partition. “Log end offset” is offset of the last record written to log partition and where producers writes to next.
+“High Watermark” is the offset of the last record that was successfully replicated to all partition’s followers. Consumer only reads up to the “High Watermark”.
 
-When the Kafka consumer first starts, it will send a pull request to the server, asking to retrieve any messages for a particular topic with an offset value higher than 0. The server will check the log file for that topic and return the three new messages. The consumer will process the messages, then send a request for messages with an offset higher than 3, and so on.
-
-<p align="center"><img src="/img/banners/kafka_topics.png"></p>
-
-In Kafka, the client is responsible for remembering the offset count and retrieving messages.The Kafka server doesn’t track or manage message consumption. By default, a Kafka server will keep a message for seven days. A background thread in the server checks and deletes messages that are seven days or older. A consumer can access messages as long as they are on the server. It can read a message multiple times, and even read messages in reverse order of receipt. But if the consumer fails to retrieve the message before the seven days are up, it will miss that message.
-
-## Why Kafka so Quick
-
-Kafka is fast for a number of reasons. Below are few aspects for your reference.
-
-* Zero Copy: It calls the OS kernal direct rather than at the application layer to move data fast. Here is more explanation from [wikipedia](https://en.wikipedia.org/wiki/Zero-copy).
-* Batch Data in Chunks - Kafka is all about batching the data into chunks. This minimises cross machine latency with all the buffering/copying that accompanies this.
-* Avoids Random Disk Access - as Kafka is an immutable commit log it does not need to rewind the disk and do many random I/O operations and can just access the disk in a sequential manner. This enables it to get similar speeds from a physical disk compared with memory.
-* Can Scale Horizontally - The ability to have thousands of partitions for a single topic spread among thousands of machines means Kafka can handle huge loads.
-
-## Future
-
-At earlier of this year, Kafka has announced two important features brought by [Confluent](http://www.confluent.io/), which is the company started by that group of enginners in LinkedIn. One is Kafka Connect and the other is Kafka Stream. These two new “killing” features will be a big impact in the big data ecosystem. I’ll talk about them for more details in later posts.
+## Multi-threaded
+You can run more than one Consumer in a JVM process by using threads.
+### Consumer with many threads
+If processing a record takes a while, a single Consumer can run multiple threads to process records, but it is harder to manage offset for each Thread/Task. If one consumer runs multiple threads, then two messages on the same partitions could be processed by two different threads which make it hard to guarantee record delivery order without complex thread coordination. This setup might be appropriate if processing a single task takes a long time, but try to avoid it.
+### Thread per consumer
+If you need to run multiple consumers, then run each consumer in their own thread. This way Kafka can deliver record batches to the consumer and the consumer does not have to worry about the offset ordering. A thread per consumer makes it easier to manage offsets. It is also simpler to manage failover (each process runs X num of consumer threads) as you can allow Kafka to do the brunt of the work.
