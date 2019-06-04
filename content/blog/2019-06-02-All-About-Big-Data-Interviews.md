@@ -32,7 +32,7 @@ List<Integer> list2 = deque.stream().collect(Collectors.toList());//[2,1]
 Think about **Fibonacci Number** and/or [dynamic programing](https://leetcode.com/problems/climbing-stairs/solution/).
 
 ## Experience
->**1. What's the typical use case of *Redish*?**
+>**1. What's the typical use case of *Redis*?**
 
 Distributed Cache. Also see this [article](https://datafibers-community.github.io/blog/2019/05/20/2019-05-20-use-redis-lock-for-seckill/).
 
