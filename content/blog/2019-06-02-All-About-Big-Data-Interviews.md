@@ -31,6 +31,10 @@ List<Integer> list2 = deque.stream().collect(Collectors.toList());//[2,1]
 
 Think about **Fibonacci Number** and/or [dynamic programing](https://leetcode.com/problems/climbing-stairs/solution/).
 
+>**2. You are trying to put 1000 apples into 10 boxes. No matter how many apples you need, you can always to find couple of boxes which contains the right sum of apples in your demand. How many numbers of apples should be in each box?**
+
+Think about binary to decimal, pow(2, 10) = 1024 > 1000. The number will be 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 486.
+
 ## Experience
 >**1. What's the typical use case of *Redis*?**
 
