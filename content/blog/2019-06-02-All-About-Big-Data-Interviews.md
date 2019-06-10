@@ -8,7 +8,7 @@ banner = "/img/banners/interview.jpg"
 
 Quite often, we got chances to go for big data interviews or interview some candidates. Most of time, we could add some short questions in addition to the white board coding. Here, we collect a few aspects of areas we can focus during the interview or prepaing the coming interviews.
 
-## Small Concept
+## Concept
 >**1. What's the reason to use *Dequeue* instead of *Stack* in Java.**
 
 ```
@@ -26,6 +26,14 @@ List<Integer> list1 = strack.stream().collect(Collectors.toList());//[1,2]
 List<Integer> list2 = deque.stream().collect(Collectors.toList());//[2,1]
 ```
 
+>**2. How to implement polymorphism java, ways?
+
+>**3. What is AOP? **
+
+>**4. List ways to create object in Java
+Use new keyword, reflection, clone, or serilization.
+
+
 ## Problem Solving
 >**1. You are climbing a stair case. It takes n steps to reach to the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?**
 
@@ -39,5 +47,17 @@ Think about binary to decimal, pow(2, 10) = 1024 > 1000. The number will be 1, 2
 >**1. What's the typical use case of *Redis*?**
 
 Distributed Cache. Also see this [article](https://datafibers-community.github.io/blog/2019/05/20/2019-05-20-use-redis-lock-for-seckill/).
+
+>**2. String s1=”ab”, String s2=”a”+”b”, String s3=”a”, String s4=”b”, s5=s3+s4, then s5==s2 returns true or false?**
+
+false. 在编译过程中，编译器会将s2直接优化为”ab”，会将其放置在常量池当中，s5则是被创建在堆区，相当于s5=new String(“ab”);
+
+>**3. Are you farmilar the intern() method in String class?**
+intern()方法会首先从常量池中查找是否存在该常量值，如果常量池中不存在则现在常量池中创建，如果已经存在则直接返回。
+比如 
+String s1=”aa”; 
+String s2=s1.intern(); 
+System.out.print(s1==s2);//返回true
+
 
  
