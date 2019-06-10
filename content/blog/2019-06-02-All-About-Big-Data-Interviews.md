@@ -28,6 +28,7 @@ List<Integer> list2 = deque.stream().collect(Collectors.toList());//[2,1]
 
 >**2. How to implement polymorphism java, ways?
 
+Use interface, class inheritance and method override, overload.
 
 >**3. What is AOP? **
 
@@ -53,15 +54,14 @@ Distributed Cache. Also see this [article](https://datafibers-community.github.i
 
 >**2. String s1=”ab”, String s2=”a”+”b”, String s3=”a”, String s4=”b”, s5=s3+s4, then s5==s2 returns true or false?**
 
-false. 在编译过程中，编译器会将s2直接优化为”ab”，会将其放置在常量池当中，s5则是被创建在堆区，相当于s5=new String(“ab”);
+false. During the code compling, the s2 is optimize as ”ab” and keep in constant pool. However, s5 is created in stack which is equal to s5=new String(“ab”);
 
 >**3. Are you farmilar the intern() method in String class?**
 
-intern()方法会首先从常量池中查找是否存在该常量值，如果常量池中不存在则现在常量池中创建，如果已经存在则直接返回。
-比如 
+intern() will look if there is constant value in the constant pool. If yes, reuse. Or else create a new one in the pool. For example, 
 String s1=”aa”; 
 String s2=s1.intern(); 
-System.out.print(s1==s2);//返回true
+System.out.print(s1==s2);//return true
 
 
  
