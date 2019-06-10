@@ -28,9 +28,12 @@ List<Integer> list2 = deque.stream().collect(Collectors.toList());//[2,1]
 
 >**2. How to implement polymorphism java, ways?
 
+
 >**3. What is AOP? **
 
+
 >**4. List ways to create object in Java
+
 Use new keyword, reflection, clone, or serilization.
 
 
@@ -53,6 +56,7 @@ Distributed Cache. Also see this [article](https://datafibers-community.github.i
 false. 在编译过程中，编译器会将s2直接优化为”ab”，会将其放置在常量池当中，s5则是被创建在堆区，相当于s5=new String(“ab”);
 
 >**3. Are you farmilar the intern() method in String class?**
+
 intern()方法会首先从常量池中查找是否存在该常量值，如果常量池中不存在则现在常量池中创建，如果已经存在则直接返回。
 比如 
 String s1=”aa”; 
