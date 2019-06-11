@@ -26,14 +26,14 @@ List<Integer> list1 = strack.stream().collect(Collectors.toList());//[1,2]
 List<Integer> list2 = deque.stream().collect(Collectors.toList());//[2,1]
 ```
 
->**2. How to implement polymorphism java, ways?
+>**2. How to implement polymorphism java, ways? **
 
 Use interface, class inheritance and method override, overload.
 
 >**3. What is AOP? **
 
 
->**4. List ways to create object in Java
+>**4. List ways to create object in Java **
 
 Use new keyword, reflection, clone, or serilization.
 
