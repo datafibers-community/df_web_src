@@ -252,5 +252,20 @@ select num from a where exists(select 1 from b where num=a.num)
 
 30.尽量避免向客户端返回大数据量，若数据量过大，应该考虑相应需求是否合理。
 
+## Other
+MySQL 对于千万级的大表要怎么优化？
+
+第一优化你的sql和索引；MySQL性能优化的最佳20+条经验：http://coolshell.cn/articles/1846.html
+
+第二加缓存，memcached,redis；
+
+第三以上都做了后，还是慢，就做主从复制或主主复制，读写分离
+
+第四如果以上都做了还是慢，不要想着去做切分，mysql自带分区表：http://www.cnblogs.com/zemliu/archive/2013/07/21/3203511.html
+
+第五如果以上都做了，那就先做垂直拆分，其实就是根据你模块的耦合度，将一个大的系统分为多个小的系统，也就是分布式系统；列与列之间关联性不大的时候，垂直切分。
+
+第六才是水平切分，针对数据量大的表，行很多的时候水平切分表，表名取模：http://www.cnblogs.com/sns007/p/5790838.html
+
 
  
