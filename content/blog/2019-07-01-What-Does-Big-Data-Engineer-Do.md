@@ -11,12 +11,12 @@ As the the big data has become more matured, data engineering has emerged as a s
 A typical list of highlighted skills for data enginner is as follows (I'll keep adding new necessary skills to it later on).
 
 * Experienced in Linux command line and shell scripting
-* Experienced in programming in at least Python or Scala/Java
+* Experienced in programming in Python/Scala/Java
 * Experienced in SQL (Hive/Spark/Impala)
 * Experienced in distributed systems such as Hadoop Ecosystem, Redis, No-SQL.
 * Experienced in building big data processing pipeline/framework
 * Experienced in applied big data with message (such as Kafka) and REST service
-* Expereinced in batch and stream process, big data warehousing
+* Expereinced in batch and stream process as well as big data warehousing
 * Expereinced in applying and deploying common machine learning algorithm
 
 Here is a list of resource collected in the github for [How to Become A Data Engineer](https://github.com/adilkhash/Data-Engineering-HowTo)
