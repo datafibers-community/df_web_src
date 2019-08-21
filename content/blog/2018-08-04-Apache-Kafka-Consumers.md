@@ -50,3 +50,38 @@ If processing a record takes a while, a single Consumer can run multiple threads
 
 #### Thread per consumer
 If you need to run multiple consumers, then run each consumer in their own thread. This way Kafka can deliver record batches to the consumer and the consumer does not have to worry about the offset ordering. A thread per consumer makes it easier to manage offsets. It is also simpler to manage failover (each process runs X num of consumer threads) as you can allow Kafka to do the brunt of the work.
+
+## Code Examples
+Below is a simple consumer example with Java client.
+```
+public class Consumer {
+
+    public static void main(String[] args) {
+        Properties properties = new Properties();
+        properties.put("bootstrap.servers", "localhost:9092");
+        properties.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        properties.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        properties.put("group.id", "test-group");
+
+        KafkaConsumer kafkaConsumer = new KafkaConsumer(properties);
+        List topics = new ArrayList();
+        topics.add("kafka-topic-consume");
+        kafkaConsumer.subscribe(topics);
+        try{
+            while (true){
+                ConsumerRecords records = kafkaConsumer.poll(10);
+                for (ConsumerRecord record: records){
+                    System.out.println(
+					String.format(
+					"Topic - %s, Partition - %d, Value: %s", record.topic(), record.partition(), record.value()
+					));
+                }
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }finally {
+            kafkaConsumer.close();
+        }
+    }
+}
+```
