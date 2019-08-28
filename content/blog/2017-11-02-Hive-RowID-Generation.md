@@ -19,7 +19,7 @@ Hive have a couple of internal functions to achieve this. ROW_NUMBER function, w
 SELECT ROW_NUMBER() OVER () as row_num FROM table_name
 ```
 
-However, it is reported in some version of Hive that the function has exceptions when used in views or weird behavior, see here and there. Therefore, it is a quite danger to use this approach right now since your result is unexpected across different version of Hive.
+However, it is reported in some version of Hive that the function has exceptions when used in views or weird behavior, see [here](https://issues.apache.org/jira/browse/HIVE-11583). Therefore, it is a quite danger to use this approach right now since your result is unexpected across different version of Hive.
 
 ### Java Package
 
@@ -57,6 +57,10 @@ BLOCK__OFFSET__INSIDE__FILE,
 ROW__OFFSET__INSIDE__BLOCK) as row_num
 FROM table_name
 ```
+
+### Composite Keys
+We can use composite key to identify each rows too when your logic does not require a sequence key. Below example is to choose some nature keys with some random seed.
+```SELECT md5(concat_ws('', cob, rule, cl_id, cast(max(cl_amt) as string), cast(rand(1) as string))) as row_id;```
 
 ## Conclusion
 
