@@ -1,34 +1,23 @@
 +++
 title = "The Complete SQL Tuning"
-date = "2019-09-10T14:53:46+03:00"
+date = "2019-09-02T14:53:46+03:00"
 tags = ["big data"]
 categories = ["article"]
-banner = "/img/banners/interview.jpg"
+banner = "/img/banners/sql_tuning.jpg"
 +++
 
-## SQL Statement 
+## SQL Statement (MySQL)
 
-1. 对查询进行优化，应尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引。
-
-1. 应尽量避免在 where 子句中对字段进行 null 值判断，创建表时NULL是默认值，但大多数时候应该使用NOT NULL，或者使用一个特殊的值，如0，-1作为默 认值。
-
-1. 应尽量避免在 where 子句中使用!=或<>操作符， MySQL只有对以下操作符才使用索引：<，<=，=，>，>=，BETWEEN，IN，以及某些时候的LIKE。
-
-1. 应尽量避免在 where 子句中使用 or 来连接条件， 否则将导致引擎放弃使用索引而进行全表扫描， 可以 使用UNION合并查询： select id from t where num=10 union all select id from t where num=20
-
-1. in 和 not in 也要慎用，否则会导致全表扫描，对于连续的数值，能用 between 就不要用 in 了：Select id from t where num between 1 and 3
-
-1. 下面的查询也将导致全表扫描：select id from t where name like ‘%abc%’ 或者select id from t where name like ‘%abc’若要提高效率，可以考虑全文检索。而select id from t where name like ‘abc%’ 才用到索引
-
-1. 如果在 where 子句中使用参数，也会导致全表扫描。
-
-1. 应尽量避免在 where 子句中对字段进行表达式操作，应尽量避免在where子句中对字段进行函数操作
-
-1. 很多时候用 exists 代替 in 是一个好的选择： select num from a where num in(select num from b).用下面的语句替换： select num from a where exists(select 1 from b where num=a.num)
-
-1. 索引固然可以提高相应的 select 的效率，但同时也降低了 insert 及 update 的效率，因为 insert 或 update 时有可能会重建索引，所以怎样建索引需要慎重考虑，视具体情况而定。一个表的索引数最好不要超过6个，若太多则应考虑一些不常使用到的列上建的索引是否有必要。
-
-1. 应尽可能的避免更新 clustered 索引数据列， 因为 clustered 索引数据列的顺序就是表记录的物理存储顺序，一旦该列值改变将导致整个表记录的顺序的调整，会耗费相当大的资源。若应用系统需要频繁更新 clustered 索引数据列，那么需要考虑是否应将该索引建为 clustered 索引。
+1. Aviod full table scan and try to create index on the columns used after **where** or **order by**.
+1. Aviod check null after **where** clause. You set set null as default value when creating tables. However, mostly we should use not null value or use special value, such as 0 or -1 for instead.
+1. Avoid using != or <> after **where**. MySQL can support indexing on <, <=, =, >, >=, BETWEEN,IN, and sometimes LIKE。
+1. Avoid using or after **where**. Or else, it causes full table scan rather using index. We can try to use **UNION** for instead. ```select id from t where num=10 union all select id from t where num=20```
+1. Avoid using **in** and **not in**. Because it is likely to cause full table scan. If possible, use **between**, such as ```select id from t where num between 1 and 3```
+1. Avoid using parameters after **where**, which is likely to cause full table scan.
+1. Query ```select id from t where name like ‘%abc%’``` and ```select id from t where name like ‘%abc’``` may cause full table scan. Use ```select id from t where name like ‘abc%’``` to leverage index.
+1. Use **exists** instead of **in**, such as ```select num from a where num in(select num from b)``` rewrite as ```select num from a where exists(select 1 from b where num=a.num)```
+1. Index can improve the **select** performance. However, it may decrease the performance of **update** and **insert**, which could rebuild the index. Make more considerations when you create more than 6 indexes for one table.
+1. Aviod update columns who has cluster index, because the cluster index use records' physical ordering. By updating it, it leads lots of data movement physically. If ou have such kinds of columns requires frequent update, create non-cluster index on it.
 
 1. 尽量使用数字型字段，若只含数值信息的字段尽量不要设计为字符型，这会降低查询和连接的性能，并会增加存储开销。
 
