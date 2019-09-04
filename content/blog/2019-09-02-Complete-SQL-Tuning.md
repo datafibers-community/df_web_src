@@ -9,19 +9,28 @@ banner = "/img/banners/sql_tuning.jpg"
 ## SQL Statement (MySQL)
 
 1. Aviod full table scan and try to create index on the columns used after **where** or **order by**.
+
 1. Aviod check null after **where** clause. You set set null as default value when creating tables. However, mostly we should use not null value or use special value, such as 0 or -1 for instead.
+
 1. Avoid using != or <> after **where**. MySQL can support indexing on <, <=, =, >, >=, BETWEEN,IN, and sometimes LIKE。
+
 1. Avoid using or after **where**. Or else, it causes full table scan rather using index. We can try to use **UNION** for instead. ```select id from t where num=10 union all select id from t where num=20```
+
 1. Avoid using **in** and **not in**. Because it is likely to cause full table scan. If possible, use **between**, such as ```select id from t where num between 1 and 3```
+
 1. Avoid using parameters after **where**, which is likely to cause full table scan.
+
 1. Query ```select id from t where name like ‘%abc%’``` and ```select id from t where name like ‘%abc’``` may cause full table scan. Use ```select id from t where name like ‘abc%’``` to leverage index.
+
 1. Use **exists** instead of **in**, such as ```select num from a where num in(select num from b)``` rewrite as ```select num from a where exists(select 1 from b where num=a.num)```
+
 1. Index can improve the **select** performance. However, it may decrease the performance of **update** and **insert**, which could rebuild the index. Make more considerations when you create more than 6 indexes for one table.
+
 1. Aviod update columns who has cluster index, because the cluster index use records' physical ordering. By updating it, it leads lots of data movement physically. If ou have such kinds of columns requires frequent update, create non-cluster index on it.
 
-1. 尽量使用数字型字段，若只含数值信息的字段尽量不要设计为字符型，这会降低查询和连接的性能，并会增加存储开销。
+1. Use number data type instead of string 
 
-1. 尽可能的使用 varchar/nvarchar 代替 char/nchar ， 因为首先变长字段存储空间小，可以节省存储空间，其次对于查询来说，在一个相对较小的字段内搜索效率显然要高些。
+1. Use **varchar/nvarchar** instead of **char/nchar** for saving more storage and improving query performance
 
 1. 最好不要使用”“返回所有： select from t ，用具体的字段列表代替“*”，不要返回用不到的任何字段。
 
