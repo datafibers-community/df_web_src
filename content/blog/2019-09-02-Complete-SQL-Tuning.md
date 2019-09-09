@@ -32,81 +32,51 @@ banner = "/img/banners/sql_tuning.jpg"
 
 1. Use **varchar/nvarchar** instead of **char/nchar** for saving more storage and improving query performance
 
-1. 最好不要使用”“返回所有： select from t ，用具体的字段列表代替“*”，不要返回用不到的任何字段。
+1. If possible use columns rather than select * 
 
-1. 尽量避免向客户端返回大数据量，若数据量过大，应该考虑相应需求是否合理。
+1. Use table alias when you have many tables in the query
 
-1. 使用表的别名(Alias)：当在SQL语句中连接多个表时,请使用表的别名并把别名前缀于每个Column上.这样一来,就可以减少解析的时间并减少那些由Column歧义引起的语法错误。
+1. Use temporary tables to deal with complex logic and data transformation.
 
-1. 使用“临时表”暂存中间结果 
-简化SQL语句的重要方法就是采用临时表暂存中间结果，但是，临时表的好处远远不止这些，将临时结果暂存在临时表，后面的查询就在tempdb中了，这可以避免程序中多次扫描主表，也大大减少了程序执行中“共享锁”阻塞“更新锁”，减少了阻塞，提高了并发性能。
+1. Use **UNION ALL** has more chances to leverage index than using **OR**.
 
-1. 一些SQL查询语句应加上nolock，读、写是会相互阻塞的，为了提高并发性能，对于一些查询，可以加上nolock，这样读的时候可以允许写，但缺点是可能读到未提交的脏数据。使用 nolock有3条原则。查询的结果用于“插、删、改”的不能加nolock ！查询的表属于频繁发生页分裂的，慎用nolock ！使用临时表一样可以保存“数据前影”，起到类似Oracle的undo表空间的功能，能采用临时表提高并发性能的，不要用nolock 。
+1. For the list of values after **IN**, put the most frequent value in front.
 
-1. 常见的简化规则如下：不要有超过5个以上的表连接（JOIN），考虑使用临时表或表变量存放中间结果。少用子查询，视图嵌套不要过深,一般视图嵌套不要超过2个为宜。
+1. Since store procedure is precompiled. It has better performance.
 
-1. 将需要查询的结果预先计算好放在表中，查询的时候再Select。这在SQL7.0以前是最重要的手段。例如医院的住院费计算。
+1. Try to use **exists** instead of **select count(1)**. **count(1)** performs better than **count(*)**.
 
-1. 用OR的字句可以分解成多个查询，并且通过UNION 连接多个查询。他们的速度只同是否使用索引有关,如果查询需要用到联合索引，用UNION all执行的效率更高.多个OR的字句没有用到索引，改写成UNION的形式再试图与索引匹配。一个关键的问题是否用到索引。
+1. Using Index： Index is decided according to query patterns. Most of time, do not create too many indexes on one table (ideally, less than 6). Try to use index as munch as possible. If multiple columns are used in the index, the index will be used only when the first column is used in query condition. Index rebuild should be scheduled and mainteained.　
 
-1. 在IN后面值的列表中，将出现最频繁的值放在最前面，出现得最少的放在最后面，减少判断的次数。
+1. Below queries have proper index created but not being used. 
+```
+SELECT * FROM record WHERE substrINg(card_no,1,4)=’5378’ (13s) 
+SELECT * FROM record WHERE amount/30< 1000 (11s)
+SELECT * FROM record WHERE convert(char(10),date,112)=’19991201’ (10s)
+``` 
 
-1. 尽量将数据的处理工作放在服务器上，减少网络的开销，如使用存储过程。存储过程是编译好、优化过、并且被组织到一个执行规划里、且存储在数据库中的SQL语句，是控制流语言的集合，速度当然快。反复执行的动态SQL,可以使用临时存储过程，该过程（临时表）被放在Tempdb中。
+By remove the calclations on the indexed columns, we ensure the index being used and performance becomes better.
+```
+SELECT * FROM record WHERE card_no like ‘5378%’ (< 1s)
+SELECT * FROM record WHERE amount< 1000*30 (< 1s) 
+SELECT * FROM record WHERE date= ‘1999/12/01’ (< 1s)
+```
 
-1. 当服务器的内存够多时，配制线程数量 = 最大连接数+5，这样能发挥最大的效率；否则使用 配制线程数量<最大连接数启用SQL SERVER的线程池来解决,如果还是数量 = 最大连接数+5，严重的损害服务器的性能。
+1. Bulk insert or update is always the first choice.
 
-1. 查询的关联同写的顺序 
-select a.personMemberID, * from chineseresume a,personmember b where personMemberID = b.referenceid and a.personMemberID = ‘JCNPRH39681’ （A = B ,B = ‘号码’） 
-select a.personMemberID, * from chineseresume a,personmember b where a.personMemberID = b.referenceid and a.personMemberID = ‘JCNPRH39681’ and b.referenceid = ‘JCNPRH39681’ （A = B ,B = ‘号码’， A = ‘号码’） 
-select a.personMemberID, * from chineseresume a,personmember b where b.referenceid = ‘JCNPRH39681’ and a.personMemberID = ‘JCNPRH39681’ （B = ‘号码’， A = ‘号码’）
+1. If possible remove rows before **GROUP BY**. 
+Slow: 
+```
+SELECT JOB, AVG(SAL) FROM EMP GROUP BY JOB HAVING JOB = 'PRESIDENT' OR JOB = 'MANAGER'
+``` 
+Fast:
+``` 
+SELECT JOB, AVG(SAL) FROM EMP WHERE JOB = 'PRESIDENT' OR JOB = 'MANAGER' GROUP BY JOB
+```
 
-1. 尽量使用exists代替select count(1)来判断是否存在记录，count函数只有在统计表中所有行数时使用，而且count(1)比count(*)更有效率。
+1. Try to use Common Table Expression
 
-1. 尽量使用“>=”，不要使用“>”。
-
-1. 索引的使用规范：索引的创建要与应用结合考虑，建议大的OLTP表不要超过6个索引；尽可能的使用索引字段作为查询条件，尤其是聚簇索引，必要时可以通过index index_name来强制指定索引；避免对大表查询时进行table scan，必要时考虑新建索引；在使用索引字段作为条件时，如果该索引是联合索引，那么必须使用到该索引中的第一个字段作为条件时才能保证系统使用该索引，否则该索引将不会被使用；要注意索引的维护，周期性重建索引，重新编译存储过程。　　
-
-1. 下列SQL条件语句中的列都建有恰当的索引，但执行速度却非常慢： 
-SELECT * FROM record WHERE substrINg(card_no,1,4)=’5378’ (13秒) 
-SELECT * FROM record WHERE amount/30< 1000 （11秒） 
-SELECT * FROM record WHERE convert(char(10),date,112)=’19991201’ （10秒） 
-分析： 
-WHERE子句中对列的任何操作结果都是在SQL运行时逐列计算得到的，因此它不得不进行表搜索，而没有使用该列上面的索引；如果这些结果在查询编译时就能得到，那么就可以被SQL优化器优化，使用索引，避免表搜索，因此将SQL重写成下面这样： 
-SELECT * FROM record WHERE card_no like ‘5378%’ （< 1秒） 
-SELECT * FROM record WHERE amount< 1000*30 （< 1秒） 
-SELECT * FROM record WHERE date= ‘1999/12/01’ （< 1秒）
-
-1. 当有一批处理的插入或更新时，用批量插入或批量更新，绝不会一条条记录的去更新!
-
-1. 在所有的存储过程中，能够用SQL语句的，我绝不会用循环去实现! 
-(例如：列出上个月的每一天，我会用connect by去递归查询一下，绝不会去用循环从上个月第一天到最后一天)
-
-1. 选择最有效率的表名顺序(只在基于规则的优化器中有效)： 
-oracle 的解析器按照从右到左的顺序处理FROM子句中的表名，FROM子句中写在最后的表(基础表 driving table)将被最先处理，在FROM子句中包含多个表的情况下,你必须选择记录条数最少的表作为基础表。如果有3个以上的表连接查询, 那就需要选择交叉表(intersection table)作为基础表, 交叉表是指那个被其他表所引用的表.
-
-1. 提高GROUP BY语句的效率, 可以通过将不需要的记录在GROUP BY 之前过滤掉.下面两个查询返回相同结果，但第二个明显就快了许多. 
-低效: 
-SELECT JOB , AVG(SAL) 
-FROM EMP 
-GROUP BY JOB 
-HAVING JOB =’PRESIDENT’ 
-OR JOB =’MANAGER’ 
-高效: 
-SELECT JOB , AVG(SAL) 
-FROM EMP 
-WHERE JOB =’PRESIDENT’ 
-OR JOB =’MANAGER’ 
-GROUP BY JOB
-
-1. sql语句用大写，因为oracle 总是先解析sql语句，把小写的字母转换成大写的再执行。
-
-1. 别名的使用，别名是大型数据库的应用技巧，就是表名、列名在查询中以一个字母为别名，查询速度要比建连接表快1.5倍。
-
-1. 避免死锁，在你的存储过程和触发器中访问同一个表时总是以相同的顺序;事务应经可能地缩短，在一个事务中应尽可能减少涉及到的数据量;永远不要在事务中等待用户输入。
-
-1. 避免使用临时表，除非却有需要，否则应尽量避免使用临时表，相反，可以使用表变量代替;大多数时候(99%)，表变量驻扎在内存中，因此速度比临时表更快，临时表驻扎在TempDb数据库中，因此临时表上的操作需要跨数据库通信，速度自然慢。
-
-1. 最好不要使用触发器，触发一个触发器，执行一个触发器事件本身就是一个耗费资源的过程;如果能够使用约束实现的，尽量不要使用触发器;不要为不同的触发事件(Insert，Update和Delete)使用相同的触发器;不要在触发器中使用事务型代码。
+1. Trigger ususally brings performance overhead.
 
 1. 索引创建规则： 
 表的主键、外键必须有索引； 
@@ -139,27 +109,27 @@ GROUP BY JOB
 
 1. 查询缓冲并不自动处理空格，因此，在写SQL语句时，应尽量减少空格的使用，尤其是在SQL首和尾的空格(因为，查询缓冲并不自动截取首尾空格)。
 
-43，member用mid做標準進行分表方便查询么？一般的业务需求中基本上都是以username为查询依据，正常应当是username做hash取模来分表吧。分表的话 mysql 的partition功能就是干这个的，对代码是透明的； 
+1. member用mid做標準進行分表方便查询么？一般的业务需求中基本上都是以username为查询依据，正常应当是username做hash取模来分表吧。分表的话 mysql 的partition功能就是干这个的，对代码是透明的； 
 在代码层面去实现貌似是不合理的。
 
-44，我们应该为数据库里的每张表都设置一个ID做为其主键，而且最好的是一个INT型的（推荐使用UNSIGNED），并设置上自动增加的AUTO_INCREMENT标志。
+1. 我们应该为数据库里的每张表都设置一个ID做为其主键，而且最好的是一个INT型的（推荐使用UNSIGNED），并设置上自动增加的AUTO_INCREMENT标志。
 
-45，在所有的存储过程和触发器的开始处设置 SET NOCOUNT ON ，在结束时设置 SET NOCOUNT OFF 。 
+1. 在所有的存储过程和触发器的开始处设置 SET NOCOUNT ON ，在结束时设置 SET NOCOUNT OFF 。 
 无需在执行存储过程和触发器的每个语句后向客户端发送 DONE_IN_PROC 消息。
 
-46，MySQL查询可以启用高速查询缓存。这是提高数据库性能的有效Mysql优化方法之一。当同一个查询被执行多次时，从缓存中提取数据和直接从数据库中返回数据快很多。
+1. MySQL查询可以启用高速查询缓存。这是提高数据库性能的有效Mysql优化方法之一。当同一个查询被执行多次时，从缓存中提取数据和直接从数据库中返回数据快很多。
 
-47，EXPLAIN SELECT 查询用来跟踪查看效果 
+1. EXPLAIN SELECT 查询用来跟踪查看效果 
 使用 EXPLAIN 关键字可以让你知道MySQL是如何处理你的SQL语句的。这可以帮你分析你的查询语句或是表结构的性能瓶颈。EXPLAIN 的查询结果还会告诉你你的索引主键被如何利用的，你的数据表是如何被搜索和排序的……等等，等等。
 
-48，当只要一行数据时使用 LIMIT 1 
+1. 当只要一行数据时使用 LIMIT 1 
 当你查询表的有些时候，你已经知道结果只会有一条结果，但因为你可能需要去fetch游标，或是你也许会去检查返回的记录数。在这种情况下，加上 LIMIT 1 可以增加性能。这样一样，MySQL数据库引擎会在找到一条数据后停止搜索，而不是继续往后查少下一条符合记录的数据。
 
-49,选择表合适存储引擎： 
+1. 选择表合适存储引擎： 
 myisam: 应用时以读和插入操作为主，只有少量的更新和删除，并且对事务的完整性，并发性要求不是很高的。 
 Innodb： 事务处理，以及并发条件下要求数据的一致性。除了插入和查询外，包括很多的更新和删除。（Innodb有效地降低删除和更新导致的锁定）。对于支持事务的InnoDB类型的表来说，影响速度的主要原因是AUTOCOMMIT默认设置是打开的，而且程序没有显式调用BEGIN 开始事务，导致每插入一条都自动提交，严重影响了速度。可以在执行sql前调用begin，多条sql形成一个事物（即使autocommit打开也可以），将大大提高性能。
 
-50,优化表的数据类型,选择合适的数据类型： 
+1. 优化表的数据类型,选择合适的数据类型： 
 原则：更小通常更好，简单就好，所有字段都得有默认值,尽量避免null。 
 例如：数据库表设计时候更小的占磁盘空间尽可能使用更小的整数类型.(mediumint就比int更合适) 
 比如时间字段：datetime和timestamp, datetime占用8个字节，而timestamp占用4个字节，只用了一半，而timestamp表示的范围是1970—2037适合做更新时间 
@@ -172,83 +142,35 @@ MySQL可以很好的支持大数据量的存取，但是一般说来，数据库
 对于某些文本字段，例如“省份”或者“性别”，我们可以将它们定义为ENUM类型。因为在MySQL中，ENUM类型被当作数值型数据来处理， 
 而数值型数据被处理起来的速度要比文本类型快得多。这样，我们又可以提高数据库的性能。
 
-51， 字符串数据类型：char，varchar，text选择区别
+1. 字符串数据类型：char，varchar，text选择区别
 
-52，任何对列的操作都将导致表扫描，它包括数据库函数、计算表达式等等，查询时要尽可能将操作移至等号右边。
+1. 任何对列的操作都将导致表扫描，它包括数据库函数、计算表达式等等，查询时要尽可能将操作移至等号右边。
 
 ## Indexing
 
-1.对查询进行优化，应尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引。
+1. 应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如：select id from t where num is null可以在num上设置默认值0，确保表中num列没有null值，然后这样查询：select id from t where num=0
 
-2.应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如：select id from t where num is null可以在num上设置默认值0，确保表中num列没有null值，然后这样查询：select id from t where num=0
+1. 应尽量避免在 where 子句中使用!=或<>操作符，否则引擎将放弃使用索引而进行全表扫描。
 
-3.应尽量避免在 where 子句中使用!=或<>操作符，否则引擎将放弃使用索引而进行全表扫描。
+1. 应尽量避免在 where 子句中使用or 来连接条件，否则将导致引擎放弃使用索引而进行全表扫描，如：select id from t where num=10 or num=20可以这样查询：select id from t where num=10 union all select id from t where num=20 和 not in 也要慎用，否则会导致全表扫描，如：select id from t where num in(1,2,3) 对于连续的数值，能用 between 就不要用 in 了：select id from t where num between 1 and 3
 
-4.应尽量避免在 where 子句中使用or 来连接条件，否则将导致引擎放弃使用索引而进行全表扫描，如：select id from t where num=10 or num=20可以这样查询：select id from t where num=10 union all select id from t where num=20
+1. 临时表并不是不可使用，适当地使用它们可以使某些例程更有效，例如，当需要重复引用大型表或常用表中的某个数据集时。但是，对于一次性事件，最好使用导出表。
 
-http://5.in 和 not in 也要慎用，否则会导致全表扫描，如：select id from t where num in(1,2,3) 对于连续的数值，能用 between 就不要用 in 了：select id from t where num between 1 and 3
+1. 在新建临时表时，如果一次性插入数据量很大，那么可以使用 select into 代替 create table，避免造成大量 log ，以提高速度；如果数据量不大，为了缓和系统表的资源，应先create table，然后insert。
 
-6.下面的查询也将导致全表扫描：select id from t where name like ‘李%’若要提高效率，可以考虑全文检索。
+1. 如果使用到了临时表，在存储过程的最后务必将所有的临时表显式删除，先 truncate table ，然后 drop table ，这样可以避免系统表的较长时间锁定。
 
-7.如果在 where 子句中使用参数，也会导致全表扫描。因为SQL只有在运行时才会解析局部变量，但优化程序不能将访问计划的选择推迟到运行时；它必须在编译时进行选择。然 而，如果在编译时建立访问计划，变量的值还是未知的，因而无法作为索引选择的输入项。如下面语句将进行全表扫描：select id from t where num=@num可以改为强制查询使用索引：select id from t with(index(索引名)) where num=@num
+1. 尽量避免使用游标，因为游标的效率较差，如果游标操作的数据超过1万行，那么就应该考虑改写。
 
-8.应尽量避免在 where 子句中对字段进行表达式操作，这将导致引擎放弃使用索引而进行全表扫描。如：select id from t where num/2=100应改为:select id from t where num=100*2
+1. 使用基于游标的方法或临时表方法之前，应先寻找基于集的解决方案来解决问题，基于集的方法通常更有效。
 
-9.应尽量避免在where子句中对字段进行函数操作，这将导致引擎放弃使用索引而进行全表扫描。如：select id from t where substring(name,1,3)=’abc’ ，name以abc开头的id
+1. 与临时表一样，游标并不是不可使 用。对小型数据集使用 FAST_FORWARD 游标通常要优于其他逐行处理方法，尤其是在必须引用几个表才能获得所需的数据时。在结果集中包括“合计”的例程通常要比使用游标执行的速度快。如果开发时 间允许，基于游标的方法和基于集的方法都可以尝试一下，看哪一种方法的效果更好。
 
-应改为:
+1. 在所有的存储过程和触发器的开始处设置 SET NOCOUNT ON ，在结束时设置 SET NOCOUNT OFF 。无需在执行存储过程和触发器的每个语句后向客户端发送DONE_IN_PROC 消息。
 
-select id from t where name like ‘abc%’
+1. Aviod doing huge transactions.
 
-10.不要在 where 子句中的“=”左边进行函数、算术运算或其他表达式运算，否则系统将可能无法正确使用索引。
-
-11.在使用索引字段作为条件时，如果该索引是复合索引，那么必须使用到该索引中的第一个字段作为条件时才能保证系统使用该索引，否则该索引将不会被使用，并且应尽可能的让字段顺序与索引顺序相一致。
-
-12.不要写一些没有意义的查询，如需要生成一个空表结构：select col1,col2 into #t from t where 1=0
-
-这类代码不会返回任何结果集，但是会消耗系统资源的，应改成这样：
-
-create table #t(…)
-
-13.很多时候用 exists 代替 in 是一个好的选择：select num from a where num in(select num from b)
-
-用下面的语句替换：
-
-select num from a where exists(select 1 from b where num=a.num)
-
-14.并不是所有索引对查询都有效，SQL是根据表中数据来进行查询优化的，当索引列有大量数据重复时，SQL查询可能不会去利用索引，如一表中有字段sex，male、female几乎各一半，那么即使在sex上建了索引也对查询效率起不了作用。
-
-15.索引并不是越多越好，索引固然可 以提高相应的 select 的效率，但同时也降低了 insert 及 update 的效率，因为 insert 或 update 时有可能会重建索引，所以怎样建索引需要慎重考虑，视具体情况而定。一个表的索引数最好不要超过6个，若太多则应考虑一些不常使用到的列上建的索引是否有 必要。
-
-16.应尽可能的避免更新 clustered 索引数据列，因为 clustered 索引数据列的顺序就是表记录的物理存储顺序，一旦该列值改变将导致整个表记录的顺序的调整，会耗费相当大的资源。若应用系统需要频繁更新 clustered 索引数据列，那么需要考虑是否应将该索引建为 clustered 索引。
-
-17.尽量使用数字型字段，若只含数值信息的字段尽量不要设计为字符型，这会降低查询和连接的性能，并会增加存储开销。这是因为引擎在处理查询和连接时会逐个比较字符串中每一个字符，而对于数字型而言只需要比较一次就够了。
-
-18.尽可能的使用 varchar/nvarchar 代替 char/nchar ，因为首先变长字段存储空间小，可以节省存储空间，其次对于查询来说，在一个相对较小的字段内搜索效率显然要高些。
-
-19.任何地方都不要使用 select * from t ，用具体的字段列表代替“*”，不要返回用不到的任何字段。
-
-20.尽量使用表变量来代替临时表。如果表变量包含大量数据，请注意索引非常有限（只有主键索引）。
-
-21.避免频繁创建和删除临时表，以减少系统表资源的消耗。
-
-22.临时表并不是不可使用，适当地使用它们可以使某些例程更有效，例如，当需要重复引用大型表或常用表中的某个数据集时。但是，对于一次性事件，最好使用导出表。
-
-23.在新建临时表时，如果一次性插入数据量很大，那么可以使用 select into 代替 create table，避免造成大量 log ，以提高速度；如果数据量不大，为了缓和系统表的资源，应先create table，然后insert。
-
-24.如果使用到了临时表，在存储过程的最后务必将所有的临时表显式删除，先 truncate table ，然后 drop table ，这样可以避免系统表的较长时间锁定。
-
-25.尽量避免使用游标，因为游标的效率较差，如果游标操作的数据超过1万行，那么就应该考虑改写。
-
-26.使用基于游标的方法或临时表方法之前，应先寻找基于集的解决方案来解决问题，基于集的方法通常更有效。
-
-27.与临时表一样，游标并不是不可使 用。对小型数据集使用 FAST_FORWARD 游标通常要优于其他逐行处理方法，尤其是在必须引用几个表才能获得所需的数据时。在结果集中包括“合计”的例程通常要比使用游标执行的速度快。如果开发时 间允许，基于游标的方法和基于集的方法都可以尝试一下，看哪一种方法的效果更好。
-
-28.在所有的存储过程和触发器的开始处设置 SET NOCOUNT ON ，在结束时设置 SET NOCOUNT OFF 。无需在执行存储过程和触发器的每个语句后向客户端发送DONE_IN_PROC 消息。
-
-29.尽量避免大事务操作，提高系统并发能力。
-
-30.尽量避免向客户端返回大数据量，若数据量过大，应该考虑相应需求是否合理。
+1. Avoid return too much data to the client side
 
 ## Other
 MySQL 对于千万级的大表要怎么优化？
