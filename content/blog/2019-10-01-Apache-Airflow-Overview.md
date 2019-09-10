@@ -3,7 +3,7 @@ title = "Apache Airflow Overview"
 date = "2019-10-01T19:50:46+02:00"
 tags = ["big data"]
 categories = ["artical"]
-banner = "/img/banners/kafka.jpg"
+banner = "/img/banners/air_flow.jpg"
 +++
 
 ### What is Airflow?
