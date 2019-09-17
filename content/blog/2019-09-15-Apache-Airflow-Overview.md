@@ -10,6 +10,7 @@ banner = "/img/banners/air_flow.jpg"
 Airflow is a platform to programmaticaly author, schedule and monitor workflows or data pipelines. It composes Directed Acyclic Graph (DAG) with multiple tasks which can be executed independently. The Airflow scheduler executes the tasks on an array of workers while following the specified dependencies. Rich command line utilities make performing complex surgeries on DAGs a snap. The rich user interface makes it easy to visualize pipelines running in production, monitor progress, and troubleshoot issues when needed. The Airflow project joined the Apache Software Foundation’s incubation program in 2016. Google cloud also provides a cloud service, [CLOUD COMPOSER](https://cloud.google.com/composer/), for people who do not want to host Airflow themselves.
 
 Below is a short summary for the highlights of Airflow.
+
 * A workflow (data-pipeline) management system developed by Airbnb
 * A framework to define tasks & dependencies in python
 * Executing, scheduling, distributing tasks accross worker nodes.
@@ -20,6 +21,7 @@ Below is a short summary for the highlights of Airflow.
 * Used by more than 200 companies: Airbnb, Yahoo, Paypal, Intel, Stripe,…
 
 ### What makes Airflow great?
+
 * Can handle upstream/downstream dependencies gracefully (Example: upstream missing tables)
 * Easy to reprocess historical jobs by date, or re-run for specific intervals
 * Jobs can pass parameters to other jobs downstream
@@ -41,13 +43,16 @@ Directed Acyclic Graph (DAG) is a graph that has no cycles and the data in each 
 
 #### Operators
 Operators determine what actually gets done. An operator defines an individual task that needs to be performed. There are different types of operators available.
+
 ##### Sensors
 It is a certain type of operator that will keep running until a certain criteria is met. Example include waiting for a certain time, external file, or upstream data source.
+
 * HdfsSensor: Waits for a file or folder to land in HDFS
 * NamedHivePartitionSensor: check whether the most recent partition of a Hive table is available for downstream processing.
 
 ##### Operators
 It triggers a certain action (e.g. run a bash command, execute a python function, or execute a Hive query, etc)
+
 * BashOperator: executes a bash command
 * PythonOperator: calls an arbitrary Python function
 * HiveOperator: executes hql code or hive script in a specific Hive database.
@@ -58,6 +63,7 @@ It triggers a certain action (e.g. run a bash command, execute a python function
 
 ##### Transfers: 
 It moves data from one location to another.
+
 * MySqlToHiveTransfer: Moves data from MySql to Hive.
 * S3ToRedshiftTransfer: load files from s3 to Redshift
 
