@@ -66,7 +66,7 @@ paginate = 10
     viewMorePostLink = "/blog/"
     author = "DataFibers"
     defaultKeywords = ["datafibers", "big data", "streaming"]
-    defaultDescription = "DataFibers enterprise open sourec data bus"
+    defaultDescription = "DataFibers enterprise open source data bus"
 
     # Google Maps API key (if not set will default to not passing a key.)
     googleMapsApiKey = "AIzaSyCksU3IZTuUK6fA-doQUfQ4KcYm7mB_vlk"
@@ -90,7 +90,7 @@ paginate = 10
     email = "datafibers@gmail.com"
 
     about_us = "<p>DataFibers are expertises by applying its cutting edge big data technologies and solutions on enterprise big data centric use cases.</p>"
-    copyright = "Copyright (c) 2018, DataFibers all rights reserved."
+    copyright = "Copyright (c) 2020, DataFibers all rights reserved."
 
     # Format dates with Go's time formatting
     date_format = "January 2, 2006"
@@ -131,19 +131,19 @@ paginate = 10
     enable = true
     # All carousel items are defined in their own files. You can find example items
     # at 'exampleSite/data/carousel'.
-    # For more informtion take a look at the README.
+    # For more information take a look at the README.
 
 [params.features]
     enable = true
     # All features are defined in their own files. You can find example items
     # at 'exampleSite/data/features'.
-    # For more informtion take a look at the README.
+    # For more information take a look at the README.
 
 [params.testimonials]
     enable = false
     # All testimonials are defined in their own files. You can find example items
     # at 'exampleSite/data/testimonials'.
-    # For more informtion take a look at the README.
+    # For more information take a look at the README.
     title = "Testimonials"
     subtitle = "Our communities have worked with many companies, technical groups, and big data funs and we always like to hear their feedbacks. Have a look at what they talks about DataFibers."
 
@@ -159,11 +159,11 @@ paginate = 10
     enable = true
     # All clients are defined in their own files. You can find example items
     # at 'exampleSite/data/clients'.
-    # For more informtion take a look at the README.
+    # For more information take a look at the README.
     title = "Our Technologies"
     subtitle = ""
 
 [params.recent_posts]
     enable = true
     title = "From our blog"
-    subtitle = "Here, we are sharing our experinece and best practice of using DataFibers as well as other big data technology."
+    subtitle = "Here, we are sharing our experience and best practice of using DataFibers as well as other big data technology."
