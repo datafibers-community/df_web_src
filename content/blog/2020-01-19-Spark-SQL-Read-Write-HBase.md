@@ -50,9 +50,10 @@ sqlContext.sql("select * from iteblog_table where id = 1 or id = 2")
 sqlContext.sql("select * from iteblog_table where id in (1, 2)")
 ```
 Because the search condition is aginst the RowKey, we can change it using **get** or **BulkGet**. The 1st SQL query is working as follows.
-![alt text](https://s.iteblog.com/pic/hbase/shc_get-iteblog.png)
+<p align="center"><img src="https://s.iteblog.com/pic/hbase/shc_get-iteblog.png" width="800"></p>
+
 The 2nd and 3rd query are equal. It will convert ```key in (x1, x2, x3..)``` to ```(key == x1) or (key == x2) or ...``` as follows.
-![](https://s.iteblog.com/pic/hbase/shc_bulkget-iteblog.png)
+<p align="center"><img src="https://s.iteblog.com/pic/hbase/shc_bulkget-iteblog.png" width="800"></p>
 
 if the query has both filtering on RowKey and other columns (see below example), 
 ```
@@ -84,7 +85,7 @@ sqlContext.sql("select id, col6, col8 from iteblog_table where col7 = 'xxx'")
 Obviously, querying in this way is not very effecient. A better way is to push computing to HBase layer using ```SingleColumnValueFilter``` to filter as much as possible before moving data to Spark. In this case, we do not have to transfer lots of data from HBase to Spark.
 
 #### 2. Composition RowKey Optimization
-SHC also supports Composition  还支持组合 RowKey 的方式来建表，具体如下：
+SHC also supports Composition as follows：
 ```
 def cat =
   s"""{
