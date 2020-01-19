@@ -1,6 +1,6 @@
 +++
 title = "Apache Airflow Overview"
-date = "2019-09-15T19:50:46+02:00"
+date = "2019-12-15T19:50:46+02:00"
 tags = ["big data"]
 categories = ["artical"]
 banner = "/img/banners/air_flow.jpg"

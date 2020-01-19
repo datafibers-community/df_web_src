@@ -1,6 +1,6 @@
 +++
 title = "Apache Kafka Producers"
-date = "2020-01-01T19:50:46+02:00"
+date = "2019-11-02T19:50:46+02:00"
 tags = ["kafka"]
 categories = ["digest"]
 banner = "/img/banners/kafka.jpg"
