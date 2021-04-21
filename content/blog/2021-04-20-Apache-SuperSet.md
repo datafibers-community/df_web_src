@@ -3,7 +3,7 @@ title = "Apache Superset:)"
 date = "2021-04-20T20:50:46+02:00"
 tags = ["apache"]
 categories = ["digest"]
-banner = "/img/banners/superset_logo.jpg"
+banner = "/img/banners/superset_logo.svg"
 +++
 ---
 On January 21, 2021, Apache's official announced that Apache® Superset™ has become a top-level project. Apache® Superset™ is a modern big data exploration and visualization platform that allows users to build dashboards quickly and easily using a simple code-free visualization builder and the most advanced SQL editor. The project was launched on Airbnb in 2015 and entered the Apache incubator in May 2017. Apache Superset is a big data-related BI visualization tool.
