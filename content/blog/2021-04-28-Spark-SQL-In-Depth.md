@@ -1,12 +1,12 @@
 +++
-title = "Spark SQL in Depth:)"
+title = "Spark SQL in Depth"
 date = "2021-04-28T20:50:46+02:00"
 tags = ["spark"]
 categories = ["digest"]
 banner = "/img/banners/spark_sql_title.png"
 +++
 ---
-In this article, we'll look at the details of how Spark SQL working on data queries.
+In this article, we'll look at how Spark SQL working on data queries in depth.
 
 ## Checking Execution Plan
 ### Data Preparing
@@ -15,8 +15,7 @@ create database if not exists test;
 
 create table if not exists test.t_name (name string);
 
-insert into test.t_name 
-values ('test1'),('test2'),('test3');
+insert into test.t_name values ('test1'),('test2'),('test3');
 ```
 ### Test Code Preparing
 Below Scala code is used with testing with blocking at the standard input at the end. In this case, we can see more details from Spark WebUI.
@@ -28,14 +27,11 @@ Below Scala code is used with testing with blocking at the standard input at the
         conf.set("spark.sql.hive.metastore.jars","path")
         conf.set("spark.sql.ui.explainMode", "extended") //Show all execution plan
 
-        val spark = SparkSession.builder().config(conf).master("local[1]")
-            .enableHiveSupport().getOrCreate()
+        val spark = SparkSession.builder().config(conf).master("local[1]").enableHiveSupport().getOrCreate()
 
         spark.sparkContext.setLogLevel("INFO")
 
-        val sql ="""
-              | select * from test.t_name
-              |""".stripMargin
+        val sql = "select * from test.t_name"
 
         val df = spark.sql(sql)
 
@@ -45,7 +41,7 @@ Below Scala code is used with testing with blocking at the standard input at the
     }
 ```
 ### Analyze Execution Plan
-There are four stages for analyzing and excuting the Spark SQL.
+There are four phases for analyzing and excuting the Spark SQL.
 
 1. Parse Logical Plan
 1. Analyz Logical Plan
@@ -92,13 +88,13 @@ GlobalLimit 21
 During the phase of optimized logical plan, the analyzed logical plan is further optimized. As result, there is no type conversion and projection needed for this example. However, the limitation of the rows returned is kept.
 
 
-####Physical Plan
+#### Physical Plan
 ```
 == Physical Plan ==
 CollectLimit 21
 +- Scan hive test.t_name [name#0], HiveTableRelation [`test`.`t_name`, org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe, Data Cols: [name#0], Partition Cols: []]
 ```
 Physical Plan is what is actually running in cluster.
-<p align="center"><img src="/img/banners/spark_sql_pic01.png" width="500"></p>
+<p align="center"><img src="/img/banners/spark_sql_pic01.png" width="400"></p>
 
 ## Checking Execution Log
