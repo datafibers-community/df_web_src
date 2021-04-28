@@ -27,7 +27,8 @@ Below Scala code is used with testing with blocking at the standard input at the
         conf.set("spark.sql.hive.metastore.jars","path")
         conf.set("spark.sql.ui.explainMode", "extended") //Show all execution plan
 
-        val spark = SparkSession.builder().config(conf).master("local[1]").enableHiveSupport().getOrCreate()
+        val spark = SparkSession.builder().config(conf).master("local[1]").enableHiveSupport()
+        						.getOrCreate()
 
         spark.sparkContext.setLogLevel("INFO")
 
