@@ -99,3 +99,132 @@ Physical Plan is what is actually running in cluster.
 <p align="center"><img src="/img/banners/spark_sql_pic01.png" width="400"></p>
 
 ## Checking Execution Log
+Logging is very important for development and troubleshooting. In this section, we'll look into detais of logs when a spark job is running. We set the logging level as INFO so that we can discover more details.
+
+### Loading Log Config
+Once the application starts, the log configuration is loaded.
+```
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/C:/opt/apache-maven-3.6.1/repository/org/slf4j/slf4j-log4j12/1.7.30/slf4j-log4j12-1.7.30.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/C:/opt/apache-maven-3.6.1/repository/org/slf4j/slf4j-simple/1.7.25/slf4j-simple-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+log4j:WARN No appenders could be found for logger (org.apache.hadoop.hive.conf.HiveConf).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+```
+Unless you provide your own log4j.property, or else Spark use its own settings from jar.
+
+### Submitting Spark Job
+Usually the Spark job is submitted to the cluster. When we run it in IDE, Spark uses JVM thread to simulate a cluster to run the job. ResourceUtils is used to load spark.driver.
+
+```
+21/04/23 16:54:51 INFO SparkContext: Running Spark version 3.1.1
+21/04/23 16:54:51 INFO ResourceUtils: ==============================================================
+21/04/23 16:54:51 INFO ResourceUtils: No custom resources configured for spark.driver.
+21/04/23 16:54:51 INFO ResourceUtils: ==============================================================
+21/04/23 16:54:51 INFO SparkContext: Submitted application: b72a567f-bba5-47c2-871a-1ae5db3e4352
+```
+
+### Loading Default Executors Setting
+Below logging is to describe the resources used by the executors. Since we do not clearly specify the settings for executers, the default one is used which is an executor with one core and 1gb memory. Every task uses one vcore, one executor task.
+
+```
+21/04/23 16:54:51 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+21/04/23 16:54:51 INFO ResourceProfile: Limiting resource is cpu
+21/04/23 16:54:51 INFO ResourceProfileManager: Added ResourceProfile id: 0
+```
+
+Note: the ResourceProfile id is 0. ResourceProfile is used to load executor settings.
+
+### Verifying Access Control
+Spark Kubernetes Security is by default disabled. SecurityManager is used to deal with Kebrous authentication.
+
+```
+21/04/23 16:54:52 INFO SecurityManager: Changing view acls to: USA,hdfs
+21/04/23 16:54:52 INFO SecurityManager: Changing modify acls to: USA,hdfs
+21/04/23 16:54:52 INFO SecurityManager: Changing view acls groups to: 
+21/04/23 16:54:52 INFO SecurityManager: Changing modify acls groups to: 
+21/04/23 16:54:52 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(USA, hdfs); groups with view permissions: Set(); users  with modify permissions: Set(USA, hdfs); groups with modify permissions: Set()
+```
+
+### Starting Spark Core Services
+Next, the MapOutputTracker, BlockManagerMaste, BlockManagerMasterEndpoint,  and OutputCommitCoordinator are registered. Then, starts the Spark UI and Netty service for data transmission。
+
+Key components:
+
+* SparkEnv - Spark running environment.
+* SparkUI - Spark web ui.
+* NettyBlockTransferService - Use Netty to send data.
+
+```
+21/04/23 16:54:55 INFO SparkEnv: Registering MapOutputTracker
+21/04/23 16:54:55 INFO SparkEnv: Registering BlockManagerMaster
+21/04/23 16:54:55 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+21/04/23 16:54:55 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+21/04/23 16:54:55 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+21/04/23 16:54:55 INFO DiskBlockManager: Created local directory at C:\Users\China\AppData\Local\Temp\blockmgr-89e66659-c81c-4922-85b0-dbcb38570c81
+21/04/23 16:54:56 INFO MemoryStore: MemoryStore started with capacity 4.1 GiB
+21/04/23 16:54:56 INFO SparkEnv: Registering OutputCommitCoordinator
+21/04/23 16:54:56 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+21/04/23 16:54:56 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://admin:4040
+21/04/23 16:54:56 INFO Executor: Starting executor ID driver on host admin
+21/04/23 16:54:56 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 57484.
+21/04/23 16:54:56 INFO NettyBlockTransferService: Server created on admin:57484
+
+```
+
+### Starting Block Manager
+Spark does its own memory management with BlockManager. In this example, the random block management policy is used and it registers on port 57484 which is same to NettyBlockTransfer. In this example, the memory can be used by the BlockManager is 4.1GB.
+
+```
+21/04/23 16:54:56 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+21/04/23 16:54:56 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, admin, 57484, None)
+21/04/23 16:54:56 INFO BlockManagerMasterEndpoint: Registering block manager admin:57484 with 4.1 GiB RAM, BlockManagerId(driver, admin, 57484, None)
+21/04/23 16:54:56 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, admin, 57484, None)
+21/04/23 16:54:56 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, admin, 57484, None)
+```
+<p align="center"><img src="/img/banners/spark_sql_pic02.png" width="400"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
