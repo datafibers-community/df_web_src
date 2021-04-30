@@ -187,6 +187,42 @@ Spark does its own memory management with BlockManager. In this example, the ran
 ```
 <p align="center"><img src="/img/banners/spark_sql_pic02.png" width="400"></p>
 
+### Loading Meta Data
+Any SQL engine has to load meta-data to generate execution plan. In this phase, Spark SQL loads meta-data and connects to hive metastore.
+```
+21/04/23 16:54:56 INFO SharedState: spark.sql.warehouse.dir is not set, but hive.metastore.warehouse.dir is set. Setting spark.sql.warehouse.dir to the value of hive.metastore.warehouse.dir ('hdfs://node1:8020/user/hive/warehouse').
+21/04/23 16:54:56 INFO SharedState: Warehouse path is 'hdfs://node1:8020/user/hive/warehouse'.
+21/04/23 16:54:57 INFO HiveUtils: Initializing HiveMetastoreConnection version 2.3 using path: 
+21/04/23 16:54:59 INFO deprecation: No unit for dfs.client.datanode-restart.timeout(30) assuming SECONDS
+21/04/23 16:55:00 INFO SessionState: Created HDFS directory: /tmp/hive/hdfs/b750e106-5b2f-4c67-8217-8cba7f95aaf4
+21/04/23 16:55:00 INFO SessionState: Created local directory: C:/Users/China/AppData/Local/Temp/China/b750e106-5b2f-4c67-8217-8cba7f95aaf4
+21/04/23 16:55:00 INFO SessionState: Created HDFS directory: /tmp/hive/hdfs/b750e106-5b2f-4c67-8217-8cba7f95aaf4/_tmp_space.db
+21/04/23 16:55:00 INFO HiveClientImpl: Warehouse location for Hive client (version 2.3.7) is hdfs://node1:8020/user/hive/warehouse
+21/04/23 16:55:00 INFO metastore: Trying to connect to metastore with URI thrift://node1:9083
+21/04/23 16:55:00 INFO metastore: Opened a connection to metastore, current connections: 1
+21/04/23 16:55:00 INFO JniBasedUnixGroupsMapping: Error getting groups for hdfs: Unknown error.
+21/04/23 16:55:00 INFO metastore: Connected to metastore.
+21/04/23 16:55:02 INFO SQLStdHiveAccessController: Created SQLStdHiveAccessController for session context : HiveAuthzSessionContext [sessionString=b7503407-5b2f-4c67-6643-8cba7f565aaf4, clientType=HIVECLI]
+21/04/23 16:55:02 WARN SessionState: METASTORE_FILTER_HOOK will be ignored, since hive.security.authorization.manager is set to instance of HiveAuthorizerFactory.
+21/04/23 16:55:02 INFO metastore: Mestastore configuration hive.metastore.filter.hook changed from org.apache.hadoop.hive.metastore.DefaultMetaStoreFilterHookImpl to org.apache.hadoop.hive.ql.security.authorization.plugin.AuthorizationMetaStoreFilterHook
+21/04/23 16:55:02 INFO metastore: Closed a connection to metastore, current connections: 0
+21/04/23 16:55:02 INFO metastore: Trying to connect to metastore with URI thrift://node1:9083
+21/04/23 16:55:02 INFO metastore: Opened a connection to metastore, current connections: 1
+21/04/23 16:55:02 INFO metastore: Connected to metastore.
+```
+
+Spark firstly check ```spark.sql.warehouse.dir```, then ```hive.metastore.warehouse.dir``` in the ```hive-site.xml```.
+
+Then，SparkSession creates hdfs tmp folder.
+```
+[hadoop@node2 root]$ hdfs dfs -ls -R /tmp/hive/hdfs/b750e106-5b2f-4c67-8217-8cba7f95aaf4/
+drwx------   - hdfs hadoop          0 2021-04-23 16:55 /tmp/hive/hdfs/b750e106-5b2f-4c67-8217-8cba7f95aaf4/_tmp_space.db
+```
+In the end，Spark uses thrift RPC to connect to Hive MetaStore Server（thrift://node1:9083).
+
+Note: SessionState keeps the state of all SparkSession.
+
+
 
 
 
