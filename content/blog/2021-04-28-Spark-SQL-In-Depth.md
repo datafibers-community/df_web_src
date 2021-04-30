@@ -164,7 +164,7 @@ Key components:
 21/04/23 16:54:55 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
 21/04/23 16:54:55 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
 21/04/23 16:54:55 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
-21/04/23 16:54:55 INFO DiskBlockManager: Created local directory at C:\Users\China\AppData\Local\Temp\blockmgr-89e66659-c81c-4922-85b0-dbcb38570c81
+21/04/23 16:54:55 INFO DiskBlockManager: Created local directory at C:\Users\USA\AppData\Local\Temp\blockmgr-89e66659-c81c-4922-85b0-dbcb38570c81
 21/04/23 16:54:56 INFO MemoryStore: MemoryStore started with capacity 4.1 GiB
 21/04/23 16:54:56 INFO SparkEnv: Registering OutputCommitCoordinator
 21/04/23 16:54:56 INFO Utils: Successfully started service 'SparkUI' on port 4040.
@@ -195,7 +195,7 @@ Any SQL engine has to load meta-data to generate execution plan. In this phase, 
 21/04/23 16:54:57 INFO HiveUtils: Initializing HiveMetastoreConnection version 2.3 using path: 
 21/04/23 16:54:59 INFO deprecation: No unit for dfs.client.datanode-restart.timeout(30) assuming SECONDS
 21/04/23 16:55:00 INFO SessionState: Created HDFS directory: /tmp/hive/hdfs/b750e106-5b2f-4c67-8217-8cba7f95aaf4
-21/04/23 16:55:00 INFO SessionState: Created local directory: C:/Users/China/AppData/Local/Temp/China/b750e106-5b2f-4c67-8217-8cba7f95aaf4
+21/04/23 16:55:00 INFO SessionState: Created local directory: C:/Users/USA/AppData/Local/Temp/USA/b750e106-5b2f-4c67-8217-8cba7f95aaf4
 21/04/23 16:55:00 INFO SessionState: Created HDFS directory: /tmp/hive/hdfs/b750e106-5b2f-4c67-8217-8cba7f95aaf4/_tmp_space.db
 21/04/23 16:55:00 INFO HiveClientImpl: Warehouse location for Hive client (version 2.3.7) is hdfs://node1:8020/user/hive/warehouse
 21/04/23 16:55:00 INFO metastore: Trying to connect to metastore with URI thrift://node1:9083
