@@ -235,10 +235,58 @@ The next step is to broadcasting variables and submitting the job.
 MemoryStore is component of BlockManager, which operates the data saved in the memory. In above example, broadcast_0 block is added to the memory with size 375KB. In addition, Spark uses Hadoop FileInputFormat to read HDFS files. In the end，SparkContext submits a job.
 
 
+### DAG Scheduler
+Next, DAGScheduler received the job submitted by SparkContext.Then it found the final Stage（named：show at SparkSQL_ResourceTest01.scala:35），and submit the Stage. Since the testing sql is very simple, there is only one stage without other parent stages.
 
+Then，BlockManager's MemoryStore creates the second broadcast and keeps it int he memory. In the end, DAGScheduler gets the job submitted by the stage from the DAG. In summary, the DAGScheduler is to schedule Stage and submit TaskSet.
+```
+21/04/23 16:55:02 INFO DAGScheduler: Got job 0 (show at SparkSQL_ResourceTest01.scala:35) with 1 output partitions
+21/04/23 16:55:02 INFO DAGScheduler: Final stage: ResultStage 0 (show at SparkSQL_ResourceTest01.scala:35)
+21/04/23 16:55:02 INFO DAGScheduler: Parents of final stage: List()
+21/04/23 16:55:03 INFO DAGScheduler: Missing parents: List()
+21/04/23 16:55:03 INFO DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[4] at show at SparkSQL_ResourceTest01.scala:35), which has no missing parents
+21/04/23 16:55:03 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 9.2 KiB, free 4.1 GiB)
+21/04/23 16:55:03 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 4.8 KiB, free 4.1 GiB)
+21/04/23 16:55:03 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on admin:57484 (size: 4.8 KiB, free: 4.1 GiB)
+21/04/23 16:55:03 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1383
+21/04/23 16:55:03 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[4] at show at SparkSQL_ResourceTest01.scala:35) (first 15 tasks are for partitions Vector(0))
+```
 
+### Task Scheduler
+```
+21/04/23 16:55:03 INFO TaskSchedulerImpl: Adding task set 0.0 with 1 tasks resource profile 0
+21/04/23 16:55:03 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (admin, executor driver, partition 0, ANY, 4530 bytes) taskResourceAssignments Map()
+21/04/23 16:55:03 INFO Executor: Running task 0.0 in stage 0.0 (TID 0)
+21/04/23 16:55:03 INFO HadoopRDD: Input split: hdfs://node1:8020/user/hive/warehouse/test.db/t_name/000000_0:0+18
+```
+TaskScheduler firstly added a task set（0.0）and specify using Resource Profile 0, which is previously loaded into ResourceProfile by driver.
 
+Actually，when starting the task 0.0, we are running in local mode in driver and reading a file form hdfs.
 
+```
+[hadoop@node2 root]$ hdfs dfs -tail hdfs://node1:8020/user/hive/warehouse/test.db/t_name/000000_0
+2021-04-23 18:35:52,783 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+test1
+test2
+test3
+```
+
+### Code Generation and Complete Task
+```
+21/04/23 16:55:03 INFO CodeGenerator: Code generated in 174.966701 ms
+21/04/23 16:55:05 INFO Executor: Finished task 0.0 in stage 0.0 (TID 0). 1402 bytes result sent to driver
+21/04/23 16:55:05 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 2375 ms on admin (executor driver) (1/1)
+21/04/23 16:55:05 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+21/04/23 16:55:05 INFO DAGScheduler: ResultStage 0 (show at SparkSQL_ResourceTest01.scala:35) finished in 2.482 s
+21/04/23 16:55:05 INFO DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+21/04/23 16:55:05 INFO TaskSchedulerImpl: Killing all running tasks in stage 0: Stage finished
+21/04/23 16:55:05 INFO DAGScheduler: Job 0 finished: show at SparkSQL_ResourceTest01.scala:35, took 2.533098 s
+21/04/23 16:55:05 INFO CodeGenerator: Code generated in 11.8474 ms
+```
+Now, we see there is a CodeGenerator component which is used to generate code and run in Executor. Once TaskSetManagerImpl fuond all task compeleted, it will remove the tasks from the pool. Once all the tasks are completed in the Stage, the TaskScheduler will shut down all task thread and finish the job.
+
+## Summary
+From previous, we looked the how Spark working from IDE run and how each component working for job submission and management. In the future blog, we'll look more details in execution plan itself and its optimization.
 
 
 
