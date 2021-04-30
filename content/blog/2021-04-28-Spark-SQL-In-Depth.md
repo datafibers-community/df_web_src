@@ -222,7 +222,17 @@ In the end，Spark uses thrift RPC to connect to Hive MetaStore Server（thrift:
 
 Note: SessionState keeps the state of all SparkSession.
 
-
+### Broadcasting and Submiting
+The next step is to broadcasting variables and submitting the job.
+```
+21/04/23 16:55:02 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 375.5 KiB, free 4.1 GiB)
+21/04/23 16:55:02 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 34.4 KiB, free 4.1 GiB)
+21/04/23 16:55:02 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on admin:57484 (size: 34.4 KiB, free: 4.1 GiB)
+21/04/23 16:55:02 INFO SparkContext: Created broadcast 0 from 
+21/04/23 16:55:02 INFO FileInputFormat: Total input files to process : 1
+21/04/23 16:55:02 INFO SparkContext: Starting job: show at SparkSQL_ResourceTest01.scala:35
+```
+MemoryStore is component of BlockManager, which operates the data saved in the memory. In above example, broadcast_0 block is added to the memory with size 375KB. In addition, Spark uses Hadoop FileInputFormat to read HDFS files. In the end，SparkContext submits a job.
 
 
 
