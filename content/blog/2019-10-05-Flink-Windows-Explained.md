@@ -2,7 +2,7 @@
 title = "Flink Windows Explained"
 date = "2019-10-05T19:50:46+02:00"
 tags = ["flink"]
-categories = ["artical"]
+categories = ["article"]
 banner = "/img/banners/flink_logo.jpg"
 +++
 
