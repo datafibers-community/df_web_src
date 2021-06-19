@@ -1,9 +1,9 @@
 +++
 title = "Embracing Kubernetes, Goodbye Spring Cloud"
 date = "2021-06-19T10:17:46+02:00"
-tags = ["K8S"]
+tags = ["k8s"]
 categories = ["digest"]
-banner = "/img/banners/K8S01.png"
+banner = "/img/banners/k8s01.png"
 +++
 ---
 I believe many developers, after familiarizing themselves with microservices, realized that they thought they had successfully built a microservices architecture empired with Spring Cloud. But after the popular of kubernetes (K8S), they were curious and exciting of creating the cloud native microservices serivces.
@@ -15,7 +15,7 @@ The simplicity of Spring boot allows java developers to quickly apply it to proj
 ## The Era of Kubernetes
 But when K8S was introduced, things start changing. Although Java ecosystem of Spring Cloud is by far the most complete microservices framework, basically satisfying all microservices architecture requirements, it makes most architecture closely tide to Java. Especially after Oracel Java start charging money for upgrade and mainteanance, many company are looking for alternatives of Java. In addition, the performance of Java make it not the best of choice for high performance applications which becomes more and more common senarios in this era. As result, some companys give up Java and others stick to Java because they have to.
 
-Now K8S is 7 years and it becomes more mature and popular. It becomes one of most popular open source project in the planent and backed by so many great companies, such as Google and Redhat. When we put the original Spring Cloud-based services into K8S, we found out there are many overlape mechanisms offered by K8S and Spring cloud. Although SPring Could tries their best to integrate and merge it using https://github.com/ spring-cloud/spring-cloud-kubernetes, it is quite clear developers now have more chioce to move out from Java stack freely.
+Now, K8S is 7 years and it becomes more mature and popular. It becomes one of most popular open source project in the planent and backed by so many great companies, such as Google and Redhat. When we put the original Spring Cloud-based services into K8S, we found out there are many overlape mechanisms offered by K8S and Spring cloud. Although SPring Could tries their best to integrate and merge it using https://github.com/spring-cloud/spring-cloud-kubernetes, it is quite clear developers now have more chioce to move out from Java stack freely.
 
 Let's have a quick look what's offered in Spring Cloud can be replaced by K8S.
 
