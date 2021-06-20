@@ -35,9 +35,9 @@ Spring Cloud's original solution: Netflix Ribbon and Hystrix, but in K8S there i
 
 * Service Implementation
 Compared to the service implemention, Spring Boot make the code implemention so easy, but the Spring it can only use Java. The K8S ecosystem has been developed and designed to be more versatile and extensive, and some of the features of the Spring Cloud components are also integrated and considered and extended in Kubernetes. By using K8S, developers now have more chocie to implement micro-service in the cloud with cloud efficient programming language, such as golang, rust, etc. As result, your service architecture has not to be tied to the specific language or stack.
-<p align="center"><img src="/img/banners/k8s_spring_02.png" width="600"></p>
+<p align="center"><img src="/img/banners/k8s_spring_02.png" width="800"></p>
 
-<p align="center"><img src="/img/banners/k8s_spring.png" width="600"></p>
+<p align="center"><img src="/img/banners/k8s_spring.png" width="800"></p>
 
 ## Summary
 With the populrity of K8S, more and more company will move to building native cloud micro-service using golang and K8S. I believe if NetFlex is now today for doing the same thing, they will never create Eruka. Althougt we can certainly ignore K8S native components altogether and adopt Spring Boot and Spring Cloud solutions completely, using K8S only as a tool and platform for deploying applications, which are still quite common in most company. It is clear that in the near future, Service Mesh and its generic Cloud Native technology development will be derailed from Spring Cloud and deeply integrated with our applications.
