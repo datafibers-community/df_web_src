@@ -1,6 +1,6 @@
 +++
 title = "Leading Cloud Tech. Stack Comparison"
-date = "2023-07-31T 09:15:47+02:00"
+date = "2023-07-01T10:17:46+02:00"
 tags = ["cloud"]
 categories = ["digest"]
 banner = "/img/banners/cloud_computing.png"
