@@ -1,4 +1,3 @@
-pwd=$1
 rm -rf public
 hugo
 cd ../datafibers-community.github.io
@@ -9,12 +8,12 @@ git add .
 msg="rebuilding site on `date`"
 git commit -m "$msg"
 #git push origin master
-git push http://datafibers:$pwd@github.com/datafibers-community/datafibers-community.github.io.git --all
+git push origin master
 echo "The site update is deployed."
 cd ../df_web_src
 rm -rf public
 git add .
 msg="update site source on `date`"
 git commit -m "$msg"
-git push http://datafibers:$pwd@github.com/datafibers-community/df_web_src.git --all
+git push origin master
 echo "The site source is checked in."
