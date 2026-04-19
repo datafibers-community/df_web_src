@@ -50,6 +50,11 @@ if [ -d "$REPO_IO_DIR" ]; then
     echo "Updating GitHub Pages repo at $REPO_IO_DIR..."
     cd "$REPO_IO_DIR"
     git pull
+    
+    # Remove all files in the directory except '.git' and 'install'
+    echo "Cleaning up old build files (keeping .git and install)..."
+    find . -maxdepth 1 ! -name '.' ! -name '.git' ! -name 'install' -exec rm -rf {} +
+    
     cp -r "$SCRIPT_DIR/public/"* .
     git add .
     git commit -m "Site rebuild on $(date)"
