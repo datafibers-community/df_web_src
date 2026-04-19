@@ -12,24 +12,33 @@ cd "$SCRIPT_DIR"
 # 3. Add common Linux paths for Cron (Hugo, NPM, Git)
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
+# Check for flags
+SKIP_GEN=false
+if [[ "$1" == "--no-gen" || "$1" == "-n" ]]; then
+    SKIP_GEN=true
+    echo "--- Skipping AI Blog Generation ---"
+fi
+
 echo "--- Starting Automation Flow in $SCRIPT_DIR ---"
 
 git pull
 
-# 4. Generate new blog post
-npm start
+# 4. Generate & Move new content
+if [ "$SKIP_GEN" = false ]; then
+    npm start
 
-# 5. Ensure folders exist and move content
-mkdir -p content/blog static/img/banners
+    # 5. Ensure folders exist and move content
+    mkdir -p content/blog static/img/banners
 
-if [ -d "output/content/blog" ]; then
-    echo "Moving markdown posts..."
-    cp -rv output/content/blog/*.md content/blog/
-fi
+    if [ -d "output/content/blog" ]; then
+        echo "Moving markdown posts..."
+        cp -rv output/content/blog/*.md content/blog/
+    fi
 
-if [ -d "output/static/img/banners" ]; then
-    echo "Moving banner images..."
-    cp -rv output/static/img/banners/*.jpg static/img/banners/
+    if [ -d "output/static/img/banners" ]; then
+        echo "Moving banner images..."
+        cp -rv output/static/img/banners/*.jpg static/img/banners/
+    fi
 fi
 
 # 6. Hugo Build
