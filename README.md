@@ -1,52 +1,56 @@
-# DataFibers Blog Bot
+# DataFibers Blog Bot & Static Site
 
-An AI-powered automated blog generator that creates technical posts and banner images using Google Gemini and Pollinations.ai.
+An AI-powered automated blog generator and Hugo deployment system. 
 
-## Features
-- **Smart Content**: Generates technical blog posts using `gemini-flash-latest`.
-- **Free Images**: Creates unique banner images via Pollinations.ai (no API key required).
-- **Flexible Topics**: Picks 1-2 random tags from your list for every run.
-- **Single Output**: Generates exactly one post per execution.
+## 📋 Prerequisites
 
-## Deployment to Ubuntu
+### 1. Hugo (v0.30.2)
+This site uses a legacy theme and **must** be built with Hugo **v0.30.2**. Newer versions of Hugo will not work correctly.
 
-### 1. Prerequisites
-Ensure you have Node.js (v18+) and npm installed on your Ubuntu server:
+**Ubuntu Installation:**
+```bash
+wget https://github.com/gohugoio/hugo/releases/download/v0.30.2/hugo_0.30.2_Linux-64bit.deb
+sudo dpkg -i hugo_0.30.2_Linux-64bit.deb
+```
+
+### 2. Node.js (v18+)
+Required for the AI generator bot:
 ```bash
 sudo apt update
 sudo apt install nodejs npm
 ```
 
-### 2. Upload Files
-Upload the following to your server:
-- `src/`
-- `package.json`
-- `.env`
-- `tsconfig.json`
+## 🚀 Usage & Deployment
 
-### 3. Setup
+The [**`deploy.sh`**](file:///Users/will/Documents/Coding/GitHub/df_web_src/deploy.sh) script handles the full lifecycle: generating content, building the site, and pushing to GitHub.
+
+### Full Deployment (Generate + Build + Push)
 ```bash
-# Install dependencies
-npm install
+./deploy.sh
 ```
 
-### 4. Running
-To run the bot manually:
+### Deploy Only (Skip AI Generation)
+To rebuild and deploy existing content without generating a new blog post:
 ```bash
-npm start
+./deploy.sh --no-gen
+# OR
+./deploy.sh -n
 ```
 
-### 5. Automation (Cron Job)
-To automate the generator (e.g., run every morning at 9:00 AM), add a entry to your crontab:
+## 🤖 AI Blog Bot Features
+- **Smart Content**: Generates technical deep-dives using Gemini 2.5/Gemma 3 models.
+- **Code & Diagrams**: Strictly enforces triple-backtick formatting for all technical snippets and ASCII/Mermaid diagrams.
+- **Minimalist Banners**: Creates non-stretched, minimalist vector-style banners (16:9 ratio) inspired by `k8s01.png`.
 
-1. Open crontab: `crontab -e`
-2. Add the following line (replace `/path/to/` with your actual project path):
-```bash
-0 9 * * * cd /path/to/df_blog_bot && /usr/bin/npm start >> /path/to/df_blog_bot/cron.log 2>&1
-```
-
-## Configuration (.env)
+## ⚙️ Configuration (.env)
+Create a `.env` file based on [**.env.example**](file:///Users/will/Documents/Coding/GitHub/df_web_src/.env.example):
 - `GEMINI_API_KEY`: Your Google Gemini API key.
-- `TAGS`: Comma-separated list of topics (e.g., `ai,data-engineering,kafka`).
-- `BLOG_PROMPT`: (Optional) Custom instructions for the AI writer.
-- `OUTPUT_DIR`: (Optional) Where to save the generated markdown and images.
+- `TAGS`: Topics for the generator (e.g., `ai,flink`).
+- `OUTPUT_DIR`: Staging area for new posts (defaults to `./output`).
+
+## ⏰ Automation (Crontab)
+To automate posts every Sunday and Wednesday at 0:10 AM, add this to `crontab -e`:
+
+```cron
+10 0 * * 0,3 /path/to/df_web_src/deploy.sh >> /tmp/blog_deploy.log 2>&1
+```
