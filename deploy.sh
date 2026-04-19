@@ -14,6 +14,8 @@ export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 echo "--- Starting Automation Flow in $SCRIPT_DIR ---"
 
+git pull
+
 # 4. Generate new blog post
 npm start
 
