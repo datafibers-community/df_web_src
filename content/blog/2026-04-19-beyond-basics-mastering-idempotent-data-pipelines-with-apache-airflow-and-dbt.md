@@ -15,6 +15,7 @@ This deep-dive will move past the "Hello World" of data pipelines, exploring how
 At its core, an idempotent operation is one that can be executed multiple times without changing the result beyond the initial application. For data pipelines, this means if a task or an entire DAG fails midway and is re-run, the final state of the data should be identical to what it would have been if the pipeline had succeeded on the first attempt.
 
 Without idempotency, re-runs can lead to:
+
 *   **Duplicate Data:** Records inserted multiple times.
 *   **Incorrect Aggregations:** Sums or counts inflated by duplicates.
 *   **State Inconsistencies:** Downstream systems receiving conflicting or erroneous data.
@@ -34,7 +35,7 @@ For unique integration patterns or specific business logic, custom operators pro
 
 Imagine a scenario where you need to copy a specific set of files from an S3 landing zone to a processing zone, with robust error handling and metadata tracking.
 
-python
+```python
 # my_airflow_plugin/operators/s3_copy_operator.py
 from airflow.models.baseoperator import BaseOperator
 from airflow.utils.decorators import apply_defaults
@@ -88,7 +89,7 @@ class S3ToS3CopyOperator(BaseOperator):
             log.info("Copy successful.")
         except Exception as e:
             raise AirflowException(f"Failed to copy S3 object: {e}")
-
+```
 
 
 This operator ensures that if the source file is missing, the task fails immediately. It also supports idempotency by allowing `replace=False`, preventing overwrites if the destination already exists (though for true idempotency with `UPSERT` semantics, downstream transformation is key).
@@ -97,8 +98,9 @@ This operator ensures that if the source file is missing, the task fails immedia
 
 Complex data platforms often involve multiple DAGs, each responsible for a specific domain or stage. Orchestrating dependencies across DAGs is critical. `ExternalTaskSensor` is the primary tool for this.
 
-python
-# dags/producer_dag.py
+
+#### dags/producer_dag.py
+```python
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime
@@ -121,9 +123,10 @@ with DAG(
         python_callable=generate_data,
         do_xcom_push=True
     )
+```
 
-
-# dags/consumer_dag.py
+#### dags/consumer_dag.py
+```python
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.sensors.external_task import ExternalTaskSensor
@@ -161,7 +164,7 @@ with DAG(
     )
 
     wait_for_producer >> process_data_task
-
+```
 
 
 The `ExternalTaskSensor` ensures the `consumer_data_processing_dag` only proceeds after the `generate_data` task in `producer_data_ingestion_dag` has successfully completed for the *corresponding scheduled interval*. This maintains chronological and data integrity.
@@ -182,7 +185,7 @@ For highly idempotent and isolated task execution, the `KubernetesExecutor` is o
 
 Even with `KubernetesExecutor`, you might use `KubernetesPodOperator` for specific tasks that require unique environments, custom Docker images, or specific Kubernetes resource configurations that differ from the Airflow worker defaults.
 
-python
+```python
 from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.kubernetes_pod import KubernetesPodOperator
 from datetime import datetime
@@ -219,7 +222,7 @@ with DAG(
         do_xcom_push=False, # Often better for large outputs to use external storage
         is_delete_operator_pod=True # Clean up pod after completion
     )
-
+```
 
 Notice the use of Airflow Jinja templating (`{{ ds }}`) to pass execution date into the Spark job, critical for time-partitioned, idempotent outputs.
 
@@ -231,7 +234,7 @@ dbt (data build tool) has revolutionized the "T" in ELT by enabling data analyst
 
 dbt's incremental models are a powerful feature for processing only new or changed data, critical for large datasets and maintaining idempotency.
 
-sql
+```sql
 -- models/gold/orders_daily_summary.sql
 
 {{ config(
@@ -264,7 +267,7 @@ FROM
     new_orders
 GROUP BY
     order_date, customer_id
-
+```
 
 
 *   `materialized='incremental'`: dbt will intelligently `INSERT` new rows or `MERGE`/`UPDATE` existing ones.
@@ -275,7 +278,7 @@ GROUP BY
 
 dbt's testing framework allows you to define assertions about your data, ensuring quality at critical transformation steps. Tests can be generic (`not_null`, `unique`, `accepted_values`, `relationships`) or custom SQL queries.
 
-yaml
+```yaml
 # models/gold/schema.yml
 
 version: 2
@@ -305,7 +308,7 @@ models:
           - not_null
           - dbt_expectations.expect_column_values_to_be_between: { min_value: 0.0, max_value: 100000000.0 }
 
-
+```
 
 Running `dbt test` will execute these checks, failing the dbt run if any assertion isn't met. Integrating this into Airflow (e.g., as a distinct task after `dbt run`) ensures data quality gatekeeping.
 
@@ -313,7 +316,7 @@ Running `dbt test` will execute these checks, failing the dbt run if any asserti
 
 The `dbt-airflow` package simplifies the integration, but a robust `BashOperator` or `KubernetesPodOperator` approach offers more control and transparency.
 
-python
+```python
 # dags/dbt_pipeline_dag.py
 from airflow import DAG
 from airflow.operators.bash import BashOperator
@@ -353,7 +356,7 @@ with DAG(
     )
 
     dbt_run_task >> dbt_test_task
-
+```
 
 
 **Note on Idempotency with `dbt run`:** When `dbt run` is executed, it rebuilds or updates models. For incremental models, the `unique_key` configuration (as shown above) is what provides the `UPSERT` semantics, making the `dbt run` operation idempotent for the data within those models. If the same `run_date` is processed twice, dbt will update existing records rather than inserting duplicates.
@@ -362,7 +365,7 @@ with DAG(
 
 Let's visualize a common robust ELT pattern leveraging the techniques discussed:
 
-mermaid
+```mermaid
 graph TD
     subgraph Data Sources
         A[Raw Event Stream/DB Change Data Capture]
@@ -415,9 +418,10 @@ graph TD
     style K fill:#cfc,stroke:#333,stroke-width:2px
     style L fill:#cfc,stroke:#333,stroke-width:2px
     style M fill:#cfc,stroke:#333,stroke-width:2px
-
+```
 
 In this diagram:
+
 *   **Ingestion:** Airflow monitors for new data and loads it to a raw/staging area. Validation is crucial here to prevent bad data from propagating.
 *   **Transformation:** dbt takes over, running models in a structured way (staging -> intermediate -> marts). Each `dbt run` operation for incremental models with `unique_key` ensures idempotency. `dbt test` tasks act as quality gates.
 *   **Consumption:** Clean, transformed, and validated data is available for downstream applications.
@@ -426,7 +430,7 @@ In this diagram:
 
 1.  **Transactional Loading with Staging Tables:** For critical data, load into a temporary staging table, then perform an atomic `MERGE`/`UPSERT` or `TRUNCATE`/`INSERT` into the final table. This ensures either all changes apply or none do.
 
-    sql
+    ```sql
     -- Example SQL for transactional UPSERT
     BEGIN;
 
@@ -467,11 +471,11 @@ In this diagram:
     -- TRUNCATE TABLE final_my_table;
     -- INSERT INTO final_my_table SELECT * FROM temp_my_table;
     -- COMMIT;
-    
+    ```
 
 2.  **Utilize Airflow's `run_id` for Partitioning:** Airflow's `run_id` (`{{ run_id }}`) is a unique identifier for each DAG run instance. You can leverage it in combination with execution date (`{{ ds }}` or `{{ ds_nodash }}`) to create unique output paths or identifiers for each run, especially useful when writing to file systems like S3.
 
-    python
+    ```python
     # Example: Writing to a run-specific folder in S3
     from airflow import DAG
     from airflow.operators.bash import BashOperator
@@ -487,6 +491,7 @@ In this diagram:
             task_id='write_data',
             bash_command=f"echo 'data for {{ ds }}' > s3://my-bucket/processed_data/{{ ds }}/{{ run_id }}/output.txt"
         )
+    ```
     
     This ensures that even if you re-run a specific `ds` (daily execution), the `run_id` creates a new, distinct output location, preventing accidental overwrites of previous successful runs. A downstream task can then decide which `run_id`'s output to pick (e.g., the latest successful one).
 
