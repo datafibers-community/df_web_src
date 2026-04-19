@@ -34,18 +34,22 @@ export async function generateBlogPost(tags: string[]): Promise<BlogPost> {
         
         CONTENT REQUIREMENTS:
         1. AVOID GENERIC OVERVIEWS. Focus on "under-the-hood" details, architectural patterns, and practical implementation challenges.
-        2. EXPLAIN VIA CODE: Use tables, detailed code snippets, configuration examples (YAML, JSON, XML), and CLI command walk-throughs to explain concepts. 
-        3. CODE FORMATTING: All code blocks MUST be wrapped in triple backticks according to markdown standards for coding. 
-        4. Use technical terminology correctly and explain complex concepts through analogies if needed.
+        2. EXPLAIN VIA CODE & DIAGRAMS: Use tables, detailed code snippets, configuration examples (YAML, JSON, XML), CLI command walk-throughs, and text-based diagrams (like ASCII or Mermaid) to explain concepts. 
+        3. CODE & DIAGRAM FORMATTING: Every single code block, configuration snippet, and technical diagram MUST be wrapped in triple backticks (\`\`\`) with the appropriate language identifier when applicable. 
+        4. NEVER present code-like content or technical diagrams as plain text. 
+        5. Use technical terminology correctly and explain complex concepts through analogies if needed.
         
         BANNER IMAGE REQUIREMENTS:
-        Your "imagePrompt" must describe a TANGIBLE, professional, and tech-noir scene that directly represents the topic. 
-        Avoid abstract concepts; instead, describe specific visuals like "high-tech server racks with glowing cyan LEDs", "intricate 3D network diagrams", "stylized code segments floating in a digital void", or "specific technical logos (like a golden squirrel for Flink) integrated into a circuit-board landscape".
+        Your "imagePrompt" must describe a TANGIBLE, professional, and minimalist flat-vector illustration.
+        STYLE: Use a clean, modernist vector-art aesthetic. Avoid photographic realism, 3D renders, or complex textures. 
+        VISUALS: Use simple geometric shapes, clean lines, and a professional, muted color palette (e.g., shades of blue, coral/orange, and grey).
+        SCENE: Describe specific visuals like "a stylized, iconic representation of a lighthouse", "large, clean technical logos on octagonal backgrounds", or "simple fiber optic cables represented as glowing lines". 
+        BACKGROUND: Keep it simple with subtle geometric patterns or soft shapes.
         
         FORMATTING RULES:
         1. Follow Hugo markdown standards.
         2. Do not include front matter in the content field.
-        3. IMPORTANT: Your output is a JSON string. Ensure all special characters in your content (like double quotes and backslashes) are properly escaped to maintain valid JSON.
+        3. IMPORTANT: Your output is a JSON string. Ensure all special characters in your content (like double quotes, NEWLINES within code blocks, and backslashes) are properly escaped to maintain valid JSON.
       `;
 
       const prompt = `
