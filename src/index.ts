@@ -44,15 +44,24 @@ async function main() {
   console.log('--- Starting Standalone AI Blog Generator ---');
   console.log(`Target Output Directory: ${config.OUTPUT_DIR}`);
 
-  if (config.TAGS.length === 0) {
-    console.error('No tags configured. Please set TAGS in .env');
+  // Clear previous output to ensure only the fresh post is present
+  const contentDir = path.join(config.OUTPUT_DIR, 'content', config.CONTENT_SUBDIR);
+  const imageDir = path.join(config.OUTPUT_DIR, 'static', 'img', config.IMAGE_SUBDIR);
+  if (fs.existsSync(contentDir)) fs.rmSync(contentDir, { recursive: true, force: true });
+  if (fs.existsSync(imageDir)) fs.rmSync(imageDir, { recursive: true, force: true });
+  fs.mkdirSync(contentDir, { recursive: true });
+  fs.mkdirSync(imageDir, { recursive: true });
+
+  // Pick exactly 1 random tag using modulo operator on a random number
+  const tags = config.TAGS.map(t => t.trim()).filter(t => t);
+  
+  if (tags.length === 0) {
+    console.error('No valid tags found. Please check TAGS in .env');
     return;
   }
 
-  // Shuffle and pick 1-2 random tags to generate for in a SINGLE post
-  const shuffled = [...config.TAGS].sort(() => 0.5 - Math.random());
-  const count = Math.random() < 0.5 ? 1 : 2;
-  const selectedTags = shuffled.slice(0, Math.min(count, shuffled.length)).map(t => t.trim());
+  const randomIndex = Math.floor(Math.random() * 1000000) % tags.length;
+  const selectedTags = [tags[randomIndex]];
 
   console.log(`Selected tags for this run: ${selectedTags.join(', ')}`);
 

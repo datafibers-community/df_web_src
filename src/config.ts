@@ -9,7 +9,7 @@ export const config = {
   BLOG_PROMPT: process.env.BLOG_PROMPT || '',
   CONTENT_SUBDIR: 'blog',
   IMAGE_SUBDIR: 'banners',
-  TAGS: (process.env.TAGS || 'data-engineering,hadoop,ai,flink,spark').split(','),
+  TAGS: (process.env.TAGS || '').split(','),
 };
 
 if (!config.GEMINI_API_KEY) {
