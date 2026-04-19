@@ -36,7 +36,7 @@ export async function generateBlogPost(tags: string[]): Promise<BlogPost> {
         1. AVOID GENERIC OVERVIEWS. Focus on "under-the-hood" details, architectural patterns, and practical implementation challenges.
         2. EXPLAIN VIA CODE & DIAGRAMS: Use tables, detailed code snippets, configuration examples (YAML, JSON, XML), CLI command walk-throughs, and text-based diagrams (like ASCII or Mermaid) to explain concepts. 
         3. CODE & DIAGRAM FORMATTING: Every single code block, configuration snippet, and technical diagram MUST be wrapped in triple backticks (\`\`\`) with the appropriate language identifier when applicable. 
-        4. NEVER present code-like content or technical diagrams as plain text. Every code block MUST start with ``` and end with ```.
+        4. NEVER present code-like content or technical diagrams as plain text. Every code block MUST start with \`\`\` and end with \`\`\`.
         5. Use technical terminology correctly and explain complex concepts through analogies if needed.
         
         BANNER IMAGE REQUIREMENTS:
