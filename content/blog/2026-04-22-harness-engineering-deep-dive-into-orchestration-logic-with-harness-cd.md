@@ -20,14 +20,6 @@ While Harness boasts a powerful UI, its true strength lies in the declarative de
 *   **Triggers:** Automate the execution of pipelines based on events (e.g., artifact build completion, Git commit).
 *   **Artifacts:** The deployable units themselves (e.g., Docker images, JAR files).
 
-### A Visual Representation of the Hierarchy
-
-Let's visualize this relationship:
-
-![Harness CD Abstraction Hierarchy Diagram](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVEQ7XG4gICAgQXBwbGljYXRpb25bQXBwbGljYXRpb25dIC0tPiBXZWJTZXJ2aWNlW1NlcnZpY2UgKE1pY3JvU2VydmljZSldXG4gICAgQXBwbGljYXRpb25bQXBwbGljYXRpb25dIC0tPiBEYXRhYmFzZVtTZXJ2aWNlIChEQikgXG4gICAgQXBwbGljYXRpb25bQXBwbGljYXRpb25dIC0tPiBBUElbc2VydmljZSAoQVBJKV1cbiAgICBXZWJTZXJ2aWNlIC0tPiBFbnZfRGV2W0Vudmlyb25tZW50IChEZXZKVSAzKQpdXG4gICAgV2ViU2VydmljZSAtLT4gRW52X1N0YWdpbmdbRW52aXJvbm1lbnQgKFN0YWdpbmdFKV1cbiAgICBXZWJTZXJ2aWNlIC0tPiBFbnZfUHJvZFs6RW52aXJvbm1lbnQgKFBST0QpXVxuICAgIEVudl9EZXYgLS0-IEluZnJhX0t1YmVybmV0ZXNBW0luZnJhXG5cbiAgICBBcHBsaWNhdGlvbiAwLS0-IFdvcmsxW1BpcGVsIChXYWJTZXJ2aWNlIC0tPiBFbnZfRGV2KW1dIC0tPiB0cmlnZ2VyMSJcLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
-
-*(Note: This diagram illustrates the logical flow and grouping. In Harness, a "Pipeline" is the explicit definition of deployment steps for a service to an environment/infrastructure.)*
-
 ## Deconstructing a Harness CD Pipeline
 
 Let's dive into a practical example: deploying a Dockerized microservice to Kubernetes using a Blue/Green strategy.
